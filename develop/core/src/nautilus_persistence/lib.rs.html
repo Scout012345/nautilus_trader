@@ -60,8 +60,8 @@
 </span><span class="kw">pub fn </span>persistence(<span class="kw">_</span>: Python&lt;<span class="lifetime">&#39;_</span>&gt;, m: <span class="kw-2">&amp;</span>PyModule) -&gt; PyResult&lt;()&gt; {
     m.add_class::&lt;arrow::NautilusDataType&gt;()<span class="question-mark">?</span>;
     m.add_class::&lt;backend::session::DataBackendSession&gt;()<span class="question-mark">?</span>;
+    m.add_class::&lt;backend::session::DataQueryResult&gt;()<span class="question-mark">?</span>;
     m.add_class::&lt;backend::transformer::DataTransformer&gt;()<span class="question-mark">?</span>;
-    m.add_class::&lt;backend::query::DataQueryResult&gt;()<span class="question-mark">?</span>;
     m.add_class::&lt;wranglers::bar::BarDataWrangler&gt;()<span class="question-mark">?</span>;
     m.add_class::&lt;wranglers::delta::OrderBookDeltaDataWrangler&gt;()<span class="question-mark">?</span>;
     m.add_class::&lt;wranglers::quote::QuoteTickDataWrangler&gt;()<span class="question-mark">?</span>;

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["query","session","transformer"]};
+window.SIDEBAR_ITEMS = {"mod":["session","transformer"]};
