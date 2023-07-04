@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/data/trade.rs`."><title>trade.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-a23c9d150ad85d8b.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (839e9a6e1 2023-07-02)" data-channel="nightly" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ><script src="../../../static.files/storage-59fd9b8ccb335783.js"></script><script defer src="../../../static.files/source-script-106908c7a7964ba4.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../nautilus_model/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/data/trade.rs`."><title>trade.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-9bb858ba049f1f21.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (0ab38e95b 2023-07-03)" data-channel="nightly" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ><script src="../../../static.files/storage-59fd9b8ccb335783.js"></script><script defer src="../../../static.files/source-script-106908c7a7964ba4.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../nautilus_model/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -331,32 +331,6 @@
 <a href="#331" id="331">331</a>
 <a href="#332" id="332">332</a>
 <a href="#333" id="333">333</a>
-<a href="#334" id="334">334</a>
-<a href="#335" id="335">335</a>
-<a href="#336" id="336">336</a>
-<a href="#337" id="337">337</a>
-<a href="#338" id="338">338</a>
-<a href="#339" id="339">339</a>
-<a href="#340" id="340">340</a>
-<a href="#341" id="341">341</a>
-<a href="#342" id="342">342</a>
-<a href="#343" id="343">343</a>
-<a href="#344" id="344">344</a>
-<a href="#345" id="345">345</a>
-<a href="#346" id="346">346</a>
-<a href="#347" id="347">347</a>
-<a href="#348" id="348">348</a>
-<a href="#349" id="349">349</a>
-<a href="#350" id="350">350</a>
-<a href="#351" id="351">351</a>
-<a href="#352" id="352">352</a>
-<a href="#353" id="353">353</a>
-<a href="#354" id="354">354</a>
-<a href="#355" id="355">355</a>
-<a href="#356" id="356">356</a>
-<a href="#357" id="357">357</a>
-<a href="#358" id="358">358</a>
-<a href="#359" id="359">359</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -373,18 +347,13 @@
 // -------------------------------------------------------------------------------------------------
 
 </span><span class="kw">use </span>std::{
-    collections::HashMap,
+    collections::{hash_map::DefaultHasher, HashMap},
     fmt::{Display, Formatter},
-    str::FromStr,
+    hash::{Hash, Hasher},
 };
 
 <span class="kw">use </span>nautilus_core::{serialization::Serializable, time::UnixNanos};
-<span class="kw">use </span>pyo3::{
-    exceptions::{PyKeyError, PyValueError},
-    prelude::<span class="kw-2">*</span>,
-    pyclass::CompareOp,
-    types::PyDict,
-};
+<span class="kw">use </span>pyo3::{exceptions::PyValueError, prelude::<span class="kw-2">*</span>, pyclass::CompareOp, types::PyDict};
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
 <span class="kw">use crate</span>::{
@@ -396,6 +365,7 @@
 <span class="doccomment">/// Represents a single trade tick in a financial market.
 </span><span class="attr">#[repr(C)]
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(tag = <span class="string">&quot;type&quot;</span>)]
 #[pyclass]
 </span><span class="kw">pub struct </span>TradeTick {
     <span class="doccomment">/// The trade instrument ID.
@@ -497,6 +467,12 @@
         }
     }
 
+    <span class="kw">fn </span>__hash__(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; isize {
+        <span class="kw">let </span><span class="kw-2">mut </span>h = DefaultHasher::new();
+        <span class="self">self</span>.hash(<span class="kw-2">&amp;mut </span>h);
+        h.finish() <span class="kw">as </span>isize
+    }
+
     <span class="kw">fn </span>__str__(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String {
         <span class="self">self</span>.to_string()
     }
@@ -541,111 +517,52 @@
     }
 
     <span class="doccomment">/// Return a dictionary representation of the object.
-    </span><span class="kw">pub fn </span>as_dict(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Py&lt;PyDict&gt; {
-        Python::with_gil(|py| {
-            <span class="kw">let </span>dict = PyDict::new(py);
-
-            dict.set_item(<span class="string">&quot;type&quot;</span>, <span class="macro">stringify!</span>(TradeTick)).unwrap();
-            dict.set_item(<span class="string">&quot;instrument_id&quot;</span>, <span class="self">self</span>.instrument_id.to_string())
-                .unwrap();
-            dict.set_item(<span class="string">&quot;price&quot;</span>, <span class="self">self</span>.price.to_string()).unwrap();
-            dict.set_item(<span class="string">&quot;size&quot;</span>, <span class="self">self</span>.size.to_string()).unwrap();
-            dict.set_item(<span class="string">&quot;aggressor_side&quot;</span>, <span class="self">self</span>.aggressor_side.to_string())
-                .unwrap();
-            dict.set_item(<span class="string">&quot;trade_id&quot;</span>, <span class="self">self</span>.trade_id.to_string())
-                .unwrap();
-            dict.set_item(<span class="string">&quot;ts_event&quot;</span>, <span class="self">self</span>.ts_event).unwrap();
-            dict.set_item(<span class="string">&quot;ts_init&quot;</span>, <span class="self">self</span>.ts_init).unwrap();
-
-            dict.into_py(py)
-        })
+    </span><span class="kw">pub fn </span>as_dict(<span class="kw-2">&amp;</span><span class="self">self</span>, py: Python&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; PyResult&lt;Py&lt;PyDict&gt;&gt; {
+        <span class="comment">// Serialize object to JSON bytes
+        </span><span class="kw">let </span>json_str =
+            serde_json::to_string(<span class="self">self</span>).map_err(|e| PyValueError::new_err(e.to_string()))<span class="question-mark">?</span>;
+        <span class="comment">// Parse JSON into a Python dictionary
+        </span><span class="kw">let </span>py_dict: Py&lt;PyDict&gt; = PyModule::import(py, <span class="string">&quot;msgspec&quot;</span>)<span class="question-mark">?
+            </span>.getattr(<span class="string">&quot;json&quot;</span>)<span class="question-mark">?
+            </span>.call_method(<span class="string">&quot;decode&quot;</span>, (json_str.as_bytes(),), <span class="prelude-val">None</span>)<span class="question-mark">?
+            </span>.extract()<span class="question-mark">?</span>;
+        <span class="prelude-val">Ok</span>(py_dict)
     }
 
     <span class="doccomment">/// Return a new object from the given dictionary representation.
     </span><span class="attr">#[staticmethod]
-    </span><span class="kw">pub fn </span>from_dict(values: <span class="kw-2">&amp;</span>PyDict) -&gt; PyResult&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">let </span>instrument_id: String = values
-            .get_item(<span class="string">&quot;instrument_id&quot;</span>)
-            .ok_or(PyKeyError::new_err(<span class="string">&quot;&#39;instrument_id&#39; not found in `values`&quot;</span>))<span class="question-mark">?
+    </span><span class="kw">pub fn </span>from_dict(py: Python&lt;<span class="lifetime">&#39;_</span>&gt;, values: Py&lt;PyDict&gt;) -&gt; PyResult&lt;<span class="self">Self</span>&gt; {
+        <span class="comment">// Serialize to JSON bytes
+        </span><span class="kw">let </span>json_bytes: Vec&lt;u8&gt; = PyModule::import(py, <span class="string">&quot;msgspec&quot;</span>)<span class="question-mark">?
+            </span>.getattr(<span class="string">&quot;json&quot;</span>)<span class="question-mark">?
+            </span>.call_method(<span class="string">&quot;encode&quot;</span>, (values,), <span class="prelude-val">None</span>)<span class="question-mark">?
             </span>.extract()<span class="question-mark">?</span>;
-        <span class="kw">let </span>price: String = values
-            .get_item(<span class="string">&quot;price&quot;</span>)
-            .ok_or(PyKeyError::new_err(<span class="string">&quot;&#39;price&#39; not found in `values`&quot;</span>))<span class="question-mark">?
-            </span>.extract()<span class="question-mark">?</span>;
-        <span class="kw">let </span>size: String = values
-            .get_item(<span class="string">&quot;size&quot;</span>)
-            .ok_or(PyKeyError::new_err(<span class="string">&quot;&#39;size&#39; not found in `values`&quot;</span>))<span class="question-mark">?
-            </span>.extract()<span class="question-mark">?</span>;
-        <span class="kw">let </span>aggressor_side: String = values
-            .get_item(<span class="string">&quot;aggressor_side&quot;</span>)
-            .ok_or(PyKeyError::new_err(
-                <span class="string">&quot;&#39;aggressor_side&#39; not found in `values`&quot;</span>,
-            ))<span class="question-mark">?
-            </span>.extract()<span class="question-mark">?</span>;
-        <span class="kw">let </span>trade_id: String = values
-            .get_item(<span class="string">&quot;trade_id&quot;</span>)
-            .ok_or(PyKeyError::new_err(<span class="string">&quot;&#39;trade_id&#39; not found in `values`&quot;</span>))<span class="question-mark">?
-            </span>.extract()<span class="question-mark">?</span>;
-        <span class="kw">let </span>ts_event: UnixNanos = values
-            .get_item(<span class="string">&quot;ts_event&quot;</span>)
-            .ok_or(PyKeyError::new_err(<span class="string">&quot;&#39;ts_event&#39; not found in `values`&quot;</span>))<span class="question-mark">?
-            </span>.extract()<span class="question-mark">?</span>;
-        <span class="kw">let </span>ts_init: UnixNanos = values
-            .get_item(<span class="string">&quot;ts_init&quot;</span>)
-            .ok_or(PyKeyError::new_err(<span class="string">&quot;&#39;ts_init&#39; not found in `values`&quot;</span>))<span class="question-mark">?
-            </span>.extract()<span class="question-mark">?</span>;
-
-        <span class="kw">let </span>instrument_id = InstrumentId::from_str(<span class="kw-2">&amp;</span>instrument_id)
+        <span class="comment">// Deserialize to object
+        </span><span class="kw">let </span>instance = serde_json::from_slice(<span class="kw-2">&amp;</span>json_bytes)
             .map_err(|e| PyValueError::new_err(e.to_string()))<span class="question-mark">?</span>;
-        <span class="kw">let </span>price = Price::from_str(<span class="kw-2">&amp;</span>price).map_err(PyValueError::new_err)<span class="question-mark">?</span>;
-        <span class="kw">let </span>size = Quantity::from_str(<span class="kw-2">&amp;</span>size).map_err(PyValueError::new_err)<span class="question-mark">?</span>;
-        <span class="kw">let </span>aggressor_side = AggressorSide::from_str(<span class="kw-2">&amp;</span>aggressor_side)
-            .map_err(|e| PyValueError::new_err(e.to_string()))<span class="question-mark">?</span>;
-        <span class="kw">let </span>trade_id = TradeId::new(<span class="kw-2">&amp;</span>trade_id);
-
-        <span class="prelude-val">Ok</span>(<span class="self">Self</span>::new(
-            instrument_id,
-            price,
-            size,
-            aggressor_side,
-            trade_id,
-            ts_event,
-            ts_init,
-        ))
+        <span class="prelude-val">Ok</span>(instance)
     }
 
     <span class="attr">#[staticmethod]
     </span><span class="kw">fn </span>from_json(data: Vec&lt;u8&gt;) -&gt; PyResult&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">match </span><span class="self">Self</span>::from_json_bytes(data) {
-            <span class="prelude-val">Ok</span>(quote) =&gt; <span class="prelude-val">Ok</span>(quote),
-            <span class="prelude-val">Err</span>(err) =&gt; <span class="prelude-val">Err</span>(PyValueError::new_err(<span class="macro">format!</span>(
-                <span class="string">&quot;Failed to deserialize JSON: {}&quot;</span>,
-                err
-            ))),
-        }
+        <span class="self">Self</span>::from_json_bytes(data).map_err(|e| PyValueError::new_err(e.to_string()))
     }
 
     <span class="attr">#[staticmethod]
     </span><span class="kw">fn </span>from_msgpack(data: Vec&lt;u8&gt;) -&gt; PyResult&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">match </span><span class="self">Self</span>::from_msgpack_bytes(data) {
-            <span class="prelude-val">Ok</span>(quote) =&gt; <span class="prelude-val">Ok</span>(quote),
-            <span class="prelude-val">Err</span>(err) =&gt; <span class="prelude-val">Err</span>(PyValueError::new_err(<span class="macro">format!</span>(
-                <span class="string">&quot;Failed to deserialize MsgPack: {}&quot;</span>,
-                err
-            ))),
-        }
+        <span class="self">Self</span>::from_msgpack_bytes(data).map_err(|e| PyValueError::new_err(e.to_string()))
     }
 
     <span class="doccomment">/// Return JSON encoded bytes representation of the object.
-    </span><span class="kw">fn </span>as_json(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Py&lt;PyAny&gt; {
+    </span><span class="kw">fn </span>as_json(<span class="kw-2">&amp;</span><span class="self">self</span>, py: Python&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; Py&lt;PyAny&gt; {
         <span class="comment">// Unwrapping is safe when serializing a valid object
-        </span>Python::with_gil(|py| <span class="self">self</span>.as_json_bytes().unwrap().into_py(py))
+        </span><span class="self">self</span>.as_json_bytes().unwrap().into_py(py)
     }
 
     <span class="doccomment">/// Return MsgPack encoded bytes representation of the object.
-    </span><span class="kw">fn </span>as_msgpack(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Py&lt;PyAny&gt; {
+    </span><span class="kw">fn </span>as_msgpack(<span class="kw-2">&amp;</span><span class="self">self</span>, py: Python&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; Py&lt;PyAny&gt; {
         <span class="comment">// Unwrapping is safe when serializing a valid object
-        </span>Python::with_gil(|py| <span class="self">self</span>.as_msgpack_bytes().unwrap().into_py(py))
+        </span><span class="self">self</span>.as_msgpack_bytes().unwrap().into_py(py)
     }
 }
 
@@ -688,14 +605,45 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_to_dict_and_from_dict() {
+    </span><span class="kw">fn </span>test_deserialize_raw_string() {
+        <span class="kw">let </span>raw_string = <span class="string">r#&quot;{
+            &quot;type&quot;: &quot;TradeTick&quot;,
+            &quot;instrument_id&quot;: &quot;ETHUSDT-PERP.BINANCE&quot;,
+            &quot;price&quot;: &quot;10000.0000&quot;,
+            &quot;size&quot;: &quot;1.00000000&quot;,
+            &quot;aggressor_side&quot;: &quot;BUYER&quot;,
+            &quot;trade_id&quot;: &quot;123456789&quot;,
+            &quot;ts_event&quot;: 1,
+            &quot;ts_init&quot;: 0
+        }&quot;#</span>;
+
+        <span class="kw">let </span>tick: TradeTick = serde_json::from_str(raw_string).unwrap();
+
+        <span class="macro">assert_eq!</span>(tick.aggressor_side, AggressorSide::Buyer);
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_as_dict() {
         pyo3::prepare_freethreaded_python();
 
         <span class="kw">let </span>tick = create_stub_trade_tick();
 
         Python::with_gil(|py| {
-            <span class="kw">let </span>dict = tick.as_dict();
-            <span class="kw">let </span>parsed = TradeTick::from_dict(dict.as_ref(py)).unwrap();
+            <span class="kw">let </span>dict_string = tick.as_dict(py).unwrap().to_string();
+            <span class="kw">let </span>expected_string = <span class="string">r#&quot;{&#39;type&#39;: &#39;TradeTick&#39;, &#39;instrument_id&#39;: &#39;ETHUSDT-PERP.BINANCE&#39;, &#39;price&#39;: &#39;10000.0000&#39;, &#39;size&#39;: &#39;1.00000000&#39;, &#39;aggressor_side&#39;: &#39;BUYER&#39;, &#39;trade_id&#39;: &#39;123456789&#39;, &#39;ts_event&#39;: 1, &#39;ts_init&#39;: 0}&quot;#</span>;
+            <span class="macro">assert_eq!</span>(dict_string, expected_string);
+        });
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_from_dict() {
+        pyo3::prepare_freethreaded_python();
+
+        <span class="kw">let </span>tick = create_stub_trade_tick();
+
+        Python::with_gil(|py| {
+            <span class="kw">let </span>dict = tick.as_dict(py).unwrap();
+            <span class="kw">let </span>parsed = TradeTick::from_dict(py, dict).unwrap();
             <span class="macro">assert_eq!</span>(parsed, tick);
         });
     }
