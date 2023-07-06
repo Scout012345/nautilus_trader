@@ -2425,10 +2425,28 @@
                    </a>
                   </li>
                   <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.treat_expired_as_canceled">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceFuturesExecutionClient.treat_expired_as_canceled
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
                    <a class="md-nav__link" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.type">
                     <code class="docutils literal notranslate">
                      <span class="pre">
                       BinanceFuturesExecutionClient.type
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.use_position_ids">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceFuturesExecutionClient.use_position_ids
                      </span>
                     </code>
                    </a>
@@ -3829,10 +3847,28 @@
                    </a>
                   </li>
                   <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.treat_expired_as_canceled">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceSpotExecutionClient.treat_expired_as_canceled
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
                    <a class="md-nav__link" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.type">
                     <code class="docutils literal notranslate">
                      <span class="pre">
                       BinanceSpotExecutionClient.type
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.use_position_ids">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceSpotExecutionClient.use_position_ids
                      </span>
                     </code>
                    </a>
@@ -5551,6 +5587,74 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
              </span>
             </span>
            </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              use_position_ids
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              treat_expired_as_canceled
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
            <span class="sig-paren">
             )
            </span>
@@ -5761,6 +5865,66 @@ If
                  default True
                 </em>
                 ) – If log warning for GTD time in force transformed to GTC.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 use_position_ids
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default True
+                </em>
+                ) – If Binance Futures hedging position IDs should be used.
+If False then order event
+                <cite>
+                 position_id`(s) from the execution client will be `None
+                </cite>
+                , which
+allows
+                <em>
+                 virtual
+                </em>
+                positions with
+                <cite>
+                 OmsType.HEDGING
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 treat_expired_as_canceled
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
+                ) – If the
+                <cite>
+                 EXPIRED
+                </cite>
+                execution type is semantically treated as
+                <cite>
+                 CANCELED
+                </cite>
+                .
+Binance treats cancels with certain combinations of order type and time in force as expired
+events. This config option allows you to treat these uniformally as cancels.
                </p>
               </li>
              </ul>
@@ -13089,6 +13253,28 @@ cached client will be returned.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+               <span class="pre">
+                BinanceDataClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -13118,40 +13304,6 @@ cached client will be returned.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.USDT_FUTURE
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               use_agg_trade_ticks
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               False
               </span>
              </span>
             </em>
@@ -13310,20 +13462,15 @@ cached client will be returned.
                <li>
                 <p>
                  <strong>
-                  use_agg_trade_ticks
+                  config
                  </strong>
                  (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default False
-                 </em>
-                 ) – Whether to use aggregated trade tick endpoints instead of raw trade ticks.
-TradeId of ticks will be the Aggregate tradeId returned by Binance.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+                  <em>
+                   BinanceDataClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -19729,6 +19876,28 @@ then the component state will not change, and an error will be logged.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+               <span class="pre">
+                BinanceExecClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -19758,40 +19927,6 @@ then the component state will not change, and an error will be logged.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.USDT_FUTURE
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               warn_gtd_to_gtc
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               True
               </span>
              </span>
             </em>
@@ -19950,19 +20085,15 @@ then the component state will not change, and an error will be logged.
                <li>
                 <p>
                  <strong>
-                  warn_gtd_to_gtc
+                  config
                  </strong>
                  (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default True
-                 </em>
-                 ) – If log warning for GTD time in force transformed to GTC.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+                  <em>
+                   BinanceExecClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -25825,6 +25956,65 @@ then the component state will not change, and an error will be logged.
               </dl>
              </dd>
             </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.treat_expired_as_canceled">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                treat_expired_as_canceled
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.treat_expired_as_canceled" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether the
+               <cite>
+                EXPIRED
+               </cite>
+               execution type is treated as a
+               <cite>
+                CANCEL
+               </cite>
+               .
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
             <dl class="py attribute">
              <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.type">
               <span class="sig-name descname">
@@ -25852,6 +26042,61 @@ then the component state will not change, and an error will be logged.
                  <cite>
                   type
                  </cite>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.use_position_ids">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                use_position_ids
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.use_position_ids" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether a
+               <cite>
+                position_id
+               </cite>
+               will be assigned to order events generated by the client.
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
                 </p>
                </dd>
               </dl>
@@ -28837,6 +29082,28 @@ the given filters.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+               <span class="pre">
+                BinanceDataClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -28866,40 +29133,6 @@ the given filters.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.SPOT
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               use_agg_trade_ticks
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               False
               </span>
              </span>
             </em>
@@ -29058,20 +29291,15 @@ the given filters.
                <li>
                 <p>
                  <strong>
-                  use_agg_trade_ticks
+                  config
                  </strong>
                  (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default False
-                 </em>
-                 ) – Whether to use aggregated trade tick endpoints instead of raw trade ticks.
-TradeId of ticks will be the Aggregate tradeId returned by Binance.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+                  <em>
+                   BinanceDataClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -34797,6 +35025,48 @@ then the component state will not change, and an error will be logged.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               base_url_ws
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               str
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+               <span class="pre">
+                BinanceExecClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -34826,87 +35096,6 @@ then the component state will not change, and an error will be logged.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.SPOT
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               base_url_ws
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
-               str
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               None
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               warn_gtd_to_gtc
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               True
               </span>
              </span>
             </em>
@@ -35039,6 +35228,18 @@ then the component state will not change, and an error will be logged.
                <li>
                 <p>
                  <strong>
+                  base_url_ws
+                 </strong>
+                 (
+                 <em>
+                  str
+                 </em>
+                 ) – The base URL for the WebSocket client.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
                   account_type
                  </strong>
                  (
@@ -35053,37 +35254,15 @@ then the component state will not change, and an error will be logged.
                <li>
                 <p>
                  <strong>
-                  base_url_ws
+                  config
                  </strong>
                  (
-                 <em>
-                  str
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  optional
-                 </em>
-                 ) – The base URL for the WebSocket client.
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
-                  warn_gtd_to_gtc
-                 </strong>
-                 (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default True
-                 </em>
-                 ) – If log warning for GTD time in force transformed to GTC.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+                  <em>
+                   BinanceExecClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -40946,6 +41125,65 @@ then the component state will not change, and an error will be logged.
               </dl>
              </dd>
             </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.treat_expired_as_canceled">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                treat_expired_as_canceled
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.treat_expired_as_canceled" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether the
+               <cite>
+                EXPIRED
+               </cite>
+               execution type is treated as a
+               <cite>
+                CANCEL
+               </cite>
+               .
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
             <dl class="py attribute">
              <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.type">
               <span class="sig-name descname">
@@ -40973,6 +41211,61 @@ then the component state will not change, and an error will be logged.
                  <cite>
                   type
                  </cite>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.use_position_ids">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                use_position_ids
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.use_position_ids" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether a
+               <cite>
+                position_id
+               </cite>
+               will be assigned to order events generated by the client.
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
                 </p>
                </dd>
               </dl>
