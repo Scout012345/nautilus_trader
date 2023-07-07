@@ -719,6 +719,15 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.msgbus.bus.MessageBus.is_pending_request">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  MessageBus.is_pending_request()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.msgbus.bus.MessageBus.is_subscribed">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -1544,6 +1553,96 @@ If
                 all
                </strong>
                topics.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <em>
+                bool
+               </em>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.msgbus.bus.MessageBus.is_pending_request">
+            <span class="sig-name descname">
+             <span class="pre">
+              is_pending_request
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               UUID4
+              </span>
+              <span class="pre">
+               request_id
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.msgbus.bus.MessageBus.is_pending_request" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return if the given
+             <cite>
+              request_id
+             </cite>
+             is still pending a response.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                request_id
+               </strong>
+               (
+               <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                <em>
+                 UUID4
+                </em>
+               </a>
+               ) – The request ID to check (to match the correlation_id).
               </p>
              </dd>
              <dt class="field-even">
