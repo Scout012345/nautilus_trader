@@ -692,6 +692,37 @@
 <a href="#692" id="692">692</a>
 <a href="#693" id="693">693</a>
 <a href="#694" id="694">694</a>
+<a href="#695" id="695">695</a>
+<a href="#696" id="696">696</a>
+<a href="#697" id="697">697</a>
+<a href="#698" id="698">698</a>
+<a href="#699" id="699">699</a>
+<a href="#700" id="700">700</a>
+<a href="#701" id="701">701</a>
+<a href="#702" id="702">702</a>
+<a href="#703" id="703">703</a>
+<a href="#704" id="704">704</a>
+<a href="#705" id="705">705</a>
+<a href="#706" id="706">706</a>
+<a href="#707" id="707">707</a>
+<a href="#708" id="708">708</a>
+<a href="#709" id="709">709</a>
+<a href="#710" id="710">710</a>
+<a href="#711" id="711">711</a>
+<a href="#712" id="712">712</a>
+<a href="#713" id="713">713</a>
+<a href="#714" id="714">714</a>
+<a href="#715" id="715">715</a>
+<a href="#716" id="716">716</a>
+<a href="#717" id="717">717</a>
+<a href="#718" id="718">718</a>
+<a href="#719" id="719">719</a>
+<a href="#720" id="720">720</a>
+<a href="#721" id="721">721</a>
+<a href="#722" id="722">722</a>
+<a href="#723" id="723">723</a>
+<a href="#724" id="724">724</a>
+<a href="#725" id="725">725</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -890,7 +921,9 @@
                 <span class="kw">if </span>cumulative_denominator + current &gt;= target {
                     <span class="comment">// This order has filled us, add fill and return
                     </span><span class="kw">let </span>remainder = target - cumulative_denominator;
-                    fills.push((book_order.price, remainder));
+                    <span class="kw">if </span>remainder.is_positive() {
+                        fills.push((book_order.price, remainder));
+                    }
                     <span class="kw">return </span>fills;
                 } <span class="kw">else </span>{
                     <span class="comment">// Add this fill and continue
@@ -909,6 +942,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 </span><span class="attr">#[cfg(test)]
 </span><span class="kw">mod </span>tests {
+    <span class="kw">use </span>rstest::rstest;
+
     <span class="kw">use crate</span>::{
         data::order::BookOrder,
         enums::OrderSide,
@@ -1193,21 +1228,48 @@
         <span class="macro">assert_eq!</span>(ladder.top(), <span class="prelude-val">None</span>)
     }
 
-    <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_simulate_order_fills_buy_when_far_from_market() {
-        <span class="kw">let </span><span class="kw-2">mut </span>ladder = Ladder::new(OrderSide::Sell);
+    <span class="attr">#[rstest]
+    #[case(OrderSide::Buy, Price::max(<span class="number">2</span>), OrderSide::Sell)]
+    #[case(OrderSide::Sell, Price::min(<span class="number">2</span>), OrderSide::Buy)]
+    </span><span class="kw">fn </span>test_simulate_order_fills_with_no_size(
+        <span class="attr">#[case] </span>side: OrderSide,
+        <span class="attr">#[case] </span>price: Price,
+        <span class="attr">#[case] </span>ladder_side: OrderSide,
+    ) {
+        <span class="kw">let </span>ladder = Ladder::new(ladder_side);
+        <span class="kw">let </span>order = BookOrder {
+            price, <span class="comment">// &lt;-- Simulate a MARKET order
+            </span>size: Quantity::new(<span class="number">500.0</span>, <span class="number">0</span>),
+            side,
+            order_id: <span class="number">2</span>,
+        };
+
+        <span class="kw">let </span>fills = ladder.simulate_fills(<span class="kw-2">&amp;</span>order);
+
+        <span class="macro">assert!</span>(fills.is_empty());
+    }
+
+    <span class="attr">#[rstest]
+    #[case(OrderSide::Buy, OrderSide::Sell, Price::new(<span class="number">60.0</span>, <span class="number">2</span>))]
+    #[case(OrderSide::Sell, OrderSide::Buy, Price::new(<span class="number">40.0</span>, <span class="number">2</span>))]
+    </span><span class="kw">fn </span>test_simulate_order_fills_buy_when_far_from_market(
+        <span class="attr">#[case] </span>order_side: OrderSide,
+        <span class="attr">#[case] </span>ladder_side: OrderSide,
+        <span class="attr">#[case] </span>ladder_price: Price,
+    ) {
+        <span class="kw">let </span><span class="kw-2">mut </span>ladder = Ladder::new(ladder_side);
 
         ladder.add(BookOrder {
-            price: Price::new(<span class="number">100.00</span>, <span class="number">2</span>),
+            price: ladder_price,
             size: Quantity::new(<span class="number">100.0</span>, <span class="number">0</span>),
-            side: OrderSide::Sell,
+            side: ladder_side,
             order_id: <span class="number">1</span>,
         });
 
         <span class="kw">let </span>order = BookOrder {
-            price: Price::new(<span class="number">50.00</span>, <span class="number">2</span>), <span class="comment">// &lt;-- Simulate a MARKET order
-            </span>size: Quantity::new(<span class="number">500.0</span>, <span class="number">0</span>),
-            side: OrderSide::Buy,
+            price: Price::new(<span class="number">50.00</span>, <span class="number">2</span>),
+            size: Quantity::new(<span class="number">500.0</span>, <span class="number">0</span>),
+            side: order_side,
             order_id: <span class="number">2</span>,
         };
 

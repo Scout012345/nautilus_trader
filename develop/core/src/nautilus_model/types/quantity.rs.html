@@ -442,6 +442,30 @@
 <a href="#442" id="442">442</a>
 <a href="#443" id="443">443</a>
 <a href="#444" id="444">444</a>
+<a href="#445" id="445">445</a>
+<a href="#446" id="446">446</a>
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a>
+<a href="#452" id="452">452</a>
+<a href="#453" id="453">453</a>
+<a href="#454" id="454">454</a>
+<a href="#455" id="455">455</a>
+<a href="#456" id="456">456</a>
+<a href="#457" id="457">457</a>
+<a href="#458" id="458">458</a>
+<a href="#459" id="459">459</a>
+<a href="#460" id="460">460</a>
+<a href="#461" id="461">461</a>
+<a href="#462" id="462">462</a>
+<a href="#463" id="463">463</a>
+<a href="#464" id="464">464</a>
+<a href="#465" id="465">465</a>
+<a href="#466" id="466">466</a>
+<a href="#467" id="467">467</a>
+<a href="#468" id="468">468</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -508,6 +532,12 @@
     </span><span class="kw">pub fn </span>is_zero(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="self">self</span>.raw == <span class="number">0
     </span>}
+
+    <span class="attr">#[must_use]
+    </span><span class="kw">pub fn </span>is_positive(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.raw &gt; <span class="number">0
+    </span>}
+
     <span class="attr">#[must_use]
     </span><span class="kw">pub fn </span>as_f64(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; f64 {
         fixed_u64_to_f64(<span class="self">self</span>.raw)
@@ -745,6 +775,8 @@
         <span class="macro">assert_eq!</span>(qty.precision, <span class="number">8</span>);
         <span class="macro">assert_eq!</span>(qty.as_f64(), <span class="number">0.00812</span>);
         <span class="macro">assert_eq!</span>(qty.to_string(), <span class="string">&quot;0.00812000&quot;</span>);
+        <span class="macro">assert!</span>(!qty.is_zero());
+        <span class="macro">assert!</span>(qty.is_positive());
     }
 
     <span class="attr">#[test]
@@ -752,10 +784,12 @@
         <span class="kw">let </span>qty = Quantity::zero(<span class="number">8</span>);
         <span class="macro">assert_eq!</span>(qty.raw, <span class="number">0</span>);
         <span class="macro">assert_eq!</span>(qty.precision, <span class="number">8</span>);
+        <span class="macro">assert!</span>(qty.is_zero());
+        <span class="macro">assert!</span>(!qty.is_positive());
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_qty_from_i64() {
+    </span><span class="kw">fn </span>test_from_i64() {
         <span class="kw">let </span>qty = Quantity::from(<span class="number">100_000</span>);
         <span class="macro">assert_eq!</span>(qty, qty);
         <span class="macro">assert_eq!</span>(qty.raw, <span class="number">100_000_000_000_000</span>);
@@ -763,14 +797,28 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_qty_minimum() {
-        <span class="kw">let </span>qty = Quantity::new(<span class="number">0.000_000_001</span>, <span class="number">9</span>);
+    </span><span class="kw">fn </span>test_with_maximum_value() {
+        <span class="kw">let </span>qty = Quantity::new(QUANTITY_MAX, <span class="number">0</span>);
+        <span class="macro">assert_eq!</span>(qty.raw, <span class="number">18_446_744_073_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(qty.to_string(), <span class="string">&quot;18446744073&quot;</span>);
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_with_minimum_positive_value() {
+        <span class="kw">let </span>qty = Quantity::new(<span class="number">0.000000001</span>, <span class="number">9</span>);
         <span class="macro">assert_eq!</span>(qty.raw, <span class="number">1</span>);
         <span class="macro">assert_eq!</span>(qty.to_string(), <span class="string">&quot;0.000000001&quot;</span>);
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_qty_is_zero() {
+    </span><span class="kw">fn </span>test_with_minimum_value() {
+        <span class="kw">let </span>qty = Quantity::new(QUANTITY_MIN, <span class="number">9</span>);
+        <span class="macro">assert_eq!</span>(qty.raw, <span class="number">0</span>);
+        <span class="macro">assert_eq!</span>(qty.to_string(), <span class="string">&quot;0.000000000&quot;</span>);
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_is_zero() {
         <span class="kw">let </span>qty = Quantity::zero(<span class="number">8</span>);
         <span class="macro">assert_eq!</span>(qty, qty);
         <span class="macro">assert_eq!</span>(qty.raw, <span class="number">0</span>);
@@ -781,14 +829,14 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_qty_precision() {
+    </span><span class="kw">fn </span>test_precision() {
         <span class="kw">let </span>qty = Quantity::new(<span class="number">1.001</span>, <span class="number">2</span>);
         <span class="macro">assert_eq!</span>(qty.raw, <span class="number">1_000_000_000</span>);
         <span class="macro">assert_eq!</span>(qty.to_string(), <span class="string">&quot;1.00&quot;</span>);
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_qty_new_from_str() {
+    </span><span class="kw">fn </span>test_new_from_str() {
         <span class="kw">let </span>qty = Quantity::from_str(<span class="string">&quot;0.00812000&quot;</span>).unwrap();
         <span class="macro">assert_eq!</span>(qty, qty);
         <span class="macro">assert_eq!</span>(qty.raw, <span class="number">8_120_000</span>);
@@ -798,7 +846,7 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_quantity_from_str_valid_input() {
+    </span><span class="kw">fn </span>test_from_str_valid_input() {
         <span class="kw">let </span>input = <span class="string">&quot;1000.25&quot;</span>;
         <span class="kw">let </span>expected_quantity = Quantity::new(<span class="number">1000.25</span>, precision_from_str(input));
         <span class="kw">let </span>result = Quantity::from_str(input).unwrap();
@@ -806,7 +854,7 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_quantity_from_str_invalid_input() {
+    </span><span class="kw">fn </span>test_from_str_invalid_input() {
         <span class="kw">let </span>input = <span class="string">&quot;invalid&quot;</span>;
         <span class="kw">let </span>result = Quantity::from_str(input);
         <span class="macro">assert!</span>(result.is_err());
@@ -853,7 +901,7 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_quantity_mul_assign() {
+    </span><span class="kw">fn </span>test_mul_assign() {
         <span class="kw">let </span><span class="kw-2">mut </span>q = Quantity::from_raw(<span class="number">100</span>, <span class="number">0</span>);
         q <span class="kw-2">*</span>= <span class="number">2u64</span>;
 
@@ -861,7 +909,7 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_qty_equality() {
+    </span><span class="kw">fn </span>test_equality() {
         <span class="macro">assert_eq!</span>(Quantity::new(<span class="number">1.0</span>, <span class="number">1</span>), Quantity::new(<span class="number">1.0</span>, <span class="number">1</span>));
         <span class="macro">assert_eq!</span>(Quantity::new(<span class="number">1.0</span>, <span class="number">1</span>), Quantity::new(<span class="number">1.0</span>, <span class="number">2</span>));
         <span class="macro">assert_ne!</span>(Quantity::new(<span class="number">1.1</span>, <span class="number">1</span>), Quantity::new(<span class="number">1.0</span>, <span class="number">1</span>));
@@ -876,7 +924,7 @@
     }
 
     <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_qty_display() {
+    </span><span class="kw">fn </span>test_display() {
         <span class="kw">use </span>std::fmt::Write <span class="kw">as </span>FmtWrite;
         <span class="kw">let </span>input_string = <span class="string">&quot;44.12&quot;</span>;
         <span class="kw">let </span>qty = Quantity::from_str(input_string).unwrap();
