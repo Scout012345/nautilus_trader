@@ -27209,54 +27209,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               BarType
-              </span>
-              <span class="pre">
-               bar_type
-              </span>
+             <span class="pre">
+              BarType
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              bar_type,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
+             </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -27392,6 +27391,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -27419,20 +27459,44 @@ If
               </span>
              </dt>
              <dd class="field-odd">
-              <p>
-               <strong>
-                ValueError
-               </strong>
-               – If
-               <cite>
-                start
-               </cite>
-               is not less than
-               <cite>
-                end
-               </cite>
-               .
-              </p>
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  ValueError
+                 </strong>
+                 – If
+                 <cite>
+                  start
+                 </cite>
+                 is not less than
+                 <cite>
+                  end
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  TypeError
+                 </strong>
+                 – If
+                 <cite>
+                  callback
+                 </cite>
+                 is not
+                 <cite>
+                  None
+                 </cite>
+                 and not of type
+                 <cite>
+                  Callable
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
@@ -27448,32 +27512,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               DataType
-              </span>
-              <span class="pre">
-               data_type
-              </span>
+             <span class="pre">
+              DataType
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id
-              </span>
+             <span class="pre">
+              data_type,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -27536,6 +27609,47 @@ If
                  ) – The data client ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -27570,32 +27684,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              instrument_id,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -27675,6 +27798,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -27709,32 +27873,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               Venue
-              </span>
-              <span class="pre">
-               venue
-              </span>
+             <span class="pre">
+              Venue
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              venue,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -27814,6 +27987,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -27848,54 +28062,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              instrument_id,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
+             </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -28031,6 +28244,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -28087,54 +28341,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              instrument_id,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
+             </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -28268,6 +28521,47 @@ If
                   </span>
                  </code>
                  then will be inferred from the venue in the instrument ID.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
                 </p>
                </li>
               </ul>
@@ -36977,54 +37271,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               BarType
-              </span>
-              <span class="pre">
-               bar_type
-              </span>
+             <span class="pre">
+              BarType
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              bar_type,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
+             </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -37160,6 +37453,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -37187,20 +37521,44 @@ If
               </span>
              </dt>
              <dd class="field-odd">
-              <p>
-               <strong>
-                ValueError
-               </strong>
-               – If
-               <cite>
-                start
-               </cite>
-               is not less than
-               <cite>
-                end
-               </cite>
-               .
-              </p>
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  ValueError
+                 </strong>
+                 – If
+                 <cite>
+                  start
+                 </cite>
+                 is not less than
+                 <cite>
+                  end
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  TypeError
+                 </strong>
+                 – If
+                 <cite>
+                  callback
+                 </cite>
+                 is not
+                 <cite>
+                  None
+                 </cite>
+                 and not of type
+                 <cite>
+                  Callable
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
@@ -37216,32 +37574,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               DataType
-              </span>
-              <span class="pre">
-               data_type
-              </span>
+             <span class="pre">
+              DataType
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id
-              </span>
+             <span class="pre">
+              data_type,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -37304,6 +37671,47 @@ If
                  ) – The data client ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -37338,32 +37746,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              instrument_id,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -37443,6 +37860,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -37477,32 +37935,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               Venue
-              </span>
-              <span class="pre">
-               venue
-              </span>
+             <span class="pre">
+              Venue
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              venue,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -37582,6 +38049,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -37616,54 +38124,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              instrument_id,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
+             </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -37799,6 +38306,47 @@ If
                  then will be inferred from the venue in the instrument ID.
                 </p>
                </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
+                </p>
+               </li>
               </ul>
              </dd>
              <dt class="field-even">
@@ -37855,54 +38403,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              instrument_id,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
+             </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -38036,6 +38583,47 @@ If
                   </span>
                  </code>
                  then will be inferred from the venue in the instrument ID.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                  <em>
+                   UUID4
+                  </em>
+                 </a>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The registered callback, to be called when the response has completed processing.
                 </p>
                </li>
               </ul>
