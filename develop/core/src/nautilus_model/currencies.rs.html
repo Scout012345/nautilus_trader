@@ -576,6 +576,22 @@
 <a href="#576" id="576">576</a>
 <a href="#577" id="577">577</a>
 <a href="#578" id="578">578</a>
+<a href="#579" id="579">579</a>
+<a href="#580" id="580">580</a>
+<a href="#581" id="581">581</a>
+<a href="#582" id="582">582</a>
+<a href="#583" id="583">583</a>
+<a href="#584" id="584">584</a>
+<a href="#585" id="585">585</a>
+<a href="#586" id="586">586</a>
+<a href="#587" id="587">587</a>
+<a href="#588" id="588">588</a>
+<a href="#589" id="589">589</a>
+<a href="#590" id="590">590</a>
+<a href="#591" id="591">591</a>
+<a href="#592" id="592">592</a>
+<a href="#593" id="593">593</a>
+<a href="#594" id="594">594</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -662,6 +678,7 @@
             (String::from(<span class="string">&quot;SOL&quot;</span>), SOL.clone()),
             (String::from(<span class="string">&quot;TRX&quot;</span>), TRX.clone()),
             (String::from(<span class="string">&quot;TRYB&quot;</span>), TRYB.clone()),
+            (String::from(<span class="string">&quot;TUSD&quot;</span>), TUSD.clone()),
             (String::from(<span class="string">&quot;VTC&quot;</span>), VTC.clone()),
             (String::from(<span class="string">&quot;WSB&quot;</span>), WSB.clone()),
             (String::from(<span class="string">&quot;XBT&quot;</span>), XBT.clone()),
@@ -671,6 +688,7 @@
             (String::from(<span class="string">&quot;XRP&quot;</span>), XRP.clone()),
             (String::from(<span class="string">&quot;XTZ&quot;</span>), XTZ.clone()),
             (String::from(<span class="string">&quot;USDC&quot;</span>), USDC.clone()),
+            (String::from(<span class="string">&quot;USDP&quot;</span>), USDP.clone()),
             (String::from(<span class="string">&quot;USDT&quot;</span>), USDT.clone()),
             (String::from(<span class="string">&quot;ZEC&quot;</span>), ZEC.clone()),
         ]
@@ -1075,6 +1093,13 @@
         name: Box::new(Arc::new(String::from(<span class="string">&quot;BiLira&quot;</span>))),
         currency_type: CurrencyType::Crypto,
     };
+    <span class="kw">pub static </span><span class="kw-2">ref </span>TUSD: Currency = Currency {
+        code: Box::new(Arc::new(String::from(<span class="string">&quot;TUSD&quot;</span>))),
+        precision: <span class="number">4</span>,
+        iso4217: <span class="number">0</span>,
+        name: Box::new(Arc::new(String::from(<span class="string">&quot;TrueUSD&quot;</span>))),
+        currency_type: CurrencyType::Crypto,
+    };
     <span class="kw">pub static </span><span class="kw-2">ref </span>VTC: Currency = Currency {
         code: Box::new(Arc::new(String::from(<span class="string">&quot;VTC&quot;</span>))),
         precision: <span class="number">8</span>,
@@ -1136,6 +1161,13 @@
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
         name: Box::new(Arc::new(String::from(<span class="string">&quot;USD Coin&quot;</span>))),
+        currency_type: CurrencyType::Crypto,
+    };
+    <span class="kw">pub static </span><span class="kw-2">ref </span>USDP: Currency = Currency {
+        code: Box::new(Arc::new(String::from(<span class="string">&quot;USDP&quot;</span>))),
+        precision: <span class="number">4</span>,
+        iso4217: <span class="number">0</span>,
+        name: Box::new(Arc::new(String::from(<span class="string">&quot;Pax Dollar&quot;</span>))),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>USDT: Currency = Currency {
