@@ -11823,7 +11823,8 @@ If
                  <em>
                   optional
                  </em>
-                 ) – The registered callback, to be called when the response has completed processing.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
@@ -12041,7 +12042,8 @@ If
                  <em>
                   optional
                  </em>
-                 ) – The registered callback, to be called when the response has completed processing.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
@@ -12062,6 +12064,32 @@ If
                 request_id
                </cite>
                for the request.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                callback
+               </cite>
+               is not
+               <cite>
+                None
+               </cite>
+               and not of type
+               <cite>
+                Callable
+               </cite>
+               .
               </p>
              </dd>
             </dl>
@@ -12230,7 +12258,8 @@ If
                  <em>
                   optional
                  </em>
-                 ) – The registered callback, to be called when the response has completed processing.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
@@ -12251,6 +12280,32 @@ If
                 request_id
                </cite>
                for the request.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                callback
+               </cite>
+               is not
+               <cite>
+                None
+               </cite>
+               and not of type
+               <cite>
+                Callable
+               </cite>
+               .
               </p>
              </dd>
             </dl>
@@ -12419,7 +12474,8 @@ If
                  <em>
                   optional
                  </em>
-                 ) – The registered callback, to be called when the response has completed processing.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
@@ -12440,6 +12496,32 @@ If
                 request_id
                </cite>
                for the request.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                callback
+               </cite>
+               is not
+               <cite>
+                None
+               </cite>
+               and not of type
+               <cite>
+                Callable
+               </cite>
+               .
               </p>
              </dd>
             </dl>
@@ -12676,7 +12758,8 @@ If
                  <em>
                   optional
                  </em>
-                 ) – The registered callback, to be called when the response has completed processing.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
@@ -12706,20 +12789,44 @@ If
               </span>
              </dt>
              <dd class="field-odd">
-              <p>
-               <strong>
-                ValueError
-               </strong>
-               – If
-               <cite>
-                start
-               </cite>
-               is not less than
-               <cite>
-                end
-               </cite>
-               .
-              </p>
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  ValueError
+                 </strong>
+                 – If
+                 <cite>
+                  start
+                 </cite>
+                 is not less than
+                 <cite>
+                  end
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  TypeError
+                 </strong>
+                 – If
+                 <cite>
+                  callback
+                 </cite>
+                 is not
+                 <cite>
+                  None
+                 </cite>
+                 and not of type
+                 <cite>
+                  Callable
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
@@ -12955,7 +13062,8 @@ If
                  <em>
                   optional
                  </em>
-                 ) – The registered callback, to be called when the response has completed processing.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
@@ -12985,20 +13093,44 @@ If
               </span>
              </dt>
              <dd class="field-odd">
-              <p>
-               <strong>
-                ValueError
-               </strong>
-               – If
-               <cite>
-                start
-               </cite>
-               is not less than
-               <cite>
-                end
-               </cite>
-               .
-              </p>
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  ValueError
+                 </strong>
+                 – If
+                 <cite>
+                  start
+                 </cite>
+                 is not less than
+                 <cite>
+                  end
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  TypeError
+                 </strong>
+                 – If
+                 <cite>
+                  callback
+                 </cite>
+                 is not
+                 <cite>
+                  None
+                 </cite>
+                 and not of type
+                 <cite>
+                  Callable
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
