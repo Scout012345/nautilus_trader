@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"trait":["LimitOrder"]};
+window.SIDEBAR_ITEMS = {"struct":["LimitOrder"]};

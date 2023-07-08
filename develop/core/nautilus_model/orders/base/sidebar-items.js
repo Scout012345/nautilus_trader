@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["OrderError"],"struct":["Order"]};
+window.SIDEBAR_ITEMS = {"enum":["OrderError"],"struct":["OrderCore"],"trait":["Order"]};
