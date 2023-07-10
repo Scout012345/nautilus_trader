@@ -836,6 +836,24 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_client">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  RedisCacheDatabase.load_index_order_client()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_position">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  RedisCacheDatabase.load_index_order_position()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_instrument">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -867,15 +885,6 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   RedisCacheDatabase.load_orders()
-                 </span>
-                </code>
-               </a>
-              </li>
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_orders_position_map">
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  RedisCacheDatabase.load_orders_position_map()
                  </span>
                 </code>
                </a>
@@ -1573,6 +1582,17 @@ per the default implementations for both
               </span>
              </span>
             </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               ClientId
+              </span>
+              <span class="pre">
+               client_id=None
+              </span>
+             </span>
+            </em>
             <span class="sig-paren">
              )
             </span>
@@ -1635,6 +1655,26 @@ per the default implementations for both
                   optional
                  </em>
                  ) – The position ID to associate with this order.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  client_id
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ClientId" title="nautilus_trader.model.identifiers.ClientId">
+                  <em>
+                   ClientId
+                  </em>
+                 </a>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The execution client ID to associate with this order.
                 </p>
                </li>
               </ul>
@@ -2404,6 +2444,116 @@ per the default implementations for both
            </dd>
           </dl>
           <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_client">
+            <span class="sig-name descname">
+             <span class="pre">
+              load_index_order_client
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               dict
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_client" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Load the order to execution client index from the database.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                dict[ClientOrderId, ClientId]
+               </em>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_position">
+            <span class="sig-name descname">
+             <span class="pre">
+              load_index_order_position
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               dict
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_position" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Load the order to position index from the database.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                dict[ClientOrderId, PositionId]
+               </em>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
            <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_instrument">
             <span class="sig-name descname">
              <span class="pre">
@@ -2690,61 +2840,6 @@ per the default implementations for both
               <p>
                <em>
                 dict[ClientOrderId, Order]
-               </em>
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-          <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_orders_position_map">
-            <span class="sig-name descname">
-             <span class="pre">
-              load_orders_position_map
-             </span>
-            </span>
-            <span class="sig-paren">
-             (
-            </span>
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
-             </span>
-            </em>
-            <span class="sig-paren">
-             )
-            </span>
-            <span class="sig-return">
-             <span class="sig-return-icon">
-              →
-             </span>
-             <span class="sig-return-typehint">
-              <span class="pre">
-               dict
-              </span>
-             </span>
-            </span>
-            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_orders_position_map" title="Permalink to this definition">
-             ¶
-            </a>
-           </dt>
-           <dd>
-            <p>
-             Load the order to position map from the database.
-            </p>
-            <dl class="field-list simple">
-             <dt class="field-odd">
-              Returns
-              <span class="colon">
-               :
-              </span>
-             </dt>
-             <dd class="field-odd">
-              <p>
-               <em>
-                dict[ClientOrderId, PositionId]
                </em>
               </p>
              </dd>
