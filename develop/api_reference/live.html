@@ -2849,6 +2849,15 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.get_external_order_claims_instruments">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  LiveExecutionEngine.get_external_order_claims_instruments()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.id">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -3664,9 +3673,11 @@ design of a single efficient event loop, by default
          <cite>
           LiveDataClient
          </cite>
-         class is responsible for interfacing with a particular API
-which may be presented directly by an exchange, or broker intermediary. It
-could also be possible to write clients for specialized data publishers.
+         class is responsible for interfacing with a particular API which
+may be presented directly by an exchange, or broker intermediary.
+        </p>
+        <p>
+         It could also be possible to write clients for specialized data publishers.
         </p>
         <dl class="py class">
          <dt class="sig sig-object py" id="nautilus_trader.live.data_client.LiveDataClient">
@@ -15057,8 +15068,8 @@ then the component state will not change, and an error will be logged.
          <cite>
           LiveExecutionClient
          </cite>
-         class is responsible for interfacing with a particular
-API which may be presented directly by an exchange, or broker intermediary.
+         class is responsible for interfacing with a particular API
+which may be presented directly by an exchange, or broker intermediary.
         </p>
         <dl class="py class">
          <dt class="sig sig-object py" id="nautilus_trader.live.execution_client.LiveExecutionClient">
@@ -23710,6 +23721,61 @@ then the component state will not change, and an error will be logged.
                  None
                 </span>
                </code>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.live.execution_engine.LiveExecutionEngine.get_external_order_claims_instruments">
+            <span class="sig-name descname">
+             <span class="pre">
+              get_external_order_claims_instruments
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               set
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.get_external_order_claims_instruments" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Get all external order claims instrument IDs.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                set[InstrumentId]
+               </em>
               </p>
              </dd>
             </dl>
