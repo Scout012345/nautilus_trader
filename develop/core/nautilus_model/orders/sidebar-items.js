@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["base","limit","market"]};
+window.SIDEBAR_ITEMS = {"mod":["base","limit","limit_if_touched","market"]};

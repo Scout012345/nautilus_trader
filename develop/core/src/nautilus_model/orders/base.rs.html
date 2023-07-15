@@ -627,6 +627,24 @@
 <a href="#627" id="627">627</a>
 <a href="#628" id="628">628</a>
 <a href="#629" id="629">629</a>
+<a href="#630" id="630">630</a>
+<a href="#631" id="631">631</a>
+<a href="#632" id="632">632</a>
+<a href="#633" id="633">633</a>
+<a href="#634" id="634">634</a>
+<a href="#635" id="635">635</a>
+<a href="#636" id="636">636</a>
+<a href="#637" id="637">637</a>
+<a href="#638" id="638">638</a>
+<a href="#639" id="639">639</a>
+<a href="#640" id="640">640</a>
+<a href="#641" id="641">641</a>
+<a href="#642" id="642">642</a>
+<a href="#643" id="643">643</a>
+<a href="#644" id="644">644</a>
+<a href="#645" id="645">645</a>
+<a href="#646" id="646">646</a>
+<a href="#647" id="647">647</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -642,7 +660,9 @@
 //  limitations under the License.
 // -------------------------------------------------------------------------------------------------
 
-</span><span class="kw">use </span>nautilus_core::{time::UnixNanos, uuid::UUID4};
+</span><span class="kw">use </span>std::collections::HashMap;
+
+<span class="kw">use </span>nautilus_core::{time::UnixNanos, uuid::UUID4};
 <span class="kw">use </span>thiserror;
 
 <span class="kw">use crate</span>::{
@@ -656,9 +676,10 @@
         OrderSubmitted, OrderTriggered, OrderUpdated,
     },
     identifiers::{
-        account_id::AccountId, client_order_id::ClientOrderId, instrument_id::InstrumentId,
-        order_list_id::OrderListId, position_id::PositionId, strategy_id::StrategyId,
-        trade_id::TradeId, trader_id::TraderId, venue_order_id::VenueOrderId,
+        account_id::AccountId, client_order_id::ClientOrderId, exec_algorithm_id::ExecAlgorithmId,
+        instrument_id::InstrumentId, order_list_id::OrderListId, position_id::PositionId,
+        strategy_id::StrategyId, trade_id::TradeId, trader_id::TraderId,
+        venue_order_id::VenueOrderId,
     },
     types::{price::Price, quantity::Quantity},
 };
@@ -749,6 +770,9 @@
     <span class="kw">fn </span>order_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; OrderType;
     <span class="kw">fn </span>quantity(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Quantity;
     <span class="kw">fn </span>time_in_force(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TimeInForce;
+    <span class="kw">fn </span>price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt;;
+    <span class="kw">fn </span>trigger_price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt;;
+    <span class="kw">fn </span>trigger_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TriggerType&gt;;
     <span class="kw">fn </span>liquidity_side(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;LiquiditySide&gt;;
     <span class="kw">fn </span>is_post_only(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
     <span class="kw">fn </span>is_reduce_only(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
@@ -758,6 +782,9 @@
     <span class="kw">fn </span>order_list_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;OrderListId&gt;;
     <span class="kw">fn </span>linked_order_ids(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;;
     <span class="kw">fn </span>parent_order_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;;
+    <span class="kw">fn </span>exec_algorithm_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ExecAlgorithmId&gt;;
+    <span class="kw">fn </span>exec_algorithm_params(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;HashMap&lt;String, String&gt;&gt;;
+    <span class="kw">fn </span>exec_spawn_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;;
     <span class="kw">fn </span>tags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt;;
     <span class="kw">fn </span>filled_qty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Quantity;
     <span class="kw">fn </span>leaves_qty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Quantity;
@@ -886,6 +913,9 @@
     <span class="kw">pub </span>order_list_id: <span class="prelude-ty">Option</span>&lt;OrderListId&gt;,
     <span class="kw">pub </span>linked_order_ids: <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;,
     <span class="kw">pub </span>parent_order_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
+    <span class="kw">pub </span>exec_algorithm_id: <span class="prelude-ty">Option</span>&lt;ExecAlgorithmId&gt;,
+    <span class="kw">pub </span>exec_algorithm_params: <span class="prelude-ty">Option</span>&lt;HashMap&lt;String, String&gt;&gt;,
+    <span class="kw">pub </span>exec_spawn_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
     <span class="kw">pub </span>tags: <span class="prelude-ty">Option</span>&lt;String&gt;,
     <span class="kw">pub </span>filled_qty: Quantity,
     <span class="kw">pub </span>leaves_qty: Quantity,
@@ -916,6 +946,9 @@
         order_list_id: <span class="prelude-ty">Option</span>&lt;OrderListId&gt;,
         linked_order_ids: <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;,
         parent_order_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
+        exec_algorithm_id: <span class="prelude-ty">Option</span>&lt;ExecAlgorithmId&gt;,
+        exec_algorithm_params: <span class="prelude-ty">Option</span>&lt;HashMap&lt;String, String&gt;&gt;,
+        exec_spawn_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
         tags: <span class="prelude-ty">Option</span>&lt;String&gt;,
         init_id: UUID4,
         ts_init: UnixNanos,
@@ -949,6 +982,9 @@
             order_list_id,
             linked_order_ids,
             parent_order_id,
+            exec_algorithm_id,
+            exec_algorithm_params,
+            exec_spawn_id,
             tags,
             filled_qty: Quantity::zero(quantity.precision),
             leaves_qty: quantity,

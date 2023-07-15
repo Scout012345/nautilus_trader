@@ -348,6 +348,15 @@
 <a href="#348" id="348">348</a>
 <a href="#349" id="349">349</a>
 <a href="#350" id="350">350</a>
+<a href="#351" id="351">351</a>
+<a href="#352" id="352">352</a>
+<a href="#353" id="353">353</a>
+<a href="#354" id="354">354</a>
+<a href="#355" id="355">355</a>
+<a href="#356" id="356">356</a>
+<a href="#357" id="357">357</a>
+<a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -363,21 +372,24 @@
 //  limitations under the License.
 // -------------------------------------------------------------------------------------------------
 
-</span><span class="kw">use </span>derive_builder::{<span class="self">self</span>, Builder};
+</span><span class="kw">use </span>std::collections::HashMap;
+
+<span class="kw">use </span>derive_builder::{<span class="self">self</span>, Builder};
 <span class="kw">use </span>nautilus_core::{time::UnixNanos, uuid::UUID4};
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
 <span class="kw">use crate</span>::{
     enums::{ContingencyType, LiquiditySide, OrderSide, OrderType, TimeInForce, TriggerType},
     identifiers::{
-        account_id::AccountId, client_order_id::ClientOrderId, instrument_id::InstrumentId,
-        order_list_id::OrderListId, position_id::PositionId, strategy_id::StrategyId,
-        trade_id::TradeId, trader_id::TraderId, venue_order_id::VenueOrderId,
+        account_id::AccountId, client_order_id::ClientOrderId, exec_algorithm_id::ExecAlgorithmId,
+        instrument_id::InstrumentId, order_list_id::OrderListId, position_id::PositionId,
+        strategy_id::StrategyId, trade_id::TradeId, trader_id::TraderId,
+        venue_order_id::VenueOrderId,
     },
     types::{currency::Currency, money::Money, price::Price, quantity::Quantity},
 };
 
-<span class="attr">#[derive(Clone, Hash, PartialEq, Eq, Debug)]
+<span class="attr">#[derive(Clone, PartialEq, Eq, Debug)]
 </span><span class="kw">pub enum </span>OrderEvent {
     OrderInitialized(OrderInitialized),
     OrderDenied(OrderDenied),
@@ -397,7 +409,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Builder, Serialize, Deserialize)]
+#[derive(Clone, PartialEq, Eq, Debug, Builder, Serialize, Deserialize)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderInitialized {
@@ -425,6 +437,9 @@
     <span class="kw">pub </span>order_list_id: <span class="prelude-ty">Option</span>&lt;OrderListId&gt;,
     <span class="kw">pub </span>linked_order_ids: <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;,
     <span class="kw">pub </span>parent_order_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
+    <span class="kw">pub </span>exec_algorithm_id: <span class="prelude-ty">Option</span>&lt;ExecAlgorithmId&gt;,
+    <span class="kw">pub </span>exec_algorithm_params: <span class="prelude-ty">Option</span>&lt;HashMap&lt;String, String&gt;&gt;,
+    <span class="kw">pub </span>exec_spawn_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
     <span class="kw">pub </span>tags: <span class="prelude-ty">Option</span>&lt;String&gt;,
     <span class="kw">pub </span>event_id: UUID4,
     <span class="kw">pub </span>ts_event: UnixNanos,
@@ -459,6 +474,9 @@
             order_list_id: Default::default(),
             linked_order_ids: Default::default(),
             parent_order_id: Default::default(),
+            exec_algorithm_id: Default::default(),
+            exec_algorithm_params: Default::default(),
+            exec_spawn_id: Default::default(),
             tags: Default::default(),
             event_id: Default::default(),
             ts_event: Default::default(),
@@ -469,7 +487,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderDenied {
@@ -484,7 +502,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderSubmitted {
@@ -499,7 +517,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderAccepted {
@@ -516,7 +534,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderRejected {
@@ -534,7 +552,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderCanceled {
@@ -551,7 +569,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderExpired {
@@ -568,7 +586,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderTriggered {
@@ -585,7 +603,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderPendingUpdate {
@@ -602,7 +620,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderPendingCancel {
@@ -619,7 +637,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderModifyRejected {
@@ -637,7 +655,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderCancelRejected {
@@ -655,7 +673,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderUpdated {
@@ -675,7 +693,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug, Serialize, Deserialize, Builder)]
+#[derive(Clone, PartialEq, Eq, Debug, Serialize, Deserialize, Builder)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderFilled {
     <span class="kw">pub </span>trader_id: TraderId,

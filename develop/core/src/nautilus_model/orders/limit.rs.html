@@ -335,6 +335,49 @@
 <a href="#335" id="335">335</a>
 <a href="#336" id="336">336</a>
 <a href="#337" id="337">337</a>
+<a href="#338" id="338">338</a>
+<a href="#339" id="339">339</a>
+<a href="#340" id="340">340</a>
+<a href="#341" id="341">341</a>
+<a href="#342" id="342">342</a>
+<a href="#343" id="343">343</a>
+<a href="#344" id="344">344</a>
+<a href="#345" id="345">345</a>
+<a href="#346" id="346">346</a>
+<a href="#347" id="347">347</a>
+<a href="#348" id="348">348</a>
+<a href="#349" id="349">349</a>
+<a href="#350" id="350">350</a>
+<a href="#351" id="351">351</a>
+<a href="#352" id="352">352</a>
+<a href="#353" id="353">353</a>
+<a href="#354" id="354">354</a>
+<a href="#355" id="355">355</a>
+<a href="#356" id="356">356</a>
+<a href="#357" id="357">357</a>
+<a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
+<a href="#360" id="360">360</a>
+<a href="#361" id="361">361</a>
+<a href="#362" id="362">362</a>
+<a href="#363" id="363">363</a>
+<a href="#364" id="364">364</a>
+<a href="#365" id="365">365</a>
+<a href="#366" id="366">366</a>
+<a href="#367" id="367">367</a>
+<a href="#368" id="368">368</a>
+<a href="#369" id="369">369</a>
+<a href="#370" id="370">370</a>
+<a href="#371" id="371">371</a>
+<a href="#372" id="372">372</a>
+<a href="#373" id="373">373</a>
+<a href="#374" id="374">374</a>
+<a href="#375" id="375">375</a>
+<a href="#376" id="376">376</a>
+<a href="#377" id="377">377</a>
+<a href="#378" id="378">378</a>
+<a href="#379" id="379">379</a>
+<a href="#380" id="380">380</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -350,7 +393,10 @@
 //  limitations under the License.
 // -------------------------------------------------------------------------------------------------
 
-</span><span class="kw">use </span>std::ops::{Deref, DerefMut};
+</span><span class="kw">use </span>std::{
+    collections::HashMap,
+    ops::{Deref, DerefMut},
+};
 
 <span class="kw">use </span>nautilus_core::{time::UnixNanos, uuid::UUID4};
 
@@ -361,9 +407,10 @@
     },
     events::order::{OrderEvent, OrderInitialized},
     identifiers::{
-        account_id::AccountId, client_order_id::ClientOrderId, instrument_id::InstrumentId,
-        order_list_id::OrderListId, position_id::PositionId, strategy_id::StrategyId,
-        trade_id::TradeId, trader_id::TraderId, venue_order_id::VenueOrderId,
+        account_id::AccountId, client_order_id::ClientOrderId, exec_algorithm_id::ExecAlgorithmId,
+        instrument_id::InstrumentId, order_list_id::OrderListId, position_id::PositionId,
+        strategy_id::StrategyId, trade_id::TradeId, trader_id::TraderId,
+        venue_order_id::VenueOrderId,
     },
     types::{price::Price, quantity::Quantity},
 };
@@ -397,6 +444,9 @@
         order_list_id: <span class="prelude-ty">Option</span>&lt;OrderListId&gt;,
         linked_order_ids: <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;,
         parent_order_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
+        exec_algorithm_id: <span class="prelude-ty">Option</span>&lt;ExecAlgorithmId&gt;,
+        exec_algorithm_params: <span class="prelude-ty">Option</span>&lt;HashMap&lt;String, String&gt;&gt;,
+        exec_spawn_id: <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt;,
         tags: <span class="prelude-ty">Option</span>&lt;String&gt;,
         init_id: UUID4,
         ts_init: UnixNanos,
@@ -419,6 +469,9 @@
                 order_list_id,
                 linked_order_ids,
                 parent_order_id,
+                exec_algorithm_id,
+                exec_algorithm_params,
+                exec_spawn_id,
                 tags,
                 init_id,
                 ts_init,
@@ -430,7 +483,7 @@
     }
 }
 
-<span class="doccomment">/// Provides a default [`MarketOrder`] used for testing.
+<span class="doccomment">/// Provides a default [`LimitOrder`] used for testing.
 </span><span class="kw">impl </span>Default <span class="kw">for </span>LimitOrder {
     <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
         LimitOrder::new(
@@ -446,6 +499,9 @@
             <span class="bool-val">false</span>,
             <span class="bool-val">false</span>,
             <span class="bool-val">false</span>,
+            <span class="prelude-val">None</span>,
+            <span class="prelude-val">None</span>,
+            <span class="prelude-val">None</span>,
             <span class="prelude-val">None</span>,
             <span class="prelude-val">None</span>,
             <span class="prelude-val">None</span>,
@@ -526,6 +582,18 @@
         <span class="self">self</span>.time_in_force
     }
 
+    <span class="kw">fn </span>price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.price)
+    }
+
+    <span class="kw">fn </span>trigger_price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt; {
+        <span class="prelude-val">None
+    </span>}
+
+    <span class="kw">fn </span>trigger_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TriggerType&gt; {
+        <span class="prelude-val">None
+    </span>}
+
     <span class="kw">fn </span>liquidity_side(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;LiquiditySide&gt; {
         <span class="self">self</span>.liquidity_side
     }
@@ -560,6 +628,18 @@
 
     <span class="kw">fn </span>parent_order_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt; {
         <span class="self">self</span>.parent_order_id.clone()
+    }
+
+    <span class="kw">fn </span>exec_algorithm_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ExecAlgorithmId&gt; {
+        <span class="self">self</span>.exec_algorithm_id.clone()
+    }
+
+    <span class="kw">fn </span>exec_algorithm_params(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;HashMap&lt;String, String&gt;&gt; {
+        <span class="self">self</span>.exec_algorithm_params.clone()
+    }
+
+    <span class="kw">fn </span>exec_spawn_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ClientOrderId&gt; {
+        <span class="self">self</span>.exec_spawn_id.clone()
     }
 
     <span class="kw">fn </span>tags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
@@ -630,6 +710,9 @@
             event.order_list_id,
             event.linked_order_ids,
             event.parent_order_id,
+            event.exec_algorithm_id,
+            event.exec_algorithm_params,
+            event.exec_spawn_id,
             event.tags,
             event.event_id,
             event.ts_event,
@@ -664,6 +747,9 @@
             order_list_id: order.order_list_id.clone(),
             linked_order_ids: order.linked_order_ids.clone(),
             parent_order_id: order.parent_order_id.clone(),
+            exec_algorithm_id: order.exec_algorithm_id.clone(),
+            exec_algorithm_params: order.exec_algorithm_params.clone(),
+            exec_spawn_id: order.exec_spawn_id.clone(),
             tags: order.tags.clone(),
             event_id: order.init_id.clone(),
             ts_event: order.ts_init,

@@ -163,6 +163,10 @@
 <a href="#163" id="163">163</a>
 <a href="#164" id="164">164</a>
 <a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -274,7 +278,9 @@
     </span><span class="kw">fn </span>test_pystr_to_string_with_null_ptr() {
         <span class="comment">// Create a null Python object pointer
         </span><span class="kw">let </span>ptr: <span class="kw-2">*mut </span>ffi::PyObject = std::ptr::null_mut();
-        <span class="kw">unsafe </span>{ pystr_to_string(ptr) };
+        <span class="kw">unsafe </span>{
+            <span class="kw">let _ </span>= pystr_to_string(ptr);
+        };
     }
 
     <span class="attr">#[test]
@@ -291,7 +297,9 @@
     </span><span class="kw">fn </span>test_cstr_to_string_with_null_ptr() {
         <span class="comment">// Create a null C string pointer
         </span><span class="kw">let </span>ptr: <span class="kw-2">*const </span>c_char = std::ptr::null();
-        <span class="kw">unsafe </span>{ cstr_to_string(ptr) };
+        <span class="kw">unsafe </span>{
+            <span class="kw">let _ </span>= cstr_to_string(ptr);
+        };
     }
 
     <span class="attr">#[test]
