@@ -6803,6 +6803,26 @@ cached client will be returned.
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              is_testnet
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               config
              </span>
             </span>
@@ -6912,6 +6932,24 @@ cached client will be returned.
                  </em>
                 </a>
                 ) – The Binance account type for the instrument provider.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 is_testnet
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
+                ) – If the provider is for the Spot testnet.
                </p>
               </li>
               <li>
@@ -41391,6 +41429,40 @@ client.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               is_testnet
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               False
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                config
               </span>
              </span>
@@ -41494,6 +41566,58 @@ client.
                   </em>
                  </a>
                  ) – The logger for the provider.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  clock
+                 </strong>
+                 (
+                 <a class="reference internal" href="../common.html#nautilus_trader.common.clock.LiveClock" title="nautilus_trader.common.clock.LiveClock">
+                  <em>
+                   LiveClock
+                  </em>
+                 </a>
+                 ) – The clock for the provider.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  account_type
+                 </strong>
+                 (
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.common.enums.BinanceAccountType" title="nautilus_trader.adapters.binance.common.enums.BinanceAccountType">
+                  <em>
+                   BinanceAccountType
+                  </em>
+                 </a>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  default SPOT
+                 </em>
+                 ) – The Binance account type for the provider.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  is_testnet
+                 </strong>
+                 (
+                 <em>
+                  bool
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  default False
+                 </em>
+                 ) – If the provider is for the Spot testnet.
                 </p>
                </li>
                <li>
