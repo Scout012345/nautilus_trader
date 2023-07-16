@@ -3831,7 +3831,7 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
-              flush
+              flush_on_start
              </span>
             </span>
             <span class="p">
@@ -3892,6 +3892,121 @@
             <span class="default_value">
              <span class="pre">
               False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              snapshot_orders
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              snapshot_positions
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              snapshot_positions_interval
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              Optional
+             </span>
+             <span class="p">
+              <span class="pre">
+               [
+              </span>
+             </span>
+             <span class="pre">
+              float
+             </span>
+             <span class="p">
+              <span class="pre">
+               ]
+              </span>
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
              </span>
             </span>
            </em>
@@ -4054,7 +4169,7 @@
               <li>
                <p>
                 <strong>
-                 flush
+                 flush_on_start
                 </strong>
                 (
                 <em>
@@ -4066,7 +4181,7 @@
                 <em>
                  default False
                 </em>
-                ) – If database should be flushed before start.
+                ) – If database should be flushed on start.
                </p>
               </li>
               <li>
@@ -4075,6 +4190,11 @@
                  timestamps_as_iso8601
                 </strong>
                 – If timestamps should be persisted as ISO 8601 strings.
+If
+                <cite>
+                 False
+                </cite>
+                then will persit as UNIX nanoseconds.
                </p>
               </li>
               <li>
@@ -4087,6 +4207,74 @@
                  default
                 </em>
                 ) – If timestamps should be persisted as ISO 8601 strings.
+If
+                <cite>
+                 False
+                </cite>
+                then will persit as UNIX nanoseconds.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 snapshot_orders
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
+                ) – If order state snapshot lists should be persisted.
+Snapshots will be taken at every order status transition.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 snapshot_positions
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
+                ) – If position state snapshot lists should be persisted.
+Snapshots will be taken at position opened, changed and closed.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 snapshot_positions_interval
+                </strong>
+                (
+                <em>
+                 float
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The interval (seconds) at which additional position state snapshots are persisted.
+If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                then no additional snapshots will be taken.
                </p>
               </li>
              </ul>
