@@ -440,10 +440,10 @@
     <span class="kw">pub </span>price: Price,
     <span class="kw">pub </span>trigger_price: Price,
     <span class="kw">pub </span>trigger_type: TriggerType,
-    <span class="kw">pub </span>is_triggered: bool,
-    <span class="kw">pub </span>ts_triggered: <span class="prelude-ty">Option</span>&lt;UnixNanos&gt;,
     <span class="kw">pub </span>expire_time: <span class="prelude-ty">Option</span>&lt;UnixNanos&gt;,
     <span class="kw">pub </span>display_qty: <span class="prelude-ty">Option</span>&lt;Quantity&gt;,
+    <span class="kw">pub </span>is_triggered: bool,
+    <span class="kw">pub </span>ts_triggered: <span class="prelude-ty">Option</span>&lt;UnixNanos&gt;,
 }
 
 <span class="kw">impl </span>LimitIfTouchedOrder {
@@ -505,10 +505,10 @@
             price,
             trigger_price,
             trigger_type,
-            is_triggered: <span class="bool-val">false</span>,
-            ts_triggered: <span class="prelude-val">None</span>,
             expire_time,
             display_qty,
+            is_triggered: <span class="bool-val">false</span>,
+            ts_triggered: <span class="prelude-val">None</span>,
         }
     }
 }
