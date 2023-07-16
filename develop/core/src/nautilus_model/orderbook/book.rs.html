@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/orderbook/book.rs`."><title>book.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-9bb858ba049f1f21.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (ad963232d 2023-07-14)" data-channel="nightly" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ><script src="../../../static.files/storage-59fd9b8ccb335783.js"></script><script defer src="../../../static.files/source-script-106908c7a7964ba4.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../nautilus_model/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/orderbook/book.rs`."><title>book.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-07416f8512e0e04c.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (4c8bb79d9 2023-07-15)" data-channel="nightly" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../nautilus_model/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -689,6 +689,82 @@
 <a href="#689" id="689">689</a>
 <a href="#690" id="690">690</a>
 <a href="#691" id="691">691</a>
+<a href="#692" id="692">692</a>
+<a href="#693" id="693">693</a>
+<a href="#694" id="694">694</a>
+<a href="#695" id="695">695</a>
+<a href="#696" id="696">696</a>
+<a href="#697" id="697">697</a>
+<a href="#698" id="698">698</a>
+<a href="#699" id="699">699</a>
+<a href="#700" id="700">700</a>
+<a href="#701" id="701">701</a>
+<a href="#702" id="702">702</a>
+<a href="#703" id="703">703</a>
+<a href="#704" id="704">704</a>
+<a href="#705" id="705">705</a>
+<a href="#706" id="706">706</a>
+<a href="#707" id="707">707</a>
+<a href="#708" id="708">708</a>
+<a href="#709" id="709">709</a>
+<a href="#710" id="710">710</a>
+<a href="#711" id="711">711</a>
+<a href="#712" id="712">712</a>
+<a href="#713" id="713">713</a>
+<a href="#714" id="714">714</a>
+<a href="#715" id="715">715</a>
+<a href="#716" id="716">716</a>
+<a href="#717" id="717">717</a>
+<a href="#718" id="718">718</a>
+<a href="#719" id="719">719</a>
+<a href="#720" id="720">720</a>
+<a href="#721" id="721">721</a>
+<a href="#722" id="722">722</a>
+<a href="#723" id="723">723</a>
+<a href="#724" id="724">724</a>
+<a href="#725" id="725">725</a>
+<a href="#726" id="726">726</a>
+<a href="#727" id="727">727</a>
+<a href="#728" id="728">728</a>
+<a href="#729" id="729">729</a>
+<a href="#730" id="730">730</a>
+<a href="#731" id="731">731</a>
+<a href="#732" id="732">732</a>
+<a href="#733" id="733">733</a>
+<a href="#734" id="734">734</a>
+<a href="#735" id="735">735</a>
+<a href="#736" id="736">736</a>
+<a href="#737" id="737">737</a>
+<a href="#738" id="738">738</a>
+<a href="#739" id="739">739</a>
+<a href="#740" id="740">740</a>
+<a href="#741" id="741">741</a>
+<a href="#742" id="742">742</a>
+<a href="#743" id="743">743</a>
+<a href="#744" id="744">744</a>
+<a href="#745" id="745">745</a>
+<a href="#746" id="746">746</a>
+<a href="#747" id="747">747</a>
+<a href="#748" id="748">748</a>
+<a href="#749" id="749">749</a>
+<a href="#750" id="750">750</a>
+<a href="#751" id="751">751</a>
+<a href="#752" id="752">752</a>
+<a href="#753" id="753">753</a>
+<a href="#754" id="754">754</a>
+<a href="#755" id="755">755</a>
+<a href="#756" id="756">756</a>
+<a href="#757" id="757">757</a>
+<a href="#758" id="758">758</a>
+<a href="#759" id="759">759</a>
+<a href="#760" id="760">760</a>
+<a href="#761" id="761">761</a>
+<a href="#762" id="762">762</a>
+<a href="#763" id="763">763</a>
+<a href="#764" id="764">764</a>
+<a href="#765" id="765">765</a>
+<a href="#766" id="766">766</a>
+<a href="#767" id="767">767</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -901,6 +977,24 @@
             (<span class="prelude-val">Some</span>(ask), <span class="prelude-val">Some</span>(bid)) =&gt; <span class="prelude-val">Some</span>((ask.as_f64() + bid.as_f64()) / <span class="number">2.0</span>),
             <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
         }
+    }
+
+    <span class="kw">pub fn </span>get_price_for_quantity(<span class="kw-2">&amp;</span><span class="self">self</span>, qty: Quantity, order_side: OrderSide) -&gt; Price {
+        <span class="kw">let </span>(levels, <span class="kw-2">mut </span>target_price) = <span class="kw">match </span>order_side {
+            OrderSide::Buy =&gt; (<span class="kw-2">&amp;</span><span class="self">self</span>.asks.levels, Price::max(<span class="number">0</span>)),
+            OrderSide::Sell =&gt; (<span class="kw-2">&amp;</span><span class="self">self</span>.bids.levels, Price::min(<span class="number">0</span>)),
+            <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;Invalid `OrderSide` {}&quot;</span>, order_side),
+        };
+        <span class="kw">let </span><span class="kw-2">mut </span>cumulative_volume = <span class="number">0u64</span>;
+
+        <span class="kw">for </span>(book_price, level) <span class="kw">in </span>levels {
+            cumulative_volume += level.volume_raw();
+            <span class="kw">if </span>cumulative_volume &gt;= qty.raw {
+                target_price = book_price.value;
+                <span class="kw">break</span>;
+            }
+        }
+        target_price
     }
 
     <span class="kw">pub fn </span>update_quote_tick(<span class="kw-2">&amp;mut </span><span class="self">self</span>, tick: <span class="kw-2">&amp;</span>QuoteTick) {
@@ -1264,6 +1358,64 @@
         book.add(ask1.clone(), <span class="number">200</span>, <span class="number">2</span>);
 
         <span class="macro">assert_eq!</span>(book.midpoint(), <span class="prelude-val">Some</span>(<span class="number">1.5</span>));
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_get_price_for_quantity_no_market() {
+        <span class="kw">let </span>book = create_stub_book(BookType::L2_MBP);
+        <span class="kw">let </span>qty = Quantity::new(<span class="number">1.0</span>, <span class="number">0</span>);
+
+        <span class="macro">assert_eq!</span>(
+            book.get_price_for_quantity(qty, OrderSide::Buy),
+            Price::max(<span class="number">0</span>)
+        );
+        <span class="macro">assert_eq!</span>(
+            book.get_price_for_quantity(qty, OrderSide::Sell),
+            Price::min(<span class="number">0</span>)
+        );
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_get_price_for_quantity() {
+        <span class="kw">let </span>instrument_id = InstrumentId::from_str(<span class="string">&quot;ETHUSDT-PERP.BINANCE&quot;</span>).unwrap();
+        <span class="kw">let </span><span class="kw-2">mut </span>book = OrderBook::new(instrument_id, BookType::L2_MBP);
+
+        <span class="kw">let </span>ask2 = BookOrder::new(
+            OrderSide::Sell,
+            Price::from(<span class="string">&quot;2.010&quot;</span>),
+            Quantity::from(<span class="string">&quot;2.0&quot;</span>),
+            <span class="number">0</span>, <span class="comment">// order_id not applicable
+        </span>);
+        <span class="kw">let </span>ask1 = BookOrder::new(
+            OrderSide::Sell,
+            Price::from(<span class="string">&quot;2.000&quot;</span>),
+            Quantity::from(<span class="string">&quot;1.0&quot;</span>),
+            <span class="number">0</span>, <span class="comment">// order_id not applicable
+        </span>);
+        <span class="kw">let </span>bid1 = BookOrder::new(
+            OrderSide::Buy,
+            Price::from(<span class="string">&quot;1.000&quot;</span>),
+            Quantity::from(<span class="string">&quot;1.0&quot;</span>),
+            <span class="number">0</span>, <span class="comment">// order_id not applicable
+        </span>);
+        <span class="kw">let </span>bid2 = BookOrder::new(
+            OrderSide::Buy,
+            Price::from(<span class="string">&quot;0.990&quot;</span>),
+            Quantity::from(<span class="string">&quot;2.0&quot;</span>),
+            <span class="number">0</span>, <span class="comment">// order_id not applicable
+        </span>);
+        book.add(bid1.clone(), <span class="number">0</span>, <span class="number">1</span>);
+        book.add(bid2.clone(), <span class="number">0</span>, <span class="number">1</span>);
+        book.add(ask1.clone(), <span class="number">0</span>, <span class="number">1</span>);
+        book.add(ask2.clone(), <span class="number">0</span>, <span class="number">1</span>);
+
+        <span class="kw">let </span>qty = Quantity::from(<span class="string">&quot;1.5&quot;</span>);
+
+        <span class="macro">assert_eq!</span>(book.get_price_for_quantity(qty, OrderSide::Buy), ask2.price);
+        <span class="macro">assert_eq!</span>(
+            book.get_price_for_quantity(qty, OrderSide::Sell),
+            bid2.price,
+        );
     }
 
     <span class="attr">#[test]

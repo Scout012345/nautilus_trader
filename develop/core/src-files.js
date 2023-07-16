@@ -1,4 +1,4 @@
-var sourcesIndex = JSON.parse('{\
+var srcIndex = JSON.parse('{\
 "nautilus_backtest":["",[],["engine.rs","lib.rs"]],\
 "nautilus_common":["",[],["clock.rs","clock_api.rs","enums.rs","lib.rs","logging.rs","logging_api.rs","msgbus.rs","testing.rs","timer.rs","timer_api.rs"]],\
 "nautilus_core":["",[],["correctness.rs","cvec.rs","datetime.rs","lib.rs","parsing.rs","serialization.rs","string.rs","time.rs","uuid.rs"]],\
@@ -9,4 +9,4 @@ var sourcesIndex = JSON.parse('{\
 "nautilus_pyo3":["",[],["lib.rs"]],\
 "tokio_tungstenite":["",[],["compat.rs","connect.rs","handshake.rs","lib.rs","stream.rs","tls.rs"]]\
 }');
-createSourceSidebar();
+createSrcSidebar();
