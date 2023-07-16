@@ -765,6 +765,19 @@
 <a href="#765" id="765">765</a>
 <a href="#766" id="766">766</a>
 <a href="#767" id="767">767</a>
+<a href="#768" id="768">768</a>
+<a href="#769" id="769">769</a>
+<a href="#770" id="770">770</a>
+<a href="#771" id="771">771</a>
+<a href="#772" id="772">772</a>
+<a href="#773" id="773">773</a>
+<a href="#774" id="774">774</a>
+<a href="#775" id="775">775</a>
+<a href="#776" id="776">776</a>
+<a href="#777" id="777">777</a>
+<a href="#778" id="778">778</a>
+<a href="#779" id="779">779</a>
+<a href="#780" id="780">780</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -929,6 +942,14 @@
         }
     }
 
+    <span class="kw">pub fn </span>bids(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;<span class="kw-2">&amp;</span>Level&gt; {
+        <span class="self">self</span>.bids.levels.values().collect()
+    }
+
+    <span class="kw">pub fn </span>asks(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;<span class="kw-2">&amp;</span>Level&gt; {
+        <span class="self">self</span>.asks.levels.values().collect()
+    }
+
     <span class="kw">pub fn </span>has_bid(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
         <span class="kw">match </span><span class="self">self</span>.bids.top() {
             <span class="prelude-val">Some</span>(top) =&gt; !top.orders.is_empty(),
@@ -979,22 +1000,30 @@
         }
     }
 
-    <span class="kw">pub fn </span>get_price_for_quantity(<span class="kw-2">&amp;</span><span class="self">self</span>, qty: Quantity, order_side: OrderSide) -&gt; Price {
-        <span class="kw">let </span>(levels, <span class="kw-2">mut </span>target_price) = <span class="kw">match </span>order_side {
-            OrderSide::Buy =&gt; (<span class="kw-2">&amp;</span><span class="self">self</span>.asks.levels, Price::max(<span class="number">0</span>)),
-            OrderSide::Sell =&gt; (<span class="kw-2">&amp;</span><span class="self">self</span>.bids.levels, Price::min(<span class="number">0</span>)),
+    <span class="kw">pub fn </span>get_avg_px_for_quantity(<span class="kw-2">&amp;</span><span class="self">self</span>, qty: Quantity, order_side: OrderSide) -&gt; f64 {
+        <span class="kw">let </span>levels = <span class="kw">match </span>order_side {
+            OrderSide::Buy =&gt; <span class="kw-2">&amp;</span><span class="self">self</span>.asks.levels,
+            OrderSide::Sell =&gt; <span class="kw-2">&amp;</span><span class="self">self</span>.bids.levels,
             <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;Invalid `OrderSide` {}&quot;</span>, order_side),
         };
-        <span class="kw">let </span><span class="kw-2">mut </span>cumulative_volume = <span class="number">0u64</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>cumulative_volume_raw = <span class="number">0u64</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>cumulative_value = <span class="number">0.0</span>;
 
         <span class="kw">for </span>(book_price, level) <span class="kw">in </span>levels {
-            cumulative_volume += level.volume_raw();
-            <span class="kw">if </span>cumulative_volume &gt;= qty.raw {
-                target_price = book_price.value;
+            <span class="kw">let </span>volume_this_level = level.volume_raw().min(qty.raw - cumulative_volume_raw);
+            cumulative_volume_raw += volume_this_level;
+            cumulative_value += book_price.value.as_f64() * volume_this_level <span class="kw">as </span>f64;
+
+            <span class="kw">if </span>cumulative_volume_raw &gt;= qty.raw {
                 <span class="kw">break</span>;
             }
         }
-        target_price
+
+        <span class="kw">if </span>cumulative_volume_raw == <span class="number">0 </span>{
+            <span class="number">0.0
+        </span>} <span class="kw">else </span>{
+            cumulative_value / cumulative_volume_raw <span class="kw">as </span>f64
+        }
     }
 
     <span class="kw">pub fn </span>update_quote_tick(<span class="kw-2">&amp;mut </span><span class="self">self</span>, tick: <span class="kw-2">&amp;</span>QuoteTick) {
@@ -1365,14 +1394,8 @@
         <span class="kw">let </span>book = create_stub_book(BookType::L2_MBP);
         <span class="kw">let </span>qty = Quantity::new(<span class="number">1.0</span>, <span class="number">0</span>);
 
-        <span class="macro">assert_eq!</span>(
-            book.get_price_for_quantity(qty, OrderSide::Buy),
-            Price::max(<span class="number">0</span>)
-        );
-        <span class="macro">assert_eq!</span>(
-            book.get_price_for_quantity(qty, OrderSide::Sell),
-            Price::min(<span class="number">0</span>)
-        );
+        <span class="macro">assert_eq!</span>(book.get_avg_px_for_quantity(qty, OrderSide::Buy), <span class="number">0.0</span>);
+        <span class="macro">assert_eq!</span>(book.get_avg_px_for_quantity(qty, OrderSide::Sell), <span class="number">0.0</span>);
     }
 
     <span class="attr">#[test]
@@ -1411,11 +1434,14 @@
 
         <span class="kw">let </span>qty = Quantity::from(<span class="string">&quot;1.5&quot;</span>);
 
-        <span class="macro">assert_eq!</span>(book.get_price_for_quantity(qty, OrderSide::Buy), ask2.price);
         <span class="macro">assert_eq!</span>(
-            book.get_price_for_quantity(qty, OrderSide::Sell),
-            bid2.price,
-        );
+            book.get_avg_px_for_quantity(qty, OrderSide::Buy),
+            <span class="number">2.0033333333333334
+        </span>);
+        <span class="macro">assert_eq!</span>(
+            book.get_avg_px_for_quantity(qty, OrderSide::Sell),
+            <span class="number">0.9966666666666667
+        </span>);
     }
 
     <span class="attr">#[test]
