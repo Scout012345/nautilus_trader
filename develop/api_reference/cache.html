@@ -1700,6 +1700,15 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.cache.cache.Cache.snapshot_order_state">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Cache.snapshot_order_state()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.cache.cache.Cache.snapshot_orders">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -1713,6 +1722,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Cache.snapshot_position()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.cache.cache.Cache.snapshot_position_state">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Cache.snapshot_position_state()
                  </span>
                 </code>
                </a>
@@ -2165,19 +2183,19 @@
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_order">
+               <a class="md-nav__link" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_order_state">
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  CacheDatabase.snapshot_order()
+                  CacheDatabase.snapshot_order_state()
                  </span>
                 </code>
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_position">
+               <a class="md-nav__link" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_position_state">
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  CacheDatabase.snapshot_position()
+                  CacheDatabase.snapshot_position_state()
                  </span>
                 </code>
                </a>
@@ -14783,6 +14801,86 @@ and is open.
             </p>
            </dd>
           </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.cache.cache.Cache.snapshot_order_state">
+            <span class="sig-name descname">
+             <span class="pre">
+              snapshot_order_state
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               Order
+              </span>
+              <span class="pre">
+               order
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.cache.cache.Cache.snapshot_order_state" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Snapshot the state dictionary for the given
+             <cite>
+              order
+             </cite>
+             .
+            </p>
+            <p>
+             This method will persist to the backing cache database.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                order
+               </strong>
+               (
+               <a class="reference internal" href="model/orders.html#nautilus_trader.model.orders.base.Order" title="nautilus_trader.model.orders.base.Order">
+                <em>
+                 Order
+                </em>
+               </a>
+               ) – The order to snapshot the state for.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
           <dl class="py attribute">
            <dt class="sig sig-object py" id="nautilus_trader.cache.cache.Cache.snapshot_orders">
             <span class="sig-name descname">
@@ -14886,6 +14984,86 @@ and is open.
                 </em>
                </a>
                ) – The position to snapshot.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.cache.cache.Cache.snapshot_position_state">
+            <span class="sig-name descname">
+             <span class="pre">
+              snapshot_position_state
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               Position
+              </span>
+              <span class="pre">
+               position
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.cache.cache.Cache.snapshot_position_state" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Snapshot the state dictionary for the given
+             <cite>
+              position
+             </cite>
+             .
+            </p>
+            <p>
+             This method will persist to the backing cache database.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                position
+               </strong>
+               (
+               <a class="reference internal" href="model/position.html#nautilus_trader.model.position.Position" title="nautilus_trader.model.position.Position">
+                <em>
+                 Position
+                </em>
+               </a>
+               ) – The position to snapshot the state for.
               </p>
              </dd>
             </dl>
@@ -17951,10 +18129,10 @@ and is open.
            </dd>
           </dl>
           <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.cache.database.CacheDatabase.snapshot_order">
+           <dt class="sig sig-object py" id="nautilus_trader.cache.database.CacheDatabase.snapshot_order_state">
             <span class="sig-name descname">
              <span class="pre">
-              snapshot_order
+              snapshot_order_state
              </span>
             </span>
             <span class="sig-paren">
@@ -17991,7 +18169,7 @@ and is open.
               </span>
              </span>
             </span>
-            <a class="headerlink" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_order" title="Permalink to this definition">
+            <a class="headerlink" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_order_state" title="Permalink to this definition">
              ¶
             </a>
            </dt>
@@ -18002,10 +18180,10 @@ and is open.
            </dd>
           </dl>
           <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.cache.database.CacheDatabase.snapshot_position">
+           <dt class="sig sig-object py" id="nautilus_trader.cache.database.CacheDatabase.snapshot_position_state">
             <span class="sig-name descname">
              <span class="pre">
-              snapshot_position
+              snapshot_position_state
              </span>
             </span>
             <span class="sig-paren">
@@ -18053,7 +18231,7 @@ and is open.
               </span>
              </span>
             </span>
-            <a class="headerlink" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_position" title="Permalink to this definition">
+            <a class="headerlink" href="#nautilus_trader.cache.database.CacheDatabase.snapshot_position_state" title="Permalink to this definition">
              ¶
             </a>
            </dt>
