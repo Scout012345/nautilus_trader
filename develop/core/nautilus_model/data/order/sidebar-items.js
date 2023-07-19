@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["BookOrder"]};
+window.SIDEBAR_ITEMS = {"constant":["NULL_ORDER"],"struct":["BookOrder"]};
