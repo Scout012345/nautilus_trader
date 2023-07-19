@@ -383,7 +383,7 @@
 <span class="kw">use </span>pyo3::{exceptions::PyValueError, prelude::<span class="kw-2">*</span>, pyclass::CompareOp, types::PyDict};
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="kw">use </span><span class="kw">super</span>::order::{BookOrder, NULL_ORDER};
+<span class="kw">use </span><span class="kw">super</span>::order::BookOrder;
 <span class="kw">use crate</span>::{enums::BookAction, identifiers::instrument_id::InstrumentId};
 
 <span class="doccomment">/// Represents a single change/delta in an order book.
@@ -468,16 +468,16 @@
     </span><span class="kw">fn </span>py_new(
         instrument_id: InstrumentId,
         action: BookAction,
+        order: BookOrder,
         flags: u8,
         sequence: u64,
         ts_event: UnixNanos,
         ts_init: UnixNanos,
-        order: <span class="prelude-ty">Option</span>&lt;BookOrder&gt;,
     ) -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::new(
             instrument_id,
             action,
-            order.unwrap_or(NULL_ORDER),
+            order,
             flags,
             sequence,
             ts_event,
