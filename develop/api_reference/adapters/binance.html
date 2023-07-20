@@ -1036,6 +1036,15 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.adapters.binance.common.enums.BinanceErrorCode">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  BinanceErrorCode
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.adapters.binance.common.enums.BinanceEnumParser">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -5621,6 +5630,100 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
              </span>
             </span>
            </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              max_retries
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              Optional
+             </span>
+             <span class="p">
+              <span class="pre">
+               [
+              </span>
+             </span>
+             <span class="pre">
+              int
+             </span>
+             <span class="p">
+              <span class="pre">
+               ]
+              </span>
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              retry_delay
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              Optional
+             </span>
+             <span class="p">
+              <span class="pre">
+               [
+              </span>
+             </span>
+             <span class="pre">
+              float
+             </span>
+             <span class="p">
+              <span class="pre">
+               ]
+              </span>
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
            <span class="sig-paren">
             )
            </span>
@@ -5873,6 +5976,42 @@ allows
                 .
 Binance treats cancels with certain combinations of order type and time in force as expired
 events. This config option allows you to treat these uniformally as cancels.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 max_retries
+                </strong>
+                (
+                <em>
+                 PositiveInt
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The maximum number of times a submit or cancel order request will be retried.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 retry_delay
+                </strong>
+                (
+                <em>
+                 PositiveFloat
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The delay (seconds) between retries.
                </p>
               </li>
              </ul>
@@ -10347,6 +10486,171 @@ cached client will be returned.
              Binance
             </cite>
             newOrderRespType.
+           </p>
+          </dd>
+         </dl>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.common.enums.BinanceErrorCode">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+            <span class="w">
+            </span>
+           </em>
+           <span class="sig-name descname">
+            <span class="pre">
+             BinanceErrorCode
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              value
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              names
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              module
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              qualname
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              type
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              start
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              boundary
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#nautilus_trader.adapters.binance.common.enums.BinanceErrorCode" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Bases:
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              Enum
+             </span>
+            </code>
+           </p>
+           <p>
+            Represents a
+            <cite>
+             Binance
+            </cite>
+            error code (covers futures).
            </p>
           </dd>
          </dl>
