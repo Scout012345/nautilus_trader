@@ -3,12 +3,10 @@ name: release
 # Release NautilusTrader on successful completion of the `build` workflow
 
 on:
-  workflow_run:
-    workflows:
-      - build
-    branches: [master, windows-ci]  # Temporary branch to test Windows in CI
-    types:
-      - completed
+  push:
+    # workflows:
+    #   - build
+    branches: [windows-ci]  # Temporary branch to test Windows in CI
 
 jobs:
   test-pip-install:
