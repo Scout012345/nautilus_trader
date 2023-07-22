@@ -236,7 +236,7 @@
 #[pyclass]
 </span><span class="kw">pub struct </span>CryptoPerpetual {
     <span class="kw">pub </span>id: InstrumentId,
-    <span class="kw">pub </span>native_symbol: Symbol,
+    <span class="kw">pub </span>raw_symbol: Symbol,
     <span class="kw">pub </span>quote_currency: Currency,
     <span class="kw">pub </span>base_currency: Currency,
     <span class="kw">pub </span>settlement_currency: Currency,
@@ -260,7 +260,7 @@
     #[allow(clippy::too_many_arguments)]
     </span><span class="kw">pub fn </span>new(
         id: InstrumentId,
-        native_symbol: Symbol,
+        raw_symbol: Symbol,
         base_currency: Currency,
         quote_currency: Currency,
         settlement_currency: Currency,
@@ -280,7 +280,7 @@
     ) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             id,
-            native_symbol,
+            raw_symbol,
             base_currency,
             quote_currency,
             settlement_currency,
@@ -320,8 +320,8 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>.id
     }
 
-    <span class="kw">fn </span>native_symbol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Symbol {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.native_symbol
+    <span class="kw">fn </span>raw_symbol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Symbol {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.raw_symbol
     }
 
     <span class="kw">fn </span>asset_class(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; AssetClass {

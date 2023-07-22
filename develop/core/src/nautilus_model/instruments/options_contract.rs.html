@@ -241,7 +241,7 @@
 #[pyclass]
 </span><span class="kw">pub struct </span>OptionsContract {
     <span class="kw">pub </span>id: InstrumentId,
-    <span class="kw">pub </span>native_symbol: Symbol,
+    <span class="kw">pub </span>raw_symbol: Symbol,
     <span class="kw">pub </span>asset_class: AssetClass,
     <span class="kw">pub </span>underlying: String,
     <span class="kw">pub </span>option_kind: OptionKind,
@@ -266,7 +266,7 @@
     #[allow(clippy::too_many_arguments)]
     </span><span class="kw">pub fn </span>new(
         id: InstrumentId,
-        native_symbol: Symbol,
+        raw_symbol: Symbol,
         asset_class: AssetClass,
         underlying: String,
         option_kind: OptionKind,
@@ -287,7 +287,7 @@
     ) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             id,
-            native_symbol,
+            raw_symbol,
             asset_class,
             underlying,
             option_kind,
@@ -328,8 +328,8 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>.id
     }
 
-    <span class="kw">fn </span>native_symbol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Symbol {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.native_symbol
+    <span class="kw">fn </span>raw_symbol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Symbol {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.raw_symbol
     }
 
     <span class="kw">fn </span>asset_class(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; AssetClass {

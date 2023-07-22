@@ -238,7 +238,7 @@
 #[pyclass]
 </span><span class="kw">pub struct </span>CryptoFuture {
     <span class="kw">pub </span>id: InstrumentId,
-    <span class="kw">pub </span>native_symbol: Symbol,
+    <span class="kw">pub </span>raw_symbol: Symbol,
     <span class="kw">pub </span>underlying: String,
     <span class="kw">pub </span>expiration: UnixNanos,
     <span class="kw">pub </span>currency: Currency,
@@ -262,7 +262,7 @@
     #[allow(clippy::too_many_arguments)]
     </span><span class="kw">pub fn </span>new(
         id: InstrumentId,
-        native_symbol: Symbol,
+        raw_symbol: Symbol,
         underlying: String,
         expiration: UnixNanos,
         currency: Currency,
@@ -282,7 +282,7 @@
     ) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             id,
-            native_symbol,
+            raw_symbol,
             underlying,
             expiration,
             currency,
@@ -322,8 +322,8 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>.id
     }
 
-    <span class="kw">fn </span>native_symbol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Symbol {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.native_symbol
+    <span class="kw">fn </span>raw_symbol(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Symbol {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.raw_symbol
     }
 
     <span class="kw">fn </span>asset_class(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; AssetClass {
