@@ -172,6 +172,8 @@
 <a href="#172" id="172">172</a>
 <a href="#173" id="173">173</a>
 <a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -234,14 +236,16 @@
 /// Note: drop the memory by reconstructing the vec using `from_raw_parts` method
 /// as shown in the test below.
 </span><span class="kw">impl</span>&lt;T&gt; From&lt;Vec&lt;T&gt;&gt; <span class="kw">for </span>CVec {
-    <span class="kw">fn </span>from(data: Vec&lt;T&gt;) -&gt; <span class="self">Self </span>{
+    <span class="kw">fn </span>from(<span class="kw-2">mut </span>data: Vec&lt;T&gt;) -&gt; <span class="self">Self </span>{
         <span class="kw">if </span>data.is_empty() {
             <span class="self">Self</span>::empty()
         } <span class="kw">else </span>{
             <span class="kw">let </span>len = data.len();
             <span class="kw">let </span>cap = data.capacity();
+            <span class="kw">let </span>ptr = data.as_mut_ptr();
+            std::mem::forget(data);
             <span class="self">Self </span>{
-                ptr: <span class="macro">std::ptr::addr_of_mut!</span>(data.leak()[<span class="number">0</span>]).cast::&lt;c_void&gt;(),
+                ptr: ptr <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
                 len,
                 cap,
             }
@@ -307,7 +311,7 @@
 
         <span class="kw">unsafe </span>{
             <span class="comment">// reconstruct the struct and drop the memory to deallocate
-            </span>Vec::from_raw_parts(ptr <span class="kw">as </span><span class="kw-2">*mut </span>u64, len, cap);
+            </span><span class="kw">let _ </span>= Vec::from_raw_parts(ptr <span class="kw">as </span><span class="kw-2">*mut </span>u64, len, cap);
         }
     }
 
