@@ -102,6 +102,7 @@
 <a href="#102" id="102">102</a>
 <a href="#103" id="103">103</a>
 <a href="#104" id="104">104</a>
+<a href="#105" id="105">105</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -167,6 +168,7 @@
 /// - Assumes `ptr` is a valid C string pointer.
 </span><span class="attr">#[no_mangle]
 </span><span class="kw">pub unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>client_id_new(ptr: <span class="kw-2">*const </span>c_char) -&gt; ClientId {
+    <span class="macro">assert!</span>(!ptr.is_null(), <span class="string">&quot;`ptr` was NULL&quot;</span>);
     ClientId::new(CStr::from_ptr(ptr).to_str().expect(<span class="string">&quot;CStr::from_ptr failed&quot;</span>))
 }
 

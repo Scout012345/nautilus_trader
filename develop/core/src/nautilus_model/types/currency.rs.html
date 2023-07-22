@@ -218,6 +218,9 @@
 <a href="#218" id="218">218</a>
 <a href="#219" id="219">219</a>
 <a href="#220" id="220">220</a>
+<a href="#221" id="221">221</a>
+<a href="#222" id="222">222</a>
+<a href="#223" id="223">223</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -350,15 +353,18 @@
     name_ptr: <span class="kw-2">*const </span>c_char,
     currency_type: CurrencyType,
 ) -&gt; Currency {
+    <span class="macro">assert!</span>(!code_ptr.is_null(), <span class="string">&quot;`code_ptr` was NULL&quot;</span>);
+    <span class="macro">assert!</span>(!name_ptr.is_null(), <span class="string">&quot;`name_ptr` was NULL&quot;</span>);
+
     Currency::new(
         CStr::from_ptr(code_ptr)
             .to_str()
-            .expect(<span class="string">&quot;CStr::from_ptr failed&quot;</span>),
+            .expect(<span class="string">&quot;CStr::from_ptr failed for `code_ptr`&quot;</span>),
         precision,
         iso4217,
         CStr::from_ptr(name_ptr)
             .to_str()
-            .expect(<span class="string">&quot;CStr::from_ptr failed&quot;</span>),
+            .expect(<span class="string">&quot;CStr::from_ptr failed for `name_ptr`&quot;</span>),
         currency_type,
     )
 }

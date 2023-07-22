@@ -243,6 +243,7 @@
 <a href="#243" id="243">243</a>
 <a href="#244" id="244">244</a>
 <a href="#245" id="245">245</a>
+<a href="#246" id="246">246</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -365,6 +366,7 @@
 /// - If `ptr` cannot be cast to a valid C string.
 </span><span class="attr">#[no_mangle]
 </span><span class="kw">pub unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>uuid4_from_cstr(ptr: <span class="kw-2">*const </span>c_char) -&gt; UUID4 {
+    <span class="macro">assert!</span>(!ptr.is_null(), <span class="string">&quot;`ptr` was NULL&quot;</span>);
     UUID4::from(
         CStr::from_ptr(ptr)
             .to_str()

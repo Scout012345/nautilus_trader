@@ -238,6 +238,9 @@
 <a href="#238" id="238">238</a>
 <a href="#239" id="239">239</a>
 <a href="#240" id="240">240</a>
+<a href="#241" id="241">241</a>
+<a href="#242" id="242">242</a>
+<a href="#243" id="243">243</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -269,6 +272,8 @@
 /// - Assumes `ptr` is a valid C string pointer.
 </span><span class="attr">#[must_use]
 </span><span class="kw">pub unsafe fn </span>bytes_to_string_vec(ptr: <span class="kw-2">*const </span>c_char) -&gt; Vec&lt;String&gt; {
+    <span class="macro">assert!</span>(!ptr.is_null(), <span class="string">&quot;`ptr` was NULL&quot;</span>);
+
     <span class="kw">let </span>c_str = CStr::from_ptr(ptr);
     <span class="kw">let </span>bytes = c_str.to_bytes();
     <span class="kw">let </span>json_string = std::str::from_utf8(bytes).unwrap();
@@ -342,6 +347,7 @@
 /// - If `ptr` is null.
 </span><span class="attr">#[no_mangle]
 </span><span class="kw">pub unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>precision_from_cstr(ptr: <span class="kw-2">*const </span>c_char) -&gt; u8 {
+    <span class="macro">assert!</span>(!ptr.is_null(), <span class="string">&quot;`ptr` was NULL&quot;</span>);
     precision_from_str(<span class="kw-2">&amp;</span>cstr_to_string(ptr))
 }
 
