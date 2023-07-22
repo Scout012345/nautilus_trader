@@ -322,11 +322,6 @@
 <a href="#322" id="322">322</a>
 <a href="#323" id="323">323</a>
 <a href="#324" id="324">324</a>
-<a href="#325" id="325">325</a>
-<a href="#326" id="326">326</a>
-<a href="#327" id="327">327</a>
-<a href="#328" id="328">328</a>
-<a href="#329" id="329">329</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -363,7 +358,7 @@
 <span class="kw">pub const </span>MONEY_MIN: f64 = -<span class="number">9_223_372_036.0</span>;
 
 <span class="attr">#[repr(C)]
-#[derive(Eq, Clone, Debug)]
+#[derive(Clone, Copy, Debug, Eq)]
 #[pyclass]
 </span><span class="kw">pub struct </span>Money {
     raw: i64,
@@ -585,11 +580,6 @@
 </span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>money_from_raw(raw: i64, currency: Currency) -&gt; Money {
     Money::from_raw(raw, currency)
 }
-
-<span class="attr">#[no_mangle]
-</span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>money_drop(money: Money) {
-    drop(money); <span class="comment">// Memory freed here
-</span>}
 
 <span class="attr">#[no_mangle]
 </span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>money_as_f64(money: <span class="kw-2">&amp;</span>Money) -&gt; f64 {

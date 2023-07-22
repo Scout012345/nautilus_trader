@@ -306,9 +306,9 @@
             size_precision: instrument.size_precision(),
             multiplier: instrument.multiplier(),
             is_inverse: instrument.is_inverse(),
-            base_currency: instrument.base_currency().clone().to_owned().cloned(),
-            quote_currency: instrument.quote_currency().clone(),
-            settlement_currency: instrument.settlement_currency().clone(),
+            base_currency: instrument.base_currency().to_owned().copied(),
+            quote_currency: <span class="kw-2">*</span>instrument.quote_currency(),
+            settlement_currency: <span class="kw-2">*</span>instrument.settlement_currency(),
             ts_init: fill.ts_init,
             ts_opened: fill.ts_event,
             ts_last: fill.ts_event,
@@ -350,14 +350,14 @@
         </span><span class="self">self</span>.trade_ids.push(fill.trade_id);
 
         <span class="comment">// Calculate cumulative commissions
-        </span><span class="kw">let </span>commission_currency = fill.commission.currency.clone();
-        <span class="kw">let </span>commission_clone = fill.commission.clone();
+        </span><span class="kw">let </span>commission_currency = fill.commission.currency;
+        <span class="kw">let </span>commission_clone = fill.commission;
 
         <span class="kw">if let </span><span class="prelude-val">Some</span>(existing_commission) = <span class="self">self</span>.commissions.get_mut(<span class="kw-2">&amp;</span>commission_currency) {
             <span class="kw-2">*</span>existing_commission += commission_clone;
         } <span class="kw">else </span>{
             <span class="self">self</span>.commissions
-                .insert(commission_currency, fill.commission.clone());
+                .insert(commission_currency, fill.commission);
         }
 
         <span class="comment">// Calculate avg prices, points, return, PnL

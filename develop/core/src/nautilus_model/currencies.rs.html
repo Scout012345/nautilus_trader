@@ -591,7 +591,6 @@
 <a href="#591" id="591">591</a>
 <a href="#592" id="592">592</a>
 <a href="#593" id="593">593</a>
-<a href="#594" id="594">594</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -609,10 +608,9 @@
 
 </span><span class="doccomment">//! Defines established currency constants and an internal currency map.
 
-</span><span class="kw">use </span>std::{
-    collections::HashMap,
-    sync::{Arc, Mutex},
-};
+</span><span class="kw">use </span>std::{collections::HashMap, sync::Mutex};
+
+<span class="kw">use </span>ustr::Ustr;
 
 <span class="kw">use crate</span>::{enums::CurrencyType, types::currency::Currency};
 
@@ -621,76 +619,76 @@
     Mutex::new(
         [
             <span class="comment">// Fiat currencies
-            </span>(String::from(<span class="string">&quot;AUD&quot;</span>), AUD.clone()),
-            (String::from(<span class="string">&quot;BRL&quot;</span>), BRL.clone()),
-            (String::from(<span class="string">&quot;CAD&quot;</span>), CAD.clone()),
-            (String::from(<span class="string">&quot;CHF&quot;</span>), CHF.clone()),
-            (String::from(<span class="string">&quot;CNY&quot;</span>), CNY.clone()),
-            (String::from(<span class="string">&quot;CNH&quot;</span>), CNH.clone()),
-            (String::from(<span class="string">&quot;CZK&quot;</span>), CZK.clone()),
-            (String::from(<span class="string">&quot;DKK&quot;</span>), DKK.clone()),
-            (String::from(<span class="string">&quot;EUR&quot;</span>), EUR.clone()),
-            (String::from(<span class="string">&quot;GBP&quot;</span>), GBP.clone()),
-            (String::from(<span class="string">&quot;HKD&quot;</span>), HKD.clone()),
-            (String::from(<span class="string">&quot;HUF&quot;</span>), HUF.clone()),
-            (String::from(<span class="string">&quot;ILS&quot;</span>), ILS.clone()),
-            (String::from(<span class="string">&quot;INR&quot;</span>), INR.clone()),
-            (String::from(<span class="string">&quot;JPY&quot;</span>), JPY.clone()),
-            (String::from(<span class="string">&quot;KRW&quot;</span>), KRW.clone()),
-            (String::from(<span class="string">&quot;MXN&quot;</span>), MXN.clone()),
-            (String::from(<span class="string">&quot;NOK&quot;</span>), NOK.clone()),
-            (String::from(<span class="string">&quot;NZD&quot;</span>), NZD.clone()),
-            (String::from(<span class="string">&quot;PLN&quot;</span>), PLN.clone()),
-            (String::from(<span class="string">&quot;RUB&quot;</span>), RUB.clone()),
-            (String::from(<span class="string">&quot;SAR&quot;</span>), SAR.clone()),
-            (String::from(<span class="string">&quot;SEK&quot;</span>), SEK.clone()),
-            (String::from(<span class="string">&quot;SGD&quot;</span>), SGD.clone()),
-            (String::from(<span class="string">&quot;THB&quot;</span>), THB.clone()),
-            (String::from(<span class="string">&quot;TRY&quot;</span>), TRY.clone()),
-            (String::from(<span class="string">&quot;USD&quot;</span>), USD.clone()),
-            (String::from(<span class="string">&quot;XAG&quot;</span>), XAG.clone()),
-            (String::from(<span class="string">&quot;XAU&quot;</span>), XAU.clone()),
-            (String::from(<span class="string">&quot;ZAR&quot;</span>), ZAR.clone()),
+            </span>(String::from(<span class="string">&quot;AUD&quot;</span>), <span class="kw-2">*</span>AUD),
+            (String::from(<span class="string">&quot;BRL&quot;</span>), <span class="kw-2">*</span>BRL),
+            (String::from(<span class="string">&quot;CAD&quot;</span>), <span class="kw-2">*</span>CAD),
+            (String::from(<span class="string">&quot;CHF&quot;</span>), <span class="kw-2">*</span>CHF),
+            (String::from(<span class="string">&quot;CNY&quot;</span>), <span class="kw-2">*</span>CNY),
+            (String::from(<span class="string">&quot;CNH&quot;</span>), <span class="kw-2">*</span>CNH),
+            (String::from(<span class="string">&quot;CZK&quot;</span>), <span class="kw-2">*</span>CZK),
+            (String::from(<span class="string">&quot;DKK&quot;</span>), <span class="kw-2">*</span>DKK),
+            (String::from(<span class="string">&quot;EUR&quot;</span>), <span class="kw-2">*</span>EUR),
+            (String::from(<span class="string">&quot;GBP&quot;</span>), <span class="kw-2">*</span>GBP),
+            (String::from(<span class="string">&quot;HKD&quot;</span>), <span class="kw-2">*</span>HKD),
+            (String::from(<span class="string">&quot;HUF&quot;</span>), <span class="kw-2">*</span>HUF),
+            (String::from(<span class="string">&quot;ILS&quot;</span>), <span class="kw-2">*</span>ILS),
+            (String::from(<span class="string">&quot;INR&quot;</span>), <span class="kw-2">*</span>INR),
+            (String::from(<span class="string">&quot;JPY&quot;</span>), <span class="kw-2">*</span>JPY),
+            (String::from(<span class="string">&quot;KRW&quot;</span>), <span class="kw-2">*</span>KRW),
+            (String::from(<span class="string">&quot;MXN&quot;</span>), <span class="kw-2">*</span>MXN),
+            (String::from(<span class="string">&quot;NOK&quot;</span>), <span class="kw-2">*</span>NOK),
+            (String::from(<span class="string">&quot;NZD&quot;</span>), <span class="kw-2">*</span>NZD),
+            (String::from(<span class="string">&quot;PLN&quot;</span>), <span class="kw-2">*</span>PLN),
+            (String::from(<span class="string">&quot;RUB&quot;</span>), <span class="kw-2">*</span>RUB),
+            (String::from(<span class="string">&quot;SAR&quot;</span>), <span class="kw-2">*</span>SAR),
+            (String::from(<span class="string">&quot;SEK&quot;</span>), <span class="kw-2">*</span>SEK),
+            (String::from(<span class="string">&quot;SGD&quot;</span>), <span class="kw-2">*</span>SGD),
+            (String::from(<span class="string">&quot;THB&quot;</span>), <span class="kw-2">*</span>THB),
+            (String::from(<span class="string">&quot;TRY&quot;</span>), <span class="kw-2">*</span>TRY),
+            (String::from(<span class="string">&quot;USD&quot;</span>), <span class="kw-2">*</span>USD),
+            (String::from(<span class="string">&quot;XAG&quot;</span>), <span class="kw-2">*</span>XAG),
+            (String::from(<span class="string">&quot;XAU&quot;</span>), <span class="kw-2">*</span>XAU),
+            (String::from(<span class="string">&quot;ZAR&quot;</span>), <span class="kw-2">*</span>ZAR),
             <span class="comment">// Crypto currencies
-            </span>(String::from(<span class="string">&quot;1INCH&quot;</span>), ONEINCH.clone()),
-            (String::from(<span class="string">&quot;AAVE&quot;</span>), AAVE.clone()),
-            (String::from(<span class="string">&quot;ACA&quot;</span>), ACA.clone()),
-            (String::from(<span class="string">&quot;ADA&quot;</span>), ADA.clone()),
-            (String::from(<span class="string">&quot;AVAX&quot;</span>), AVAX.clone()),
-            (String::from(<span class="string">&quot;BCH&quot;</span>), BCH.clone()),
-            (String::from(<span class="string">&quot;BTTC&quot;</span>), BTTC.clone()),
-            (String::from(<span class="string">&quot;BNB&quot;</span>), BNB.clone()),
-            (String::from(<span class="string">&quot;BRZ&quot;</span>), BRZ.clone()),
-            (String::from(<span class="string">&quot;BSV&quot;</span>), BSV.clone()),
-            (String::from(<span class="string">&quot;BTC&quot;</span>), BTC.clone()),
-            (String::from(<span class="string">&quot;BUSD&quot;</span>), BUSD.clone()),
-            (String::from(<span class="string">&quot;DASH&quot;</span>), DASH.clone()),
-            (String::from(<span class="string">&quot;DOGE&quot;</span>), DOGE.clone()),
-            (String::from(<span class="string">&quot;DOT&quot;</span>), DOT.clone()),
-            (String::from(<span class="string">&quot;EOS&quot;</span>), EOS.clone()),
-            (String::from(<span class="string">&quot;ETH&quot;</span>), ETH.clone()),
-            (String::from(<span class="string">&quot;ETHW&quot;</span>), ETHW.clone()),
-            (String::from(<span class="string">&quot;JOE&quot;</span>), JOE.clone()),
-            (String::from(<span class="string">&quot;LINK&quot;</span>), LINK.clone()),
-            (String::from(<span class="string">&quot;LTC&quot;</span>), LTC.clone()),
-            (String::from(<span class="string">&quot;LUNA&quot;</span>), LUNA.clone()),
-            (String::from(<span class="string">&quot;NBT&quot;</span>), NBT.clone()),
-            (String::from(<span class="string">&quot;SOL&quot;</span>), SOL.clone()),
-            (String::from(<span class="string">&quot;TRX&quot;</span>), TRX.clone()),
-            (String::from(<span class="string">&quot;TRYB&quot;</span>), TRYB.clone()),
-            (String::from(<span class="string">&quot;TUSD&quot;</span>), TUSD.clone()),
-            (String::from(<span class="string">&quot;VTC&quot;</span>), VTC.clone()),
-            (String::from(<span class="string">&quot;WSB&quot;</span>), WSB.clone()),
-            (String::from(<span class="string">&quot;XBT&quot;</span>), XBT.clone()),
-            (String::from(<span class="string">&quot;XEC&quot;</span>), XEC.clone()),
-            (String::from(<span class="string">&quot;XLM&quot;</span>), XLM.clone()),
-            (String::from(<span class="string">&quot;XMR&quot;</span>), XMR.clone()),
-            (String::from(<span class="string">&quot;XRP&quot;</span>), XRP.clone()),
-            (String::from(<span class="string">&quot;XTZ&quot;</span>), XTZ.clone()),
-            (String::from(<span class="string">&quot;USDC&quot;</span>), USDC.clone()),
-            (String::from(<span class="string">&quot;USDP&quot;</span>), USDP.clone()),
-            (String::from(<span class="string">&quot;USDT&quot;</span>), USDT.clone()),
-            (String::from(<span class="string">&quot;ZEC&quot;</span>), ZEC.clone()),
+            </span>(String::from(<span class="string">&quot;1INCH&quot;</span>), <span class="kw-2">*</span>ONEINCH),
+            (String::from(<span class="string">&quot;AAVE&quot;</span>), <span class="kw-2">*</span>AAVE),
+            (String::from(<span class="string">&quot;ACA&quot;</span>), <span class="kw-2">*</span>ACA),
+            (String::from(<span class="string">&quot;ADA&quot;</span>), <span class="kw-2">*</span>ADA),
+            (String::from(<span class="string">&quot;AVAX&quot;</span>), <span class="kw-2">*</span>AVAX),
+            (String::from(<span class="string">&quot;BCH&quot;</span>), <span class="kw-2">*</span>BCH),
+            (String::from(<span class="string">&quot;BTTC&quot;</span>), <span class="kw-2">*</span>BTTC),
+            (String::from(<span class="string">&quot;BNB&quot;</span>), <span class="kw-2">*</span>BNB),
+            (String::from(<span class="string">&quot;BRZ&quot;</span>), <span class="kw-2">*</span>BRZ),
+            (String::from(<span class="string">&quot;BSV&quot;</span>), <span class="kw-2">*</span>BSV),
+            (String::from(<span class="string">&quot;BTC&quot;</span>), <span class="kw-2">*</span>BTC),
+            (String::from(<span class="string">&quot;BUSD&quot;</span>), <span class="kw-2">*</span>BUSD),
+            (String::from(<span class="string">&quot;DASH&quot;</span>), <span class="kw-2">*</span>DASH),
+            (String::from(<span class="string">&quot;DOGE&quot;</span>), <span class="kw-2">*</span>DOGE),
+            (String::from(<span class="string">&quot;DOT&quot;</span>), <span class="kw-2">*</span>DOT),
+            (String::from(<span class="string">&quot;EOS&quot;</span>), <span class="kw-2">*</span>EOS),
+            (String::from(<span class="string">&quot;ETH&quot;</span>), <span class="kw-2">*</span>ETH),
+            (String::from(<span class="string">&quot;ETHW&quot;</span>), <span class="kw-2">*</span>ETHW),
+            (String::from(<span class="string">&quot;JOE&quot;</span>), <span class="kw-2">*</span>JOE),
+            (String::from(<span class="string">&quot;LINK&quot;</span>), <span class="kw-2">*</span>LINK),
+            (String::from(<span class="string">&quot;LTC&quot;</span>), <span class="kw-2">*</span>LTC),
+            (String::from(<span class="string">&quot;LUNA&quot;</span>), <span class="kw-2">*</span>LUNA),
+            (String::from(<span class="string">&quot;NBT&quot;</span>), <span class="kw-2">*</span>NBT),
+            (String::from(<span class="string">&quot;SOL&quot;</span>), <span class="kw-2">*</span>SOL),
+            (String::from(<span class="string">&quot;TRX&quot;</span>), <span class="kw-2">*</span>TRX),
+            (String::from(<span class="string">&quot;TRYB&quot;</span>), <span class="kw-2">*</span>TRYB),
+            (String::from(<span class="string">&quot;TUSD&quot;</span>), <span class="kw-2">*</span>TUSD),
+            (String::from(<span class="string">&quot;VTC&quot;</span>), <span class="kw-2">*</span>VTC),
+            (String::from(<span class="string">&quot;WSB&quot;</span>), <span class="kw-2">*</span>WSB),
+            (String::from(<span class="string">&quot;XBT&quot;</span>), <span class="kw-2">*</span>XBT),
+            (String::from(<span class="string">&quot;XEC&quot;</span>), <span class="kw-2">*</span>XEC),
+            (String::from(<span class="string">&quot;XLM&quot;</span>), <span class="kw-2">*</span>XLM),
+            (String::from(<span class="string">&quot;XMR&quot;</span>), <span class="kw-2">*</span>XMR),
+            (String::from(<span class="string">&quot;XRP&quot;</span>), <span class="kw-2">*</span>XRP),
+            (String::from(<span class="string">&quot;XTZ&quot;</span>), <span class="kw-2">*</span>XTZ),
+            (String::from(<span class="string">&quot;USDC&quot;</span>), <span class="kw-2">*</span>USDC),
+            (String::from(<span class="string">&quot;USDP&quot;</span>), <span class="kw-2">*</span>USDP),
+            (String::from(<span class="string">&quot;USDT&quot;</span>), <span class="kw-2">*</span>USDT),
+            (String::from(<span class="string">&quot;ZEC&quot;</span>), <span class="kw-2">*</span>ZEC),
         ]
         .iter()
         .cloned()
@@ -701,487 +699,487 @@
 <span class="macro">lazy_static! </span>{
     <span class="comment">// Fiat currencies
     </span><span class="kw">pub static </span><span class="kw-2">ref </span>AUD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;AUD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;AUD&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">36</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Australian dollar&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Australian dollar&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BRL: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BRL&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BRL&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">986</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Brazilian real&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Brazilian real&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>CAD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;CAD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;CAD&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">124</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Canadian dollar&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Canadian dollar&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>CHF: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;CHF&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;CHF&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">756</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Swiss franc&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Swiss franc&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>CNY: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;CNY&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;CNY&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">156</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Chinese yuan&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Chinese yuan&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>CNH: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;CNH&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;CNH&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Chinese yuan (offshore)&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Chinese yuan (offshore)&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>CZK: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;CZK&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;CZK&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">203</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Czech koruna&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Czech koruna&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>DKK: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;DKK&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;DKK&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">208</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Danish krone&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Danish krone&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
         <span class="kw">pub static </span><span class="kw-2">ref </span>EUR: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;EUR&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;EUR&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">978</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Euro&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Euro&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>GBP: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;GBP&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;GBP&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">826</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;British Pound&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;British Pound&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>HKD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;HKD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;HKD&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">344</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Hong Kong dollar&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Hong Kong dollar&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>HUF: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;HUF&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;HUF&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">348</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Hungarian forint&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Hungarian forint&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>ILS: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;ILS&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;ILS&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">376</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Israeli new shekel&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Israeli new shekel&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>INR: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;INR&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;INR&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">356</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Indian rupee&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Indian rupee&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>JPY: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;JPY&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;JPY&quot;</span>),
         precision: <span class="number">0</span>,
         iso4217: <span class="number">392</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Japanese yen&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Japanese yen&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>KRW: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;KRW&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;KRW&quot;</span>),
         precision: <span class="number">0</span>,
         iso4217: <span class="number">410</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;South Korean won&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;South Korean won&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>MXN: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;MXN&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;MXN&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">484</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Mexican peso&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Mexican peso&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>NOK: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;NOK&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;NOK&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">578</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Norwegian krone&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Norwegian krone&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>NZD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;NZD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;NZD&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">554</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;New Zealand dollar&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;New Zealand dollar&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>PLN: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;PLN&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;PLN&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">985</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Polish złoty&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Polish złoty&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>RUB: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;RUB&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;RUB&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">643</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Russian ruble&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Russian ruble&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>SAR: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;SAR&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;SAR&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">682</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Saudi riyal&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Saudi riyal&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>SEK: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;SEK&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;SEK&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">752</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Swedish krona/kronor&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Swedish krona/kronor&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>SGD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;SGD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;SGD&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">702</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Singapore dollar&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Singapore dollar&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>THB: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;THB&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;THB&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">764</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Thai baht&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Thai baht&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>TRY: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;TRY&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;TRY&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">949</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Turkish lira&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Turkish lira&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>USD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;USD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;USD&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">840</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;United States dollar&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;United States dollar&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XAG: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XAG&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XAG&quot;</span>),
         precision: <span class="number">0</span>,
         iso4217: <span class="number">961</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Silver (one troy ounce)&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Silver (one troy ounce)&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XAU: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XAU&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XAU&quot;</span>),
         precision: <span class="number">0</span>,
         iso4217: <span class="number">959</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Gold (one troy ounce)&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Gold (one troy ounce)&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>ZAR: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;ZAR&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;ZAR&quot;</span>),
         precision: <span class="number">2</span>,
         iso4217: <span class="number">710</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;South African rand&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;South African rand&quot;</span>),
         currency_type: CurrencyType::Fiat,
     };
     <span class="comment">// Crypto currencies
     </span><span class="kw">pub static </span><span class="kw-2">ref </span>ONEINCH: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;1INCH&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;1INCH&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;1inch Network&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;1inch Network&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>AAVE: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;AAVE&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;AAVE&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Aave&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Aave&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>ACA: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;ACA&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;ACA&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Acala Token&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Acala Token&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>ADA: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;ADA&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;ADA&quot;</span>),
         precision: <span class="number">6</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Cardano&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Cardano&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>AVAX: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;AVAX&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;AVAX&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Avalanche&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Avalanche&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BCH: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BCH&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BCH&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Bitcoin Cash&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Bitcoin Cash&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BTC: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BTC&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BTC&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Bitcoin&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Bitcoin&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BTTC: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BTTC&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BTTC&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;BitTorrent&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;BitTorrent&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BNB: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BNB&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BNB&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Binance Coin&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Binance Coin&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BRZ: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BRZ&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BRZ&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Brazilian Digital Token&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Brazilian Digital Token&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BSV: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BSV&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BSV&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Bitcoin SV&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Bitcoin SV&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>BUSD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;BUSD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;BUSD&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Binance USD&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Binance USD&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>DASH: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;DASH&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;DASH&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Dash&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Dash&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>DOGE: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;DOGE&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;DOGE&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Dogecoin&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Dogecoin&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>DOT: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;DOT&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;DOT&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Polkadot&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Polkadot&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>EOS: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;EOS&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;EOS&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;EOS&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;EOS&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>ETH: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;ETH&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;ETH&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Ether&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Ether&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>ETHW: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;ETHW&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;ETHW&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;EthereumPoW&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;EthereumPoW&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>JOE: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;JOE&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;JOE&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;JOE&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;JOE&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>LINK: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;LINK&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;LINK&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Chainlink&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Chainlink&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>LTC: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;LTC&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;LTC&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Litecoin&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Litecoin&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>LUNA: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;LUNA&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;LUNA&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Terra&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Terra&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>NBT: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;NBT&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;NBT&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;NanoByte Token&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;NanoByte Token&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>SOL: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;SOL&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;SOL&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Solana&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Solana&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>TRX: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;TRX&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;TRX&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;TRON&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;TRON&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>TRYB: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;TRYB&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;TRYB&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;BiLira&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;BiLira&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>TUSD: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;TUSD&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;TUSD&quot;</span>),
         precision: <span class="number">4</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;TrueUSD&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;TrueUSD&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>VTC: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;VTC&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;VTC&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Vertcoin&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Vertcoin&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>WSB: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;WSB&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;WSB&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;WallStreetBets DApp&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;WallStreetBets DApp&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XBT: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XBT&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XBT&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Bitcoin&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Bitcoin&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XEC: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XEC&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XEC&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;eCash&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;eCash&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XLM: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XLM&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XLM&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Stellar Lumen&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Stellar Lumen&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XMR: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XMR&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XMR&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Monero&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Monero&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XRP: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XRP&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XRP&quot;</span>),
         precision: <span class="number">6</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Ripple&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Ripple&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>XTZ: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;XTZ&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;XTZ&quot;</span>),
         precision: <span class="number">6</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Tezos&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Tezos&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>USDC: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;USDC&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;USDC&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;USD Coin&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;USD Coin&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>USDP: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;USDP&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;USDP&quot;</span>),
         precision: <span class="number">4</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Pax Dollar&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Pax Dollar&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>USDT: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;USDT&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;USDT&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Tether&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Tether&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>ZEC: Currency = Currency {
-        code: Box::new(Arc::new(String::from(<span class="string">&quot;ZEC&quot;</span>))),
+        code: Ustr::from(<span class="string">&quot;ZEC&quot;</span>),
         precision: <span class="number">8</span>,
         iso4217: <span class="number">0</span>,
-        name: Box::new(Arc::new(String::from(<span class="string">&quot;Zcash&quot;</span>))),
+        name: Ustr::from(<span class="string">&quot;Zcash&quot;</span>),
         currency_type: CurrencyType::Crypto,
     };
     <span class="kw">pub static </span><span class="kw-2">ref </span>CURRENCY_MAP: Mutex&lt;HashMap&lt;String, Currency&gt;&gt; = currency_map();

@@ -349,7 +349,7 @@
                 <span class="kw">if </span><span class="self">self</span>.correlation_index.contains_key(id) {
                     <span class="macro">todo!</span>()
                 } <span class="kw">else </span>{
-                    <span class="self">self</span>.correlation_index.insert(id.clone(), callback);
+                    <span class="self">self</span>.correlation_index.insert(<span class="kw-2">*</span>id, callback);
                     <span class="kw">if let </span><span class="prelude-val">Some</span>(handler) = <span class="self">self</span>.endpoints.get(endpoint) {
                         handler(request)
                     } <span class="kw">else </span>{

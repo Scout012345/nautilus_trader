@@ -814,7 +814,7 @@
         }
 
         <span class="kw">let </span>trader_id_clone = trader_id.value.to_string();
-        <span class="kw">let </span>instance_id_clone = instance_id.value.to_string();
+        <span class="kw">let </span>instance_id_clone = instance_id.to_string();
 
         thread::spawn(<span class="kw">move </span>|| {
             <span class="self">Self</span>::handle_messages(

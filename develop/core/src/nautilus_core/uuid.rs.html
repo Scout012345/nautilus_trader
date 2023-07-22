@@ -242,22 +242,6 @@
 <a href="#242" id="242">242</a>
 <a href="#243" id="243">243</a>
 <a href="#244" id="244">244</a>
-<a href="#245" id="245">245</a>
-<a href="#246" id="246">246</a>
-<a href="#247" id="247">247</a>
-<a href="#248" id="248">248</a>
-<a href="#249" id="249">249</a>
-<a href="#250" id="250">250</a>
-<a href="#251" id="251">251</a>
-<a href="#252" id="252">252</a>
-<a href="#253" id="253">253</a>
-<a href="#254" id="254">254</a>
-<a href="#255" id="255">255</a>
-<a href="#256" id="256">256</a>
-<a href="#257" id="257">257</a>
-<a href="#258" id="258">258</a>
-<a href="#259" id="259">259</a>
-<a href="#260" id="260">260</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -275,31 +259,36 @@
 
 </span><span class="kw">use </span>std::{
     collections::hash_map::DefaultHasher,
-    ffi::{c_char, CStr},
+    ffi::{c_char, CStr, CString},
     fmt::{Debug, Display, Formatter},
     hash::{Hash, Hasher},
     str::FromStr,
-    sync::Arc,
 };
 
 <span class="kw">use </span>serde::{Deserialize, Deserializer, Serialize, Serializer};
 <span class="kw">use </span>uuid::Uuid;
 
-<span class="kw">use </span><span class="kw">crate</span>::string::str_to_cstr;
-
 <span class="attr">#[repr(C)]
-#[derive(Clone, Hash, PartialEq, Eq, Debug)]
+#[derive(Copy, Clone, Hash, PartialEq, Eq, Debug)]
 </span><span class="kw">pub struct </span>UUID4 {
-    <span class="kw">pub </span>value: Box&lt;Arc&lt;String&gt;&gt;,
+    value: [u8; <span class="number">37</span>],
 }
 
 <span class="kw">impl </span>UUID4 {
     <span class="attr">#[must_use]
     </span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
         <span class="kw">let </span>uuid = Uuid::new_v4();
-        UUID4 {
-            value: Box::new(Arc::new(uuid.to_string())),
-        }
+        <span class="kw">let </span>c_string = CString::new(uuid.to_string()).expect(<span class="string">&quot;`CString` conversion failed&quot;</span>);
+        <span class="kw">let </span>bytes = c_string.as_bytes_with_nul();
+        <span class="kw">let </span><span class="kw-2">mut </span>value = [<span class="number">0</span>; <span class="number">37</span>];
+        value[..bytes.len()].copy_from_slice(bytes);
+
+        UUID4 { value }
+    }
+
+    <span class="kw">pub fn </span>to_cstr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>CStr {
+        <span class="comment">// Safety: unwrap is safe here as we always store valid C strings
+        </span>CStr::from_bytes_with_nul(<span class="kw-2">&amp;</span><span class="self">self</span>.value).unwrap()
     }
 }
 
@@ -308,9 +297,12 @@
 
     <span class="kw">fn </span>from_str(s: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Err&gt; {
         <span class="kw">let </span>uuid = Uuid::parse_str(s).map_err(|<span class="kw">_</span>| <span class="string">&quot;Invalid UUID string&quot;</span>)<span class="question-mark">?</span>;
-        <span class="prelude-val">Ok</span>(<span class="self">Self </span>{
-            value: Box::new(Arc::new(uuid.to_string())),
-        })
+        <span class="kw">let </span>c_string = CString::new(uuid.to_string()).expect(<span class="string">&quot;`CString` conversion failed&quot;</span>);
+        <span class="kw">let </span>bytes = c_string.as_bytes_with_nul();
+        <span class="kw">let </span><span class="kw-2">mut </span>value = [<span class="number">0</span>; <span class="number">37</span>];
+        value[..bytes.len()].copy_from_slice(bytes);
+
+        <span class="prelude-val">Ok</span>(UUID4 { value })
     }
 }
 
@@ -328,7 +320,7 @@
 
 <span class="kw">impl </span>Display <span class="kw">for </span>UUID4 {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; std::fmt::Result {
-        <span class="macro">write!</span>(f, <span class="string">&quot;{}&quot;</span>, <span class="self">self</span>.value)
+        <span class="macro">write!</span>(f, <span class="string">&quot;{}&quot;</span>, <span class="self">self</span>.to_cstr().to_string_lossy())
     }
 }
 
@@ -351,6 +343,7 @@
         <span class="prelude-val">Ok</span>(uuid4)
     }
 }
+
 <span class="comment">////////////////////////////////////////////////////////////////////////////////
 // C API
 ////////////////////////////////////////////////////////////////////////////////
@@ -358,16 +351,6 @@
 </span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>uuid4_new() -&gt; UUID4 {
     UUID4::new()
 }
-
-<span class="attr">#[no_mangle]
-</span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>uuid4_clone(uuid4: <span class="kw-2">&amp;</span>UUID4) -&gt; UUID4 {
-    uuid4.clone()
-}
-
-<span class="attr">#[no_mangle]
-</span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>uuid4_drop(uuid4: UUID4) {
-    drop(uuid4); <span class="comment">// Memory freed here
-</span>}
 
 <span class="doccomment">/// Returns a [`UUID4`] from C string pointer.
 ///
@@ -389,7 +372,7 @@
 
 <span class="attr">#[no_mangle]
 </span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>uuid4_to_cstr(uuid: <span class="kw-2">&amp;</span>UUID4) -&gt; <span class="kw-2">*const </span>c_char {
-    str_to_cstr(<span class="kw-2">&amp;</span>uuid.value)
+    uuid.to_cstr().as_ptr()
 }
 
 <span class="attr">#[no_mangle]
@@ -418,7 +401,7 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_uuid4_new() {
         <span class="kw">let </span>uuid = UUID4::new();
-        <span class="kw">let </span>uuid_string = uuid.value.to_string();
+        <span class="kw">let </span>uuid_string = uuid.to_string();
         <span class="kw">let </span>uuid_parsed = Uuid::parse_str(<span class="kw-2">&amp;</span>uuid_string).expect(<span class="string">&quot;Uuid::parse_str failed&quot;</span>);
         <span class="macro">assert_eq!</span>(uuid_parsed.get_version().unwrap(), uuid::Version::Random);
         <span class="macro">assert_eq!</span>(uuid_parsed.to_string().len(), <span class="number">36</span>);
@@ -427,7 +410,7 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_uuid4_default() {
         <span class="kw">let </span>uuid: UUID4 = UUID4::default();
-        <span class="kw">let </span>uuid_string = uuid.value.to_string();
+        <span class="kw">let </span>uuid_string = uuid.to_string();
         <span class="kw">let </span>uuid_parsed = Uuid::parse_str(<span class="kw-2">&amp;</span>uuid_string).expect(<span class="string">&quot;Uuid::parse_str failed&quot;</span>);
         <span class="macro">assert_eq!</span>(uuid_parsed.get_version().unwrap(), uuid::Version::Random);
     }
@@ -436,7 +419,7 @@
     </span><span class="kw">fn </span>test_uuid4_from_str() {
         <span class="kw">let </span>uuid_string = <span class="string">&quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;</span>;
         <span class="kw">let </span>uuid = UUID4::from(uuid_string);
-        <span class="kw">let </span>result_string = uuid.value.to_string();
+        <span class="kw">let </span>result_string = uuid.to_string();
         <span class="kw">let </span>result_parsed = Uuid::parse_str(<span class="kw-2">&amp;</span>result_string).expect(<span class="string">&quot;Uuid::parse_str failed&quot;</span>);
         <span class="kw">let </span>expected_parsed = Uuid::parse_str(uuid_string).expect(<span class="string">&quot;Uuid::parse_str failed&quot;</span>);
         <span class="macro">assert_eq!</span>(result_parsed, expected_parsed);
@@ -461,24 +444,9 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_c_api_uuid4_new() {
         <span class="kw">let </span>uuid = uuid4_new();
-        <span class="kw">let </span>uuid_string = uuid.value.to_string();
+        <span class="kw">let </span>uuid_string = uuid.to_string();
         <span class="kw">let </span>uuid_parsed = Uuid::parse_str(<span class="kw-2">&amp;</span>uuid_string).expect(<span class="string">&quot;Uuid::parse_str failed&quot;</span>);
         <span class="macro">assert_eq!</span>(uuid_parsed.get_version().unwrap(), uuid::Version::Random);
-    }
-
-    <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_c_api_uuid4_clone() {
-        <span class="kw">let </span>uuid_string = <span class="string">&quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;</span>;
-        <span class="kw">let </span>uuid = UUID4::from(uuid_string);
-        <span class="kw">let </span>uuid_cloned = uuid4_clone(<span class="kw-2">&amp;</span>uuid);
-        <span class="macro">assert_eq!</span>(uuid.value.to_string(), uuid_cloned.value.to_string());
-    }
-
-    <span class="attr">#[test]
-    </span><span class="kw">fn </span>test_c_api_uuid4_drop() {
-        <span class="kw">let </span>uuid_string = <span class="string">&quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;</span>;
-        <span class="kw">let </span>uuid = UUID4::from(uuid_string);
-        uuid4_drop(uuid);
     }
 
     <span class="attr">#[test]
@@ -487,7 +455,7 @@
         <span class="kw">let </span>uuid_cstring = CString::new(uuid_string).expect(<span class="string">&quot;CString::new failed&quot;</span>);
         <span class="kw">let </span>uuid_ptr = uuid_cstring.as_ptr();
         <span class="kw">let </span>uuid = <span class="kw">unsafe </span>{ uuid4_from_cstr(uuid_ptr) };
-        <span class="macro">assert_eq!</span>(uuid_string, uuid.value.to_string());
+        <span class="macro">assert_eq!</span>(uuid_string, uuid.to_string());
     }
 
     <span class="attr">#[test]
