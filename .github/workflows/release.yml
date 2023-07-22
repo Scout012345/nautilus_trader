@@ -10,7 +10,6 @@ on:
 
 jobs:
   test-pip-install:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     strategy:
       fail-fast: false
       matrix:
