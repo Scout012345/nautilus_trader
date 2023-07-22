@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["strategy_id_clone","strategy_id_drop","strategy_id_new","strategy_id_to_cstr"],"struct":["StrategyId"]};
+window.SIDEBAR_ITEMS = {"fn":["strategy_id_hash","strategy_id_new"],"struct":["StrategyId"]};

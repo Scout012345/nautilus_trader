@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["trader_id_clone","trader_id_drop","trader_id_new","trader_id_to_cstr"],"struct":["TraderId"]};
+window.SIDEBAR_ITEMS = {"fn":["trader_id_hash","trader_id_new"],"struct":["TraderId"]};
