@@ -397,7 +397,7 @@
 
         <span class="comment">// Iterate over all objects calling the legacy &#39;to_dict&#39; method
         </span><span class="kw">let </span><span class="kw-2">mut </span>data_dicts: Vec&lt;Py&lt;PyDict&gt;&gt; = <span class="macro">vec!</span>[];
-        <span class="kw">for </span>obj <span class="kw">in </span>data.into_iter() {
+        <span class="kw">for </span>obj <span class="kw">in </span>data {
             <span class="kw">let </span>dict: Py&lt;PyDict&gt; = obj
                 .call_method1(py, <span class="string">&quot;to_dict&quot;</span>, (obj.clone(),))<span class="question-mark">?
                 </span>.extract(py)<span class="question-mark">?</span>;

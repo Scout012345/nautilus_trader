@@ -263,6 +263,13 @@
 <a href="#263" id="263">263</a>
 <a href="#264" id="264">264</a>
 <a href="#265" id="265">265</a>
+<a href="#266" id="266">266</a>
+<a href="#267" id="267">267</a>
+<a href="#268" id="268">268</a>
+<a href="#269" id="269">269</a>
+<a href="#270" id="270">270</a>
+<a href="#271" id="271">271</a>
+<a href="#272" id="272">272</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -303,9 +310,10 @@
 ///
 /// - If `s` does not contain `pat`.
 </span><span class="kw">pub fn </span>string_contains(s: <span class="kw-2">&amp;</span>str, pat: <span class="kw-2">&amp;</span>str, desc: <span class="kw-2">&amp;</span>str) {
-    <span class="kw">if </span>!s.contains(pat) {
-        <span class="macro">panic!</span>(<span class="string">&quot;{FAILED} invalid string for {desc} did not contain &#39;{pat}&#39;, was &#39;{s}&#39;&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        s.contains(pat),
+        <span class="string">&quot;{FAILED} invalid string for {desc} did not contain &#39;{pat}&#39;, was &#39;{s}&#39;&quot;
+    </span>);
 }
 
 <span class="doccomment">/// Check `u8`s are equal.
@@ -314,9 +322,10 @@
 ///
 /// - If `lhs` is not equal to `rhs`.
 </span><span class="kw">pub fn </span>u8_equal(lhs: u8, rhs: u8, lhs_param: <span class="kw-2">&amp;</span>str, rhs_param: <span class="kw-2">&amp;</span>str) {
-    <span class="kw">if </span>lhs != rhs {
-        <span class="macro">panic!</span>(<span class="string">&quot;{FAILED} &#39;{lhs_param}&#39; u8 of {lhs} was not equal to &#39;{rhs_param}&#39; `u8` of {rhs}&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        lhs == rhs,
+        <span class="string">&quot;{FAILED} &#39;{lhs_param}&#39; u8 of {lhs} was not equal to &#39;{rhs_param}&#39; `u8` of {rhs}&quot;
+    </span>);
 }
 
 <span class="doccomment">/// Check `u8` value is in range (inclusive).
@@ -325,9 +334,10 @@
 ///
 /// - If `value` is not within range [`l`, `r`].
 </span><span class="kw">pub fn </span>u8_in_range_inclusive(value: u8, l: u8, r: u8, desc: <span class="kw-2">&amp;</span>str) {
-    <span class="kw">if </span>!(value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)) {
-        <span class="macro">panic!</span>(<span class="string">&quot;{FAILED} invalid u8 for {desc} not in range [{l}, {r}], was {value}&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        (value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)),
+        <span class="string">&quot;{FAILED} invalid u8 for {desc} not in range [{l}, {r}], was {value}&quot;
+    </span>);
 }
 
 <span class="doccomment">/// Check `u64` value is in range (inclusive).
@@ -336,9 +346,10 @@
 ///
 /// - If `value` is not within range [`l`, `r`].
 </span><span class="kw">pub fn </span>u64_in_range_inclusive(value: u64, l: u64, r: u64, desc: <span class="kw-2">&amp;</span>str) {
-    <span class="kw">if </span>!(value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)) {
-        <span class="macro">panic!</span>(<span class="string">&quot;{FAILED} invalid u64 for {desc} not in range [{l}, {r}], was {value}&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        (value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)),
+        <span class="string">&quot;{FAILED} invalid u64 for {desc} not in range [{l}, {r}], was {value}&quot;
+    </span>);
 }
 
 <span class="doccomment">/// Check `i64` value is in range (inclusive).
@@ -347,9 +358,10 @@
 ///
 /// - If `value` is not within range [`l`, `r`].
 </span><span class="kw">pub fn </span>i64_in_range_inclusive(value: i64, l: i64, r: i64, desc: <span class="kw-2">&amp;</span>str) {
-    <span class="kw">if </span>!(value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)) {
-        <span class="macro">panic!</span>(<span class="string">&quot;{FAILED} invalid i64 for {desc} not in range [{l}, {r}], was {value}&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        (value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)),
+        <span class="string">&quot;{FAILED} invalid i64 for {desc} not in range [{l}, {r}], was {value}&quot;
+    </span>);
 }
 
 <span class="doccomment">/// Check `f64` value is in range (inclusive).
@@ -358,9 +370,10 @@
 ///
 /// - If `value` is not within range [`l`, `r`].
 </span><span class="kw">pub fn </span>f64_in_range_inclusive(value: f64, l: f64, r: f64, desc: <span class="kw-2">&amp;</span>str) {
-    <span class="kw">if </span>!(value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)) {
-        <span class="macro">panic!</span>(<span class="string">&quot;{FAILED} invalid f64 for {desc} not in range [{l}, {r}], was {value}&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        (value.ge(<span class="kw-2">&amp;</span>l) &amp;&amp; value.le(<span class="kw-2">&amp;</span>r)),
+        <span class="string">&quot;{FAILED} invalid f64 for {desc} not in range [{l}, {r}], was {value}&quot;
+    </span>);
 }
 
 <span class="doccomment">/// Check `f64` value is non negative.
@@ -369,9 +382,10 @@
 ///
 /// - If `value` is negative.
 </span><span class="kw">pub fn </span>f64_non_negative(value: f64, desc: <span class="kw-2">&amp;</span>str) {
-    <span class="kw">if </span>value &lt; <span class="number">0.0 </span>{
-        <span class="macro">panic!</span>(<span class="string">&quot;{FAILED} invalid f64 for {desc} negative, was {value}&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        value &gt;= <span class="number">0.0</span>,
+        <span class="string">&quot;{FAILED} invalid f64 for {desc} negative, was {value}&quot;
+    </span>);
 }
 
 <span class="comment">////////////////////////////////////////////////////////////////////////////////

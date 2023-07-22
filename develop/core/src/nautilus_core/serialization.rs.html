@@ -54,14 +54,14 @@
 
 </span><span class="kw">use </span>serde::{Deserialize, Serialize};
 
-<span class="doccomment">/// Represents types which are serializable for JSON and MsgPack specifications.
+<span class="doccomment">/// Represents types which are serializable for JSON and `MsgPack` specifications.
 </span><span class="kw">pub trait </span>Serializable: Serialize + <span class="kw">for</span>&lt;<span class="lifetime">&#39;de</span>&gt; Deserialize&lt;<span class="lifetime">&#39;de</span>&gt; {
     <span class="doccomment">/// Deserialize an object from JSON encoded bytes.
     </span><span class="kw">fn </span>from_json_bytes(data: Vec&lt;u8&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, serde_json::Error&gt; {
         serde_json::from_slice(<span class="kw-2">&amp;</span>data)
     }
 
-    <span class="doccomment">/// Deserialize an object from MsgPack encoded bytes.
+    <span class="doccomment">/// Deserialize an object from `MsgPack` encoded bytes.
     </span><span class="kw">fn </span>from_msgpack_bytes(data: Vec&lt;u8&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, rmp_serde::decode::Error&gt; {
         rmp_serde::from_slice(<span class="kw-2">&amp;</span>data)
     }
@@ -71,7 +71,7 @@
         serde_json::to_vec(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Serialize an object to MsgPack encoded bytes.
+    <span class="doccomment">/// Serialize an object to `MsgPack` encoded bytes.
     </span><span class="kw">fn </span>as_msgpack_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;u8&gt;, rmp_serde::encode::Error&gt; {
         rmp_serde::to_vec_named(<span class="self">self</span>)
     }

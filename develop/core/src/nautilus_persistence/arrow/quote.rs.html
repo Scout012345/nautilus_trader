@@ -418,7 +418,7 @@
         metadata: <span class="kw-2">&amp;</span>HashMap&lt;String, String&gt;,
         record_batch: RecordBatch,
     ) -&gt; Vec&lt;Data&gt; {
-        <span class="kw">let </span>ticks: Vec&lt;QuoteTick&gt; = QuoteTick::decode_batch(metadata, record_batch);
+        <span class="kw">let </span>ticks: Vec&lt;<span class="self">Self</span>&gt; = <span class="self">Self</span>::decode_batch(metadata, record_batch);
         ticks.into_iter().map(Data::from).collect()
     }
 }
@@ -456,7 +456,7 @@
         <span class="comment">// Create test data
         </span><span class="kw">let </span>instrument_id = InstrumentId::from_str(<span class="string">&quot;AAPL.NASDAQ&quot;</span>).unwrap();
         <span class="kw">let </span>tick1 = QuoteTick {
-            instrument_id: instrument_id.clone(),
+            instrument_id: instrument_id,
             bid: Price::new(<span class="number">100.10</span>, <span class="number">2</span>),
             ask: Price::new(<span class="number">101.50</span>, <span class="number">2</span>),
             bid_size: Quantity::new(<span class="number">1000.0</span>, <span class="number">0</span>),
@@ -490,17 +490,17 @@
 
         <span class="macro">assert_eq!</span>(columns.len(), <span class="number">6</span>);
         <span class="macro">assert_eq!</span>(bid_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(bid_values.value(<span class="number">0</span>), <span class="number">100100000000</span>);
-        <span class="macro">assert_eq!</span>(bid_values.value(<span class="number">1</span>), <span class="number">100750000000</span>);
+        <span class="macro">assert_eq!</span>(bid_values.value(<span class="number">0</span>), <span class="number">100_100_000_000</span>);
+        <span class="macro">assert_eq!</span>(bid_values.value(<span class="number">1</span>), <span class="number">100_750_000_000</span>);
         <span class="macro">assert_eq!</span>(ask_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(ask_values.value(<span class="number">0</span>), <span class="number">101500000000</span>);
-        <span class="macro">assert_eq!</span>(ask_values.value(<span class="number">1</span>), <span class="number">100200000000</span>);
+        <span class="macro">assert_eq!</span>(ask_values.value(<span class="number">0</span>), <span class="number">101_500_000_000</span>);
+        <span class="macro">assert_eq!</span>(ask_values.value(<span class="number">1</span>), <span class="number">100_200_000_000</span>);
         <span class="macro">assert_eq!</span>(bid_size_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(bid_size_values.value(<span class="number">0</span>), <span class="number">1000000000000</span>);
-        <span class="macro">assert_eq!</span>(bid_size_values.value(<span class="number">1</span>), <span class="number">750000000000</span>);
+        <span class="macro">assert_eq!</span>(bid_size_values.value(<span class="number">0</span>), <span class="number">1_000_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(bid_size_values.value(<span class="number">1</span>), <span class="number">750_000_000_000</span>);
         <span class="macro">assert_eq!</span>(ask_size_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(ask_size_values.value(<span class="number">0</span>), <span class="number">500000000000</span>);
-        <span class="macro">assert_eq!</span>(ask_size_values.value(<span class="number">1</span>), <span class="number">300000000000</span>);
+        <span class="macro">assert_eq!</span>(ask_size_values.value(<span class="number">0</span>), <span class="number">500_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(ask_size_values.value(<span class="number">1</span>), <span class="number">300_000_000_000</span>);
         <span class="macro">assert_eq!</span>(ts_event_values.len(), <span class="number">2</span>);
         <span class="macro">assert_eq!</span>(ts_event_values.value(<span class="number">0</span>), <span class="number">1</span>);
         <span class="macro">assert_eq!</span>(ts_event_values.value(<span class="number">1</span>), <span class="number">2</span>);

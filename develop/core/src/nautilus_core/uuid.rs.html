@@ -242,6 +242,7 @@
 <a href="#242" id="242">242</a>
 <a href="#243" id="243">243</a>
 <a href="#244" id="244">244</a>
+<a href="#245" id="245">245</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -283,10 +284,11 @@
         <span class="kw">let </span><span class="kw-2">mut </span>value = [<span class="number">0</span>; <span class="number">37</span>];
         value[..bytes.len()].copy_from_slice(bytes);
 
-        UUID4 { value }
+        <span class="self">Self </span>{ value }
     }
 
-    <span class="kw">pub fn </span>to_cstr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>CStr {
+    <span class="attr">#[must_use]
+    </span><span class="kw">pub fn </span>to_cstr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>CStr {
         <span class="comment">// Safety: unwrap is safe here as we always store valid C strings
         </span>CStr::from_bytes_with_nul(<span class="kw-2">&amp;</span><span class="self">self</span>.value).unwrap()
     }
@@ -302,7 +304,7 @@
         <span class="kw">let </span><span class="kw-2">mut </span>value = [<span class="number">0</span>; <span class="number">37</span>];
         value[..bytes.len()].copy_from_slice(bytes);
 
-        <span class="prelude-val">Ok</span>(UUID4 { value })
+        <span class="prelude-val">Ok</span>(<span class="self">Self </span>{ value })
     }
 }
 
@@ -339,7 +341,7 @@
         </span>D: Deserializer&lt;<span class="lifetime">&#39;de</span>&gt;,
     {
         <span class="kw">let </span>uuid4_str: <span class="kw-2">&amp;</span>str = Deserialize::deserialize(_deserializer)<span class="question-mark">?</span>;
-        <span class="kw">let </span>uuid4: UUID4 = uuid4_str.into();
+        <span class="kw">let </span>uuid4: <span class="self">Self </span>= uuid4_str.into();
         <span class="prelude-val">Ok</span>(uuid4)
     }
 }

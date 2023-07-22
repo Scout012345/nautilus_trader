@@ -235,6 +235,9 @@
 <a href="#235" id="235">235</a>
 <a href="#236" id="236">236</a>
 <a href="#237" id="237">237</a>
+<a href="#238" id="238">238</a>
+<a href="#239" id="239">239</a>
+<a href="#240" id="240">240</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -264,6 +267,7 @@
 /// # Safety
 ///
 /// - Assumes `ptr` is a valid C string pointer.
+</span><span class="attr">#[must_use]
 </span><span class="kw">pub unsafe fn </span>bytes_to_string_vec(ptr: <span class="kw-2">*const </span>c_char) -&gt; Vec&lt;String&gt; {
     <span class="kw">let </span>c_str = CStr::from_ptr(ptr);
     <span class="kw">let </span>bytes = c_str.to_bytes();
@@ -282,7 +286,8 @@
     }
 }
 
-<span class="kw">pub fn </span>string_vec_to_bytes(strings: Vec&lt;String&gt;) -&gt; <span class="kw-2">*const </span>c_char {
+<span class="attr">#[must_use]
+</span><span class="kw">pub fn </span>string_vec_to_bytes(strings: Vec&lt;String&gt;) -&gt; <span class="kw-2">*const </span>c_char {
     <span class="kw">let </span>json_string = serde_json::to_string(<span class="kw-2">&amp;</span>strings).unwrap();
     <span class="kw">let </span>c_string = CString::new(json_string).unwrap();
     c_string.into_raw()
@@ -305,7 +310,7 @@
         <span class="kw">match </span>result {
             <span class="prelude-val">Ok</span>(map) =&gt; <span class="prelude-val">Some</span>(map),
             <span class="prelude-val">Err</span>(err) =&gt; {
-                <span class="macro">eprintln!</span>(<span class="string">&quot;Error parsing JSON: {}&quot;</span>, err);
+                <span class="macro">eprintln!</span>(<span class="string">&quot;Error parsing JSON: {err}&quot;</span>);
                 <span class="prelude-val">None
             </span>}
         }
@@ -313,6 +318,7 @@
 }
 
 <span class="doccomment">/// Return the decimal precision inferred from the given string.
+</span><span class="attr">#[must_use]
 </span><span class="kw">pub fn </span>precision_from_str(s: <span class="kw-2">&amp;</span>str) -&gt; u8 {
     <span class="kw">let </span>lower_s = s.to_lowercase();
     <span class="comment">// Handle scientific notation

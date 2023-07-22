@@ -251,7 +251,7 @@
 </span><span class="attr">#[no_mangle]
 </span><span class="kw">pub unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>cstr_drop(ptr: <span class="kw-2">*const </span>c_char) {
     <span class="macro">assert!</span>(!ptr.is_null(), <span class="string">&quot;`ptr` was NULL&quot;</span>);
-    <span class="kw">let </span>cstring = CString::from_raw(ptr <span class="kw">as </span><span class="kw-2">*mut </span>c_char);
+    <span class="kw">let </span>cstring = CString::from_raw(ptr.cast_mut());
     drop(cstring);
 }
 

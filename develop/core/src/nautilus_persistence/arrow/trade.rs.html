@@ -426,7 +426,7 @@
         metadata: <span class="kw-2">&amp;</span>HashMap&lt;String, String&gt;,
         record_batch: RecordBatch,
     ) -&gt; Vec&lt;Data&gt; {
-        <span class="kw">let </span>ticks: Vec&lt;TradeTick&gt; = TradeTick::decode_batch(metadata, record_batch);
+        <span class="kw">let </span>ticks: Vec&lt;<span class="self">Self</span>&gt; = <span class="self">Self</span>::decode_batch(metadata, record_batch);
         ticks.into_iter().map(Data::from).collect()
     }
 }
@@ -469,7 +469,7 @@
         <span class="kw">let </span>metadata = TradeTick::get_metadata(<span class="kw-2">&amp;</span>instrument_id, <span class="number">2</span>, <span class="number">0</span>);
 
         <span class="kw">let </span>tick1 = TradeTick {
-            instrument_id: instrument_id.clone(),
+            instrument_id: instrument_id,
             price: Price::new(<span class="number">100.10</span>, <span class="number">2</span>),
             size: Quantity::new(<span class="number">1000.0</span>, <span class="number">0</span>),
             aggressor_side: AggressorSide::Buyer,
@@ -502,11 +502,11 @@
 
         <span class="macro">assert_eq!</span>(columns.len(), <span class="number">6</span>);
         <span class="macro">assert_eq!</span>(price_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">0</span>), <span class="number">100100000000</span>);
-        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">1</span>), <span class="number">100500000000</span>);
+        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">0</span>), <span class="number">100_100_000_000</span>);
+        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">1</span>), <span class="number">100_500_000_000</span>);
         <span class="macro">assert_eq!</span>(size_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">0</span>), <span class="number">1000000000000</span>);
-        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">1</span>), <span class="number">500000000000</span>);
+        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">0</span>), <span class="number">1_000_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">1</span>), <span class="number">500_000_000_000</span>);
         <span class="macro">assert_eq!</span>(aggressor_side_values.len(), <span class="number">2</span>);
         <span class="macro">assert_eq!</span>(aggressor_side_values.value(<span class="number">0</span>), <span class="number">1</span>);
         <span class="macro">assert_eq!</span>(aggressor_side_values.value(<span class="number">1</span>), <span class="number">2</span>);
@@ -526,7 +526,7 @@
         <span class="kw">let </span>instrument_id = InstrumentId::from_str(<span class="string">&quot;AAPL.NASDAQ&quot;</span>).unwrap();
         <span class="kw">let </span>metadata = TradeTick::get_metadata(<span class="kw-2">&amp;</span>instrument_id, <span class="number">2</span>, <span class="number">0</span>);
 
-        <span class="kw">let </span>price = Int64Array::from(<span class="macro">vec!</span>[<span class="number">1000000000000</span>, <span class="number">1010000000000</span>]);
+        <span class="kw">let </span>price = Int64Array::from(<span class="macro">vec!</span>[<span class="number">1_000_000_000_000</span>, <span class="number">1_010_000_000_000</span>]);
         <span class="kw">let </span>size = UInt64Array::from(<span class="macro">vec!</span>[<span class="number">1000</span>, <span class="number">900</span>]);
         <span class="kw">let </span>aggressor_side = UInt8Array::from(<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">1</span>]); <span class="comment">// 0 for BUY, 1 for SELL
         </span><span class="kw">let </span>trade_id = StringArray::from(<span class="macro">vec!</span>[<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>]);

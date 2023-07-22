@@ -113,11 +113,11 @@
         buf: <span class="kw-2">&amp;mut </span>ReadBuf&lt;<span class="lifetime">&#39;_</span>&gt;,
     ) -&gt; Poll&lt;std::io::Result&lt;()&gt;&gt; {
         <span class="kw">match </span><span class="self">self</span>.get_mut() {
-            MaybeTlsStream::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_read(cx, buf),
+            <span class="self">Self</span>::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_read(cx, buf),
             <span class="attr">#[cfg(feature = <span class="string">&quot;native-tls&quot;</span>)]
-            </span>MaybeTlsStream::NativeTls(s) =&gt; Pin::new(s).poll_read(cx, buf),
+            </span><span class="self">Self</span>::NativeTls(s) =&gt; Pin::new(s).poll_read(cx, buf),
             <span class="attr">#[cfg(feature = <span class="string">&quot;__rustls-tls&quot;</span>)]
-            </span>MaybeTlsStream::Rustls(s) =&gt; Pin::new(s).poll_read(cx, buf),
+            </span><span class="self">Self</span>::Rustls(s) =&gt; Pin::new(s).poll_read(cx, buf),
         }
     }
 }
@@ -129,21 +129,21 @@
         buf: <span class="kw-2">&amp;</span>[u8],
     ) -&gt; Poll&lt;<span class="prelude-ty">Result</span>&lt;usize, std::io::Error&gt;&gt; {
         <span class="kw">match </span><span class="self">self</span>.get_mut() {
-            MaybeTlsStream::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_write(cx, buf),
+            <span class="self">Self</span>::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_write(cx, buf),
             <span class="attr">#[cfg(feature = <span class="string">&quot;native-tls&quot;</span>)]
-            </span>MaybeTlsStream::NativeTls(s) =&gt; Pin::new(s).poll_write(cx, buf),
+            </span><span class="self">Self</span>::NativeTls(s) =&gt; Pin::new(s).poll_write(cx, buf),
             <span class="attr">#[cfg(feature = <span class="string">&quot;__rustls-tls&quot;</span>)]
-            </span>MaybeTlsStream::Rustls(s) =&gt; Pin::new(s).poll_write(cx, buf),
+            </span><span class="self">Self</span>::Rustls(s) =&gt; Pin::new(s).poll_write(cx, buf),
         }
     }
 
     <span class="kw">fn </span>poll_flush(<span class="self">self</span>: Pin&lt;<span class="kw-2">&amp;mut </span><span class="self">Self</span>&gt;, cx: <span class="kw-2">&amp;mut </span>Context&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; Poll&lt;<span class="prelude-ty">Result</span>&lt;(), std::io::Error&gt;&gt; {
         <span class="kw">match </span><span class="self">self</span>.get_mut() {
-            MaybeTlsStream::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_flush(cx),
+            <span class="self">Self</span>::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_flush(cx),
             <span class="attr">#[cfg(feature = <span class="string">&quot;native-tls&quot;</span>)]
-            </span>MaybeTlsStream::NativeTls(s) =&gt; Pin::new(s).poll_flush(cx),
+            </span><span class="self">Self</span>::NativeTls(s) =&gt; Pin::new(s).poll_flush(cx),
             <span class="attr">#[cfg(feature = <span class="string">&quot;__rustls-tls&quot;</span>)]
-            </span>MaybeTlsStream::Rustls(s) =&gt; Pin::new(s).poll_flush(cx),
+            </span><span class="self">Self</span>::Rustls(s) =&gt; Pin::new(s).poll_flush(cx),
         }
     }
 
@@ -152,11 +152,11 @@
         cx: <span class="kw-2">&amp;mut </span>Context&lt;<span class="lifetime">&#39;_</span>&gt;,
     ) -&gt; Poll&lt;<span class="prelude-ty">Result</span>&lt;(), std::io::Error&gt;&gt; {
         <span class="kw">match </span><span class="self">self</span>.get_mut() {
-            MaybeTlsStream::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_shutdown(cx),
+            <span class="self">Self</span>::Plain(<span class="kw-2">ref mut </span>s) =&gt; Pin::new(s).poll_shutdown(cx),
             <span class="attr">#[cfg(feature = <span class="string">&quot;native-tls&quot;</span>)]
-            </span>MaybeTlsStream::NativeTls(s) =&gt; Pin::new(s).poll_shutdown(cx),
+            </span><span class="self">Self</span>::NativeTls(s) =&gt; Pin::new(s).poll_shutdown(cx),
             <span class="attr">#[cfg(feature = <span class="string">&quot;__rustls-tls&quot;</span>)]
-            </span>MaybeTlsStream::Rustls(s) =&gt; Pin::new(s).poll_shutdown(cx),
+            </span><span class="self">Self</span>::Rustls(s) =&gt; Pin::new(s).poll_shutdown(cx),
         }
     }
 }

@@ -512,7 +512,7 @@
         metadata: <span class="kw-2">&amp;</span>HashMap&lt;String, String&gt;,
         record_batch: RecordBatch,
     ) -&gt; Vec&lt;Data&gt; {
-        <span class="kw">let </span>deltas: Vec&lt;OrderBookDelta&gt; = OrderBookDelta::decode_batch(metadata, record_batch);
+        <span class="kw">let </span>deltas: Vec&lt;<span class="self">Self</span>&gt; = <span class="self">Self</span>::decode_batch(metadata, record_batch);
         deltas.into_iter().map(Data::from).collect()
     }
 }
@@ -554,7 +554,7 @@
         <span class="kw">let </span>metadata = OrderBookDelta::get_metadata(<span class="kw-2">&amp;</span>instrument_id, <span class="number">2</span>, <span class="number">0</span>);
 
         <span class="kw">let </span>delta1 = OrderBookDelta {
-            instrument_id: instrument_id.clone(),
+            instrument_id: instrument_id,
             action: BookAction::Add,
             order: BookOrder {
                 side: OrderSide::Buy,
@@ -605,11 +605,11 @@
         <span class="macro">assert_eq!</span>(side_values.value(<span class="number">0</span>), <span class="number">1</span>);
         <span class="macro">assert_eq!</span>(side_values.value(<span class="number">1</span>), <span class="number">2</span>);
         <span class="macro">assert_eq!</span>(price_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">0</span>), <span class="number">100100000000</span>);
-        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">1</span>), <span class="number">101200000000</span>);
+        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">0</span>), <span class="number">100_100_000_000</span>);
+        <span class="macro">assert_eq!</span>(price_values.value(<span class="number">1</span>), <span class="number">101_200_000_000</span>);
         <span class="macro">assert_eq!</span>(size_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">0</span>), <span class="number">100000000000</span>);
-        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">1</span>), <span class="number">200000000000</span>);
+        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">0</span>), <span class="number">100_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(size_values.value(<span class="number">1</span>), <span class="number">200_000_000_000</span>);
         <span class="macro">assert_eq!</span>(order_id_values.len(), <span class="number">2</span>);
         <span class="macro">assert_eq!</span>(order_id_values.value(<span class="number">0</span>), <span class="number">1</span>);
         <span class="macro">assert_eq!</span>(order_id_values.value(<span class="number">1</span>), <span class="number">2</span>);
@@ -634,7 +634,7 @@
 
         <span class="kw">let </span>action = UInt8Array::from(<span class="macro">vec!</span>[<span class="number">1</span>, <span class="number">2</span>]);
         <span class="kw">let </span>side = UInt8Array::from(<span class="macro">vec!</span>[<span class="number">1</span>, <span class="number">1</span>]);
-        <span class="kw">let </span>price = Int64Array::from(<span class="macro">vec!</span>[<span class="number">100100000000</span>, <span class="number">100100000000</span>]);
+        <span class="kw">let </span>price = Int64Array::from(<span class="macro">vec!</span>[<span class="number">100_100_000_000</span>, <span class="number">100_100_000_000</span>]);
         <span class="kw">let </span>size = UInt64Array::from(<span class="macro">vec!</span>[<span class="number">10000</span>, <span class="number">9000</span>]);
         <span class="kw">let </span>order_id = UInt64Array::from(<span class="macro">vec!</span>[<span class="number">1</span>, <span class="number">2</span>]);
         <span class="kw">let </span>flags = UInt8Array::from(<span class="macro">vec!</span>[<span class="number">0</span>, <span class="number">0</span>]);

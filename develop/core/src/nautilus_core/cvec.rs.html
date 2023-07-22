@@ -171,6 +171,7 @@
 <a href="#171" id="171">171</a>
 <a href="#172" id="172">172</a>
 <a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -215,7 +216,8 @@
 </span><span class="kw">unsafe impl </span>Send <span class="kw">for </span>CVec {}
 
 <span class="kw">impl </span>CVec {
-    <span class="kw">pub fn </span>empty() -&gt; <span class="self">Self </span>{
+    <span class="attr">#[must_use]
+    </span><span class="kw">pub fn </span>empty() -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             <span class="comment">// Explicitly type cast the pointer to some type to satisfy the
             // compiler. Since the pointer is null it works for any type.
@@ -239,7 +241,7 @@
             <span class="kw">let </span>len = data.len();
             <span class="kw">let </span>cap = data.capacity();
             <span class="self">Self </span>{
-                ptr: (<span class="kw-2">&amp;mut </span>data.leak()[<span class="number">0</span>] <span class="kw">as </span><span class="kw-2">*mut </span>T).cast::&lt;c_void&gt;(),
+                ptr: <span class="macro">std::ptr::addr_of_mut!</span>(data.leak()[<span class="number">0</span>]).cast::&lt;c_void&gt;(),
                 len,
                 cap,
             }

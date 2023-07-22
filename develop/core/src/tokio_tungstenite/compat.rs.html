@@ -196,7 +196,7 @@
 <a href="#196" id="196">196</a>
 <a href="#197" id="197">197</a>
 <a href="#198" id="198">198</a>
-</pre></div><pre class="rust"><code><span class="kw">use </span>log::<span class="kw-2">*</span>;
+</pre></div><pre class="rust"><code><span class="kw">use </span>log::trace;
 <span class="kw">use </span>std::{
     io::{Read, Write},
     pin::Pin,
@@ -208,13 +208,13 @@
 <span class="kw">use </span>tokio::io::{AsyncRead, AsyncWrite, ReadBuf};
 <span class="kw">use </span>tungstenite::Error <span class="kw">as </span>WsError;
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span>ContextWaker {
+<span class="kw">pub enum </span>ContextWaker {
     Read,
     Write,
 }
 
 <span class="attr">#[derive(Debug)]
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>AllowStd&lt;S&gt; {
+</span><span class="kw">pub struct </span>AllowStd&lt;S&gt; {
     inner: S,
     <span class="comment">// We have the problem that external read operations (i.e. the Stream impl)
     // can trigger both read (AsyncRead) and write (AsyncWrite) operations on
@@ -248,7 +248,7 @@
 // read waker slot for this, but any would do.
 //
 // Don&#39;t ever use this from multiple tasks at the same time!
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">trait </span>SetWaker {
+</span><span class="kw">pub trait </span>SetWaker {
     <span class="kw">fn </span>set_waker(<span class="kw-2">&amp;</span><span class="self">self</span>, waker: <span class="kw-2">&amp;</span>task::Waker);
 }
 
@@ -384,7 +384,7 @@
     }
 }
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>cvt&lt;T&gt;(r: <span class="prelude-ty">Result</span>&lt;T, WsError&gt;) -&gt; Poll&lt;<span class="prelude-ty">Result</span>&lt;T, WsError&gt;&gt; {
+<span class="kw">pub fn </span>cvt&lt;T&gt;(r: <span class="prelude-ty">Result</span>&lt;T, WsError&gt;) -&gt; Poll&lt;<span class="prelude-ty">Result</span>&lt;T, WsError&gt;&gt; {
     <span class="kw">match </span>r {
         <span class="prelude-val">Ok</span>(v) =&gt; Poll::Ready(<span class="prelude-val">Ok</span>(v)),
         <span class="prelude-val">Err</span>(WsError::Io(<span class="kw-2">ref </span>e)) <span class="kw">if </span>e.kind() == std::io::ErrorKind::WouldBlock =&gt; {

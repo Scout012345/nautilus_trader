@@ -180,7 +180,7 @@
 </pre></div><pre class="rust"><code><span class="attr">#[cfg(feature = <span class="string">&quot;handshake&quot;</span>)]
 </span><span class="kw">use </span><span class="kw">crate</span>::compat::SetWaker;
 <span class="kw">use crate</span>::{compat::AllowStd, WebSocketStream};
-<span class="kw">use </span>log::<span class="kw-2">*</span>;
+<span class="kw">use </span>log::trace;
 <span class="kw">use </span>std::{
     future::Future,
     io::{Read, Write},
@@ -198,7 +198,7 @@
     ClientHandshake, ServerHandshake,
 };
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async fn </span>without_handshake&lt;F, S&gt;(stream: S, f: F) -&gt; WebSocketStream&lt;S&gt;
+<span class="kw">pub async fn </span>without_handshake&lt;F, S&gt;(stream: S, f: F) -&gt; WebSocketStream&lt;S&gt;
 <span class="kw">where
     </span>F: FnOnce(AllowStd&lt;S&gt;) -&gt; WebSocket&lt;AllowStd&lt;S&gt;&gt; + Unpin,
     S: AsyncRead + AsyncWrite + Unpin,
@@ -270,7 +270,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;handshake&quot;</span>)]
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async fn </span>client_handshake&lt;F, S&gt;(
+</span><span class="kw">pub async fn </span>client_handshake&lt;F, S&gt;(
     stream: S,
     f: F,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(WebSocketStream&lt;S&gt;, Response), Error&lt;ClientHandshake&lt;AllowStd&lt;S&gt;&gt;&gt;&gt;
@@ -289,7 +289,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;handshake&quot;</span>)]
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async fn </span>server_handshake&lt;C, F, S&gt;(
+</span><span class="kw">pub async fn </span>server_handshake&lt;C, F, S&gt;(
     stream: S,
     f: F,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;WebSocketStream&lt;S&gt;, Error&lt;ServerHandshake&lt;AllowStd&lt;S&gt;, C&gt;&gt;&gt;

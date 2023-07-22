@@ -437,7 +437,7 @@
         metadata: <span class="kw-2">&amp;</span>HashMap&lt;String, String&gt;,
         record_batch: RecordBatch,
     ) -&gt; Vec&lt;Data&gt; {
-        <span class="kw">let </span>bars: Vec&lt;Bar&gt; = Bar::decode_batch(metadata, record_batch);
+        <span class="kw">let </span>bars: Vec&lt;<span class="self">Self</span>&gt; = <span class="self">Self</span>::decode_batch(metadata, record_batch);
         bars.into_iter().map(Data::from).collect()
     }
 }
@@ -477,7 +477,7 @@
         <span class="kw">let </span>metadata = Bar::get_metadata(<span class="kw-2">&amp;</span>bar_type, <span class="number">2</span>, <span class="number">0</span>);
 
         <span class="kw">let </span>bar1 = Bar::new(
-            bar_type.clone(),
+            bar_type,
             Price::new(<span class="number">100.10</span>, <span class="number">2</span>),
             Price::new(<span class="number">102.00</span>, <span class="number">2</span>),
             Price::new(<span class="number">100.00</span>, <span class="number">2</span>),
@@ -511,20 +511,20 @@
 
         <span class="macro">assert_eq!</span>(columns.len(), <span class="number">7</span>);
         <span class="macro">assert_eq!</span>(open_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(open_values.value(<span class="number">0</span>), <span class="number">100100000000</span>);
-        <span class="macro">assert_eq!</span>(open_values.value(<span class="number">1</span>), <span class="number">100000000000</span>);
+        <span class="macro">assert_eq!</span>(open_values.value(<span class="number">0</span>), <span class="number">100_100_000_000</span>);
+        <span class="macro">assert_eq!</span>(open_values.value(<span class="number">1</span>), <span class="number">100_000_000_000</span>);
         <span class="macro">assert_eq!</span>(high_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(high_values.value(<span class="number">0</span>), <span class="number">102000000000</span>);
-        <span class="macro">assert_eq!</span>(high_values.value(<span class="number">1</span>), <span class="number">100000000000</span>);
+        <span class="macro">assert_eq!</span>(high_values.value(<span class="number">0</span>), <span class="number">102_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(high_values.value(<span class="number">1</span>), <span class="number">100_000_000_000</span>);
         <span class="macro">assert_eq!</span>(low_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(low_values.value(<span class="number">0</span>), <span class="number">100000000000</span>);
-        <span class="macro">assert_eq!</span>(low_values.value(<span class="number">1</span>), <span class="number">100000000000</span>);
+        <span class="macro">assert_eq!</span>(low_values.value(<span class="number">0</span>), <span class="number">100_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(low_values.value(<span class="number">1</span>), <span class="number">100_000_000_000</span>);
         <span class="macro">assert_eq!</span>(close_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(close_values.value(<span class="number">0</span>), <span class="number">101000000000</span>);
-        <span class="macro">assert_eq!</span>(close_values.value(<span class="number">1</span>), <span class="number">100100000000</span>);
+        <span class="macro">assert_eq!</span>(close_values.value(<span class="number">0</span>), <span class="number">101_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(close_values.value(<span class="number">1</span>), <span class="number">100_100_000_000</span>);
         <span class="macro">assert_eq!</span>(volume_values.len(), <span class="number">2</span>);
-        <span class="macro">assert_eq!</span>(volume_values.value(<span class="number">0</span>), <span class="number">1100000000000</span>);
-        <span class="macro">assert_eq!</span>(volume_values.value(<span class="number">1</span>), <span class="number">1110000000000</span>);
+        <span class="macro">assert_eq!</span>(volume_values.value(<span class="number">0</span>), <span class="number">1_100_000_000_000</span>);
+        <span class="macro">assert_eq!</span>(volume_values.value(<span class="number">1</span>), <span class="number">1_110_000_000_000</span>);
         <span class="macro">assert_eq!</span>(ts_event_values.len(), <span class="number">2</span>);
         <span class="macro">assert_eq!</span>(ts_event_values.value(<span class="number">0</span>), <span class="number">1</span>);
         <span class="macro">assert_eq!</span>(ts_event_values.value(<span class="number">1</span>), <span class="number">2</span>);
@@ -538,11 +538,11 @@
         <span class="kw">let </span>bar_type = BarType::from_str(<span class="string">&quot;AAPL.NASDAQ-1-MINUTE-LAST-INTERNAL&quot;</span>).unwrap();
         <span class="kw">let </span>metadata = Bar::get_metadata(<span class="kw-2">&amp;</span>bar_type, <span class="number">2</span>, <span class="number">0</span>);
 
-        <span class="kw">let </span>open = Int64Array::from(<span class="macro">vec!</span>[<span class="number">100100000000</span>, <span class="number">10000000000</span>]);
-        <span class="kw">let </span>high = Int64Array::from(<span class="macro">vec!</span>[<span class="number">102000000000</span>, <span class="number">10000000000</span>]);
-        <span class="kw">let </span>low = Int64Array::from(<span class="macro">vec!</span>[<span class="number">100000000000</span>, <span class="number">10000000000</span>]);
-        <span class="kw">let </span>close = Int64Array::from(<span class="macro">vec!</span>[<span class="number">101000000000</span>, <span class="number">10010000000</span>]);
-        <span class="kw">let </span>volume = UInt64Array::from(<span class="macro">vec!</span>[<span class="number">11000000000</span>, <span class="number">10000000000</span>]);
+        <span class="kw">let </span>open = Int64Array::from(<span class="macro">vec!</span>[<span class="number">100_100_000_000</span>, <span class="number">10_000_000_000</span>]);
+        <span class="kw">let </span>high = Int64Array::from(<span class="macro">vec!</span>[<span class="number">102_000_000_000</span>, <span class="number">10_000_000_000</span>]);
+        <span class="kw">let </span>low = Int64Array::from(<span class="macro">vec!</span>[<span class="number">100_000_000_000</span>, <span class="number">10_000_000_000</span>]);
+        <span class="kw">let </span>close = Int64Array::from(<span class="macro">vec!</span>[<span class="number">101_000_000_000</span>, <span class="number">10_010_000_000</span>]);
+        <span class="kw">let </span>volume = UInt64Array::from(<span class="macro">vec!</span>[<span class="number">11_000_000_000</span>, <span class="number">10_000_000_000</span>]);
         <span class="kw">let </span>ts_event = UInt64Array::from(<span class="macro">vec!</span>[<span class="number">1</span>, <span class="number">2</span>]);
         <span class="kw">let </span>ts_init = UInt64Array::from(<span class="macro">vec!</span>[<span class="number">3</span>, <span class="number">4</span>]);
 

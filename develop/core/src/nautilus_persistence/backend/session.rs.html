@@ -356,6 +356,7 @@
 <a href="#356" id="356">356</a>
 <a href="#357" id="357">357</a>
 <a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -687,7 +688,8 @@
 }
 
 <span class="kw">impl </span>DataQueryResult {
-    <span class="kw">pub fn </span>new(result: QueryResult&lt;Data&gt;) -&gt; <span class="self">Self </span>{
+    <span class="attr">#[must_use]
+    </span><span class="kw">pub fn </span>new(result: QueryResult&lt;Data&gt;) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             result,
             chunk: <span class="prelude-val">None</span>,
