@@ -5566,6 +5566,40 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              use_reduce_only
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               use_position_ids
              </span>
             </span>
@@ -5916,6 +5950,29 @@ If
                  default False
                 </em>
                 ) – If the client is connecting to a Binance testnet.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 use_reduce_only
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default True
+                </em>
+                ) – If
+                <cite>
+                 reduce_only
+                </cite>
+                instructions are sent through to the exchange.
+If True then will assign the value on orders sent to the exchange, otherwise will always be False.
                </p>
               </li>
               <li>
