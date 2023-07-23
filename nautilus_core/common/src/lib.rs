@@ -13,6 +13,7 @@
 //  limitations under the License.
 // -------------------------------------------------------------------------------------------------
 
+#![feature(thread_id_value)]
 pub mod clock;
 pub mod clock_api;
 pub mod enums;

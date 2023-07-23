@@ -290,7 +290,8 @@ cdef extern from "../includes/common.h":
                           const char *file_name_ptr,
                           const char *file_format_ptr,
                           const char *component_levels_ptr,
-                          uint8_t is_bypassed);
+                          uint8_t is_bypassed,
+                          const char *name);
 
     void logger_drop(Logger_API logger);
 

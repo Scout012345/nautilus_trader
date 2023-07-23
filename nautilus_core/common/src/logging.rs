@@ -20,7 +20,7 @@ use std::{
     io::{self, BufWriter, Stderr, Stdout, Write},
     path::{Path, PathBuf},
     sync::mpsc::{channel, Receiver, SendError, Sender},
-    thread,
+    thread::{self, current},
 };
 
 use chrono::{prelude::*, Utc};
@@ -90,9 +90,14 @@ impl Logger {
         file_format: Option<String>,
         component_levels: Option<HashMap<String, Value>>,
         is_bypassed: bool,
+        name: Option<String>,
     ) -> Self {
         let (tx, rx) = channel::<LogEvent>();
         let mut level_filters = HashMap::<String, LogLevel>::new();
+
+        dbg!(
+            &name
+        );
 
         if let Some(component_levels_map) = component_levels {
             for (key, value) in component_levels_map {
@@ -111,7 +116,7 @@ impl Logger {
         let trader_id_clone = trader_id.value.to_string();
         let instance_id_clone = instance_id.to_string();
 
-        thread::spawn(move || {
+        let handle = thread::spawn(move || {
             Self::handle_messages(
                 &trader_id_clone,
                 &instance_id_clone,
@@ -124,6 +129,11 @@ impl Logger {
                 rx,
             )
         });
+
+        dbg!(
+            "Created receiver thread with id: {}",
+            handle.thread().id().as_u64(),
+        );
 
         Logger {
             trader_id,
@@ -256,6 +266,11 @@ impl Logger {
         // Finally ensure remaining buffers are flushed
         Self::flush_stderr(&mut err_buf);
         Self::flush_stdout(&mut out_buf);
+
+        dbg!(
+            "Dropped receiver thread with id: {}",
+            current().id().as_u64()
+        );
     }
 
     fn should_rotate_file(file_path: &Path) -> bool {
@@ -453,6 +468,7 @@ mod tests {
             None,
             None,
             false,
+            None,
         )
     }
 
@@ -548,6 +564,7 @@ mod tests {
             None,
             None,
             false,
+            None,
         );
 
         logger.info(
@@ -613,6 +630,7 @@ mod tests {
                 Value::from("ERROR"), // <-- This should be filtered
             )))),
             false,
+            None,
         );
 
         logger.info(
@@ -667,6 +685,7 @@ mod tests {
             Some("json".to_string()),
             None,
             false,
+            None,
         );
 
         logger.info(

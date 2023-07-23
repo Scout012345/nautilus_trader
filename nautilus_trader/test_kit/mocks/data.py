@@ -90,7 +90,7 @@ def aud_usd_data_loader(catalog: ParquetDataCatalog):
             yield tick
 
     clock = TestClock()
-    logger = Logger(clock)
+    logger = Logger(clock, name = "data")
 
     instrument_provider = InstrumentProvider(
         venue=venue,

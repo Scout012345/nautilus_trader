@@ -76,6 +76,7 @@ pub unsafe extern "C" fn logger_new(
     file_format_ptr: *const c_char,
     component_levels_ptr: *const c_char,
     is_bypassed: u8,
+    name: *const c_char,
 ) -> Logger_API {
     Logger_API(Box::new(Logger::new(
         TraderId::new(&cstr_to_string(trader_id_ptr)),
@@ -92,6 +93,7 @@ pub unsafe extern "C" fn logger_new(
         optional_cstr_to_string(file_format_ptr),
         optional_bytes_to_json(component_levels_ptr),
         is_bypassed != 0,
+        optional_cstr_to_string(name),
     )))
 }
 

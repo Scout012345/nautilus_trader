@@ -106,7 +106,7 @@ cdef class Actor(Component):
         clock = LiveClock()
         super().__init__(
             clock=clock,
-            logger=Logger(clock=clock),
+            logger=Logger(clock=clock, name = "actor"),
             component_id=component_id,
             config=config.dict(),
         )

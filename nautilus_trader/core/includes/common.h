@@ -430,7 +430,8 @@ struct Logger_API logger_new(const char *trader_id_ptr,
                              const char *file_name_ptr,
                              const char *file_format_ptr,
                              const char *component_levels_ptr,
-                             uint8_t is_bypassed);
+                             uint8_t is_bypassed,
+                             const char *name);
 
 void logger_drop(struct Logger_API logger);
 

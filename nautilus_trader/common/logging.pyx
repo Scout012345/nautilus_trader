@@ -110,6 +110,7 @@ cdef class Logger:
         str file_format = None,
         dict component_levels: dict[ComponentId, LogLevel] = None,
         bint bypass = False,
+        str name = None,
     ):
         if trader_id is None:
             trader_id = TraderId("TRADER-000")
@@ -134,6 +135,7 @@ cdef class Logger:
             pystr_to_cstr(file_format) if file_format else NULL,
             pybytes_to_cstr(msgspec.json.encode(component_levels)) if component_levels is not None else NULL,
             bypass,
+            pystr_to_cstr(name) if name else NULL,
         )
 
     def __del__(self) -> None:
