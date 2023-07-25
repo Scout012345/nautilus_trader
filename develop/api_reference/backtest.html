@@ -2248,6 +2248,15 @@
                 </code>
                </a>
               </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.backtest.exchange.SimulatedExchange.use_reduce_only">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  SimulatedExchange.use_reduce_only
+                 </span>
+                </code>
+               </a>
+              </li>
              </ul>
             </li>
             <li class="md-nav__item">
@@ -11223,7 +11232,19 @@ a venue with a
               =
              </span>
              <span class="pre">
-              False
+              False,
+             </span>
+             <span class="pre">
+              use_reduce_only:
+             </span>
+             <span class="pre">
+              bool
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              True
              </span>
             </em>
             <span class="sig-paren">
@@ -11604,6 +11625,28 @@ generate new position IDs.
                   default False
                  </em>
                  ) – If venue order and position IDs will be randomly generated UUID4s.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  use_reduce_only
+                 </strong>
+                 (
+                 <em>
+                  bool
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  default True
+                 </em>
+                 ) – If the
+                 <cite>
+                  reduce_only
+                 </cite>
+                 execution instruction on orders will be honored.
                 </p>
                </li>
               </ul>
@@ -13544,7 +13587,13 @@ following the run iterations.
             bool
            </span>
            <span class="pre">
-            use_random_ids=False
+            use_random_ids=False,
+           </span>
+           <span class="pre">
+            bool
+           </span>
+           <span class="pre">
+            use_reduce_only=True
            </span>
           </em>
           <span class="sig-paren">
@@ -13901,6 +13950,28 @@ following the run iterations.
                 default False
                </em>
                ) – If venue order and position IDs will be randomly generated UUID4s.
+              </p>
+             </li>
+             <li>
+              <p>
+               <strong>
+                use_reduce_only
+               </strong>
+               (
+               <em>
+                bool
+               </em>
+               <em>
+                ,
+               </em>
+               <em>
+                default True
+               </em>
+               ) – If the
+               <cite>
+                reduce_only
+               </cite>
+               execution instruction on orders will be honored.
               </p>
              </li>
             </ul>
@@ -16586,6 +16657,42 @@ following the run iterations.
            <dd>
             <p>
              If venue order and position IDs will be randomly generated UUID4s.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <cite>
+                bool
+               </cite>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py attribute">
+           <dt class="sig sig-object py" id="nautilus_trader.backtest.exchange.SimulatedExchange.use_reduce_only">
+            <span class="sig-name descname">
+             <span class="pre">
+              use_reduce_only
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.backtest.exchange.SimulatedExchange.use_reduce_only" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             If the
+             <cite>
+              reduce_only
+             </cite>
+             option on orders will be honored.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
