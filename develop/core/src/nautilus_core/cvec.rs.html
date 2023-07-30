@@ -245,7 +245,7 @@
             <span class="kw">let </span>ptr = data.as_mut_ptr();
             std::mem::forget(data);
             <span class="self">Self </span>{
-                ptr: ptr <span class="kw">as </span><span class="kw-2">*mut </span>c_void,
+                ptr: ptr.cast::&lt;std::ffi::c_void&gt;(),
                 len,
                 cap,
             }
