@@ -361,6 +361,11 @@
                 </a>
                </li>
                <li class="md-nav__item">
+                <a class="md-nav__link" href="../concepts/advanced/synthetic_instruments.html">
+                 Synthetic instruments
+                </a>
+               </li>
+               <li class="md-nav__item">
                 <a class="md-nav__link" href="../concepts/advanced/portfolio_statistics.html">
                  Portfolio Statistics
                 </a>
@@ -575,11 +580,6 @@
              <li class="md-nav__item">
               <a class="md-nav__link" href="msgbus.html">
                Message Bus
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="network.html">
-               Network
               </a>
              </li>
              <li class="md-nav__item">
@@ -2036,6 +2036,24 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.live.data_engine.LiveDataEngine.subscribed_synthetic_quotes">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  LiveDataEngine.subscribed_synthetic_quotes()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.live.data_engine.LiveDataEngine.subscribed_synthetic_trades">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  LiveDataEngine.subscribed_synthetic_trades()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.live.data_engine.LiveDataEngine.subscribed_tickers">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -2804,15 +2822,6 @@
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.filter_unclaimed_external_orders">
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  LiveExecutionEngine.filter_unclaimed_external_orders
-                 </span>
-                </code>
-               </a>
-              </li>
-              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.flush_db">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -2835,6 +2844,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   LiveExecutionEngine.get_external_order_claim()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.get_external_order_claims_instruments">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  LiveExecutionEngine.get_external_order_claims_instruments()
                  </span>
                 </code>
                </a>
@@ -3545,6 +3563,24 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.live.node.TradingNode.maintain_heartbeat">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  TradingNode.maintain_heartbeat()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.live.node.TradingNode.snapshot_open_positions">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  TradingNode.snapshot_open_positions()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.live.node.TradingNode.run_async">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -3655,9 +3691,11 @@ design of a single efficient event loop, by default
          <cite>
           LiveDataClient
          </cite>
-         class is responsible for interfacing with a particular API
-which may be presented directly by an exchange, or broker intermediary. It
-could also be possible to write clients for specialized data publishers.
+         class is responsible for interfacing with a particular API which
+may be presented directly by an exchange, or broker intermediary.
+        </p>
+        <p>
+         It could also be possible to write clients for specialized data publishers.
         </p>
         <dl class="py class">
          <dt class="sig sig-object py" id="nautilus_trader.live.data_client.LiveDataClient">
@@ -3732,23 +3770,22 @@ could also be possible to write clients for specialized data publishers.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.Venue" title="nautilus_trader.model.identifiers.Venue">
              <span class="pre">
-              Venue
+              nautilus_trader.model.identifiers.Venue
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
           </em>
@@ -3856,14 +3893,6 @@ could also be possible to write clients for specialized data publishers.
            </span>
            <span class="n">
             <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
-            <span class="pre">
              dict
             </span>
             <span class="p">
@@ -3889,10 +3918,17 @@ could also be possible to write clients for specialized data publishers.
               ]
              </span>
             </span>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
            <span class="w">
@@ -4246,20 +4282,19 @@ could also be possible to write clients for specialized data publishers.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
                str
               </span>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -4340,20 +4375,19 @@ could also be possible to write clients for specialized data publishers.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
                str
               </span>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -4390,8 +4424,8 @@ could also be possible to write clients for specialized data publishers.
            </dt>
            <dd>
             <p>
-             Run the given coroutine with error handling and optional callback
-actions when done.
+             Run the given coroutine with error handling and optional callback actions when
+done.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -5993,23 +6027,22 @@ then the component state will not change, and an error will be logged.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.Venue" title="nautilus_trader.model.identifiers.Venue">
              <span class="pre">
-              Venue
+              nautilus_trader.model.identifiers.Venue
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
           </em>
@@ -6139,14 +6172,6 @@ then the component state will not change, and an error will be logged.
            </span>
            <span class="n">
             <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
-            <span class="pre">
              dict
             </span>
             <span class="p">
@@ -6172,10 +6197,17 @@ then the component state will not change, and an error will be logged.
               ]
              </span>
             </span>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
            <span class="w">
@@ -6543,20 +6575,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
                str
               </span>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -6637,20 +6668,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
                str
               </span>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -6687,8 +6717,8 @@ then the component state will not change, and an error will be logged.
            </dt>
            <dd>
             <p>
-             Run the given coroutine with error handling and optional callback
-actions when done.
+             Run the given coroutine with error handling and optional callback actions when
+done.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -11512,23 +11542,22 @@ then the component state will not change, and an error will be logged.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="config.html#nautilus_trader.config.live.LiveDataEngineConfig" title="nautilus_trader.config.live.LiveDataEngineConfig">
              <span class="pre">
-              LiveDataEngineConfig
+              nautilus_trader.config.live.LiveDataEngineConfig
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
            <span class="w">
@@ -11774,20 +11803,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -11838,20 +11866,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -11902,20 +11929,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -11966,20 +11992,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -14769,6 +14794,116 @@ then the component state will not change, and an error will be logged.
            </dd>
           </dl>
           <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.live.data_engine.LiveDataEngine.subscribed_synthetic_quotes">
+            <span class="sig-name descname">
+             <span class="pre">
+              subscribed_synthetic_quotes
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               list
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.live.data_engine.LiveDataEngine.subscribed_synthetic_quotes" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return the synthetic instrument quote ticks subscribed to.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                list[InstrumentId]
+               </em>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.live.data_engine.LiveDataEngine.subscribed_synthetic_trades">
+            <span class="sig-name descname">
+             <span class="pre">
+              subscribed_synthetic_trades
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               list
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.live.data_engine.LiveDataEngine.subscribed_synthetic_trades" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return the synthetic instrument trade ticks subscribed to.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                list[InstrumentId]
+               </em>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
            <dt class="sig sig-object py" id="nautilus_trader.live.data_engine.LiveDataEngine.subscribed_tickers">
             <span class="sig-name descname">
              <span class="pre">
@@ -14951,8 +15086,8 @@ then the component state will not change, and an error will be logged.
          <cite>
           LiveExecutionClient
          </cite>
-         class is responsible for interfacing with a particular
-API which may be presented directly by an exchange, or broker intermediary.
+         class is responsible for interfacing with a particular API
+which may be presented directly by an exchange, or broker intermediary.
         </p>
         <dl class="py class">
          <dt class="sig sig-object py" id="nautilus_trader.live.execution_client.LiveExecutionClient">
@@ -15027,23 +15162,22 @@ API which may be presented directly by an exchange, or broker intermediary.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.Venue" title="nautilus_trader.model.identifiers.Venue">
              <span class="pre">
-              Venue
+              nautilus_trader.model.identifiers.Venue
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
           </em>
@@ -15102,23 +15236,22 @@ API which may be presented directly by an exchange, or broker intermediary.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="model/currency.html#nautilus_trader.model.currency.Currency" title="nautilus_trader.model.currency.Currency">
              <span class="pre">
-              Currency
+              nautilus_trader.model.currency.Currency
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
           </em>
@@ -15248,14 +15381,6 @@ API which may be presented directly by an exchange, or broker intermediary.
            </span>
            <span class="n">
             <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
-            <span class="pre">
              dict
             </span>
             <span class="p">
@@ -15281,10 +15406,17 @@ API which may be presented directly by an exchange, or broker intermediary.
               ]
              </span>
             </span>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
            <span class="w">
@@ -15714,20 +15846,19 @@ API which may be presented directly by an exchange, or broker intermediary.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
                str
               </span>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -15808,20 +15939,19 @@ API which may be presented directly by an exchange, or broker intermediary.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
                str
               </span>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -15858,8 +15988,8 @@ API which may be presented directly by an exchange, or broker intermediary.
            </dt>
            <dd>
             <p>
-             Run the given coroutine with error handling and optional callback
-actions when done.
+             Run the given coroutine with error handling and optional callback actions when
+done.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -16515,23 +16645,22 @@ actions when done.
              <span class="w">
              </span>
              <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ClientOrderId" title="nautilus_trader.model.identifiers.ClientOrderId">
                <span class="pre">
-                ClientOrderId
+                nautilus_trader.model.identifiers.ClientOrderId
                </span>
               </a>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -16564,23 +16693,22 @@ actions when done.
              <span class="w">
              </span>
              <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.VenueOrderId" title="nautilus_trader.model.identifiers.VenueOrderId">
                <span class="pre">
-                VenueOrderId
+                nautilus_trader.model.identifiers.VenueOrderId
                </span>
               </a>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -16606,23 +16734,22 @@ actions when done.
               →
              </span>
              <span class="sig-return-typehint">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
               <a class="reference internal" href="execution.html#nautilus_trader.execution.reports.OrderStatusReport" title="nautilus_trader.execution.reports.OrderStatusReport">
                <span class="pre">
-                OrderStatusReport
+                nautilus_trader.execution.reports.OrderStatusReport
                </span>
               </a>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
             </span>
@@ -16790,23 +16917,22 @@ actions when done.
              <span class="w">
              </span>
              <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                <span class="pre">
-                InstrumentId
+                nautilus_trader.model.identifiers.InstrumentId
                </span>
               </a>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -16840,20 +16966,19 @@ actions when done.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
+               pandas._libs.tslibs.timestamps.Timestamp
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Timestamp
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
              <span class="w">
@@ -16887,20 +17012,19 @@ actions when done.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
+               pandas._libs.tslibs.timestamps.Timestamp
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Timestamp
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
              <span class="w">
@@ -17129,23 +17253,22 @@ actions when done.
              <span class="w">
              </span>
              <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                <span class="pre">
-                InstrumentId
+                nautilus_trader.model.identifiers.InstrumentId
                </span>
               </a>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -17178,23 +17301,22 @@ actions when done.
              <span class="w">
              </span>
              <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.VenueOrderId" title="nautilus_trader.model.identifiers.VenueOrderId">
                <span class="pre">
-                VenueOrderId
+                nautilus_trader.model.identifiers.VenueOrderId
                </span>
               </a>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -17228,20 +17350,19 @@ actions when done.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
+               pandas._libs.tslibs.timestamps.Timestamp
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Timestamp
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
              <span class="w">
@@ -17275,20 +17396,19 @@ actions when done.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
+               pandas._libs.tslibs.timestamps.Timestamp
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Timestamp
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
              <span class="w">
@@ -17485,23 +17605,22 @@ actions when done.
              <span class="w">
              </span>
              <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                <span class="pre">
-                InstrumentId
+                nautilus_trader.model.identifiers.InstrumentId
                </span>
               </a>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -17535,20 +17654,19 @@ actions when done.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
+               pandas._libs.tslibs.timestamps.Timestamp
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Timestamp
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
              <span class="w">
@@ -17582,20 +17700,19 @@ actions when done.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
+               pandas._libs.tslibs.timestamps.Timestamp
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Timestamp
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
              <span class="w">
@@ -17773,20 +17890,19 @@ actions when done.
              </span>
              <span class="n">
               <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
                int
               </span>
+              <span class="w">
+              </span>
               <span class="p">
                <span class="pre">
-                ]
+                |
                </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
               </span>
              </span>
              <span class="w">
@@ -17814,9 +17930,21 @@ actions when done.
              <span class="sig-return-typehint">
               <a class="reference internal" href="execution.html#nautilus_trader.execution.reports.ExecutionMassStatus" title="nautilus_trader.execution.reports.ExecutionMassStatus">
                <span class="pre">
-                ExecutionMassStatus
+                nautilus_trader.execution.reports.ExecutionMassStatus
                </span>
               </a>
+              <span class="w">
+              </span>
+              <span class="p">
+               <span class="pre">
+                |
+               </span>
+              </span>
+              <span class="w">
+              </span>
+              <span class="pre">
+               None
+              </span>
              </span>
             </span>
             <a class="headerlink" href="#nautilus_trader.live.execution_client.LiveExecutionClient.generate_mass_status" title="Permalink to this definition">
@@ -17864,9 +17992,12 @@ actions when done.
              </dt>
              <dd class="field-even">
               <p>
-               <em>
-                ExecutionMassStatus
-               </em>
+               ExecutionMassStatus or
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 None
+                </span>
+               </code>
               </p>
              </dd>
             </dl>
@@ -21612,23 +21743,22 @@ then the component state will not change, and an error will be logged.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="config.html#nautilus_trader.config.live.LiveExecEngineConfig" title="nautilus_trader.config.live.LiveExecEngineConfig">
              <span class="pre">
-              LiveExecEngineConfig
+              nautilus_trader.config.live.LiveExecEngineConfig
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
            <span class="w">
@@ -21925,20 +22055,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -21989,20 +22118,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -22053,20 +22181,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -22482,7 +22609,8 @@ running on.
            </dt>
            <dd>
             <p>
-             Reconcile the internal execution state with all execution clients (external state).
+             Reconcile the internal execution state with all execution clients (external
+state).
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -23407,29 +23535,6 @@ then the component state will not change, and an error will be logged.
             </div>
            </dd>
           </dl>
-          <dl class="py attribute">
-           <dt class="sig sig-object py" id="nautilus_trader.live.execution_engine.LiveExecutionEngine.filter_unclaimed_external_orders">
-            <span class="sig-name descname">
-             <span class="pre">
-              filter_unclaimed_external_orders
-             </span>
-            </span>
-            <a class="headerlink" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.filter_unclaimed_external_orders" title="Permalink to this definition">
-             ¶
-            </a>
-           </dt>
-           <dd>
-            <p>
-             If unclaimed order events with an EXTERNAL strategy ID should be filtered/dropped.
-            </p>
-            <p>
-             :returns
-             <cite>
-              bool
-             </cite>
-            </p>
-           </dd>
-          </dl>
           <dl class="py method">
            <dt class="sig sig-object py" id="nautilus_trader.live.execution_engine.LiveExecutionEngine.flush_db">
             <span class="sig-name descname">
@@ -23634,6 +23739,61 @@ then the component state will not change, and an error will be logged.
                  None
                 </span>
                </code>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.live.execution_engine.LiveExecutionEngine.get_external_order_claims_instruments">
+            <span class="sig-name descname">
+             <span class="pre">
+              get_external_order_claims_instruments
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               set
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.live.execution_engine.LiveExecutionEngine.get_external_order_claims_instruments" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Get all external order claims instrument IDs.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                set[InstrumentId]
+               </em>
               </p>
              </dd>
             </dl>
@@ -25189,23 +25349,22 @@ then the component state will not change, and an error will be logged.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="config.html#nautilus_trader.config.live.LiveRiskEngineConfig" title="nautilus_trader.config.live.LiveRiskEngineConfig">
              <span class="pre">
-              LiveRiskEngineConfig
+              nautilus_trader.config.live.LiveRiskEngineConfig
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
            <span class="w">
@@ -25393,20 +25552,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -25457,20 +25615,19 @@ then the component state will not change, and an error will be logged.
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               _asyncio.Task
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               Task
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -27471,23 +27628,22 @@ then the component state will not change, and an error will be logged.
            <span class="w">
            </span>
            <span class="n">
-            <span class="pre">
-             Optional
-            </span>
-            <span class="p">
-             <span class="pre">
-              [
-             </span>
-            </span>
             <a class="reference internal" href="config.html#nautilus_trader.config.live.TradingNodeConfig" title="nautilus_trader.config.live.TradingNodeConfig">
              <span class="pre">
-              TradingNodeConfig
+              nautilus_trader.config.live.TradingNodeConfig
              </span>
             </a>
+            <span class="w">
+            </span>
             <span class="p">
              <span class="pre">
-              ]
+              |
              </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="pre">
+             None
             </span>
            </span>
            <span class="w">
@@ -27521,20 +27677,19 @@ then the component state will not change, and an error will be logged.
            </span>
            <span class="n">
             <span class="pre">
-             Optional
+             asyncio.events.AbstractEventLoop
+            </span>
+            <span class="w">
             </span>
             <span class="p">
              <span class="pre">
-              [
+              |
              </span>
+            </span>
+            <span class="w">
             </span>
             <span class="pre">
-             AbstractEventLoop
-            </span>
-            <span class="p">
-             <span class="pre">
-              ]
-             </span>
+             None
             </span>
            </span>
            <span class="w">
@@ -28065,20 +28220,19 @@ If
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               Optional
+               asyncio.events.AbstractEventLoop
+              </span>
+              <span class="w">
               </span>
               <span class="p">
                <span class="pre">
-                [
+                |
                </span>
+              </span>
+              <span class="w">
               </span>
               <span class="pre">
-               AbstractEventLoop
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
+               None
               </span>
              </span>
             </span>
@@ -28631,6 +28785,168 @@ If
             <p>
              Gracefully shuts down the executor and event loop.
             </p>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.live.node.TradingNode.maintain_heartbeat">
+            <em class="property">
+             <span class="pre">
+              async
+             </span>
+             <span class="w">
+             </span>
+            </em>
+            <span class="sig-name descname">
+             <span class="pre">
+              maintain_heartbeat
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               interval
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               float
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               None
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.live.node.TradingNode.maintain_heartbeat" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Maintain heartbeats at the given
+             <cite>
+              interval
+             </cite>
+             while the node is running.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                interval
+               </strong>
+               (
+               <em>
+                float
+               </em>
+               ) – The interval (seconds) between heartbeats.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.live.node.TradingNode.snapshot_open_positions">
+            <em class="property">
+             <span class="pre">
+              async
+             </span>
+             <span class="w">
+             </span>
+            </em>
+            <span class="sig-name descname">
+             <span class="pre">
+              snapshot_open_positions
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               interval
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               float
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               None
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.live.node.TradingNode.snapshot_open_positions" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Snapshot the state of all open positions at the configured interval.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                interval
+               </strong>
+               (
+               <em>
+                float
+               </em>
+               ) – The interval (seconds) between open position state snapshotting.
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">

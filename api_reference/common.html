@@ -361,6 +361,11 @@
                 </a>
                </li>
                <li class="md-nav__item">
+                <a class="md-nav__link" href="../concepts/advanced/synthetic_instruments.html">
+                 Synthetic instruments
+                </a>
+               </li>
+               <li class="md-nav__item">
                 <a class="md-nav__link" href="../concepts/advanced/portfolio_statistics.html">
                  Portfolio Statistics
                 </a>
@@ -578,11 +583,6 @@
               </a>
              </li>
              <li class="md-nav__item">
-              <a class="md-nav__link" href="network.html">
-               Network
-              </a>
-             </li>
-             <li class="md-nav__item">
               <a class="md-nav__link" href="persistence.html">
                Persistence
               </a>
@@ -691,6 +691,15 @@
               </i>
              </span>
              <ul class="submenu">
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.add_synthetic">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.add_synthetic()
+                 </span>
+                </code>
+               </a>
+              </li>
               <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.cache">
                 <code class="docutils literal notranslate">
@@ -917,6 +926,15 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.has_pending_requests">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.has_pending_requests()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.id">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -957,6 +975,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Actor.is_initialized
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.is_pending_request">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.is_pending_request()
                  </span>
                 </code>
                </a>
@@ -1200,6 +1227,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Actor.on_venue_status_update()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.pending_requests">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.pending_requests()
                  </span>
                 </code>
                </a>
@@ -1578,6 +1614,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Actor.unsubscribe_venue_status_updates()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.update_synthetic">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.update_synthetic()
                  </span>
                 </code>
                </a>
@@ -3693,7 +3738,8 @@
          <cite>
           common
          </cite>
-         subpackage provides generic/common parts for assembling the frameworks various components.
+         subpackage provides generic/common parts for assembling the frameworks
+various components.
         </p>
         <p>
          More domain specific concepts are introduced above the
@@ -3914,6 +3960,107 @@ fully “wired” into the platform. Exceptions will be raised if an
             This class should not be used directly, but through a concrete subclass.
            </p>
           </div>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.add_synthetic">
+            <span class="sig-name descname">
+             <span class="pre">
+              add_synthetic
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               SyntheticInstrument
+              </span>
+              <span class="pre">
+               synthetic
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.add_synthetic" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Add the created synthetic instrument to the cache.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                synthetic
+               </strong>
+               (
+               <a class="reference internal" href="model/instruments.html#nautilus_trader.model.instruments.synthetic.SyntheticInstrument" title="nautilus_trader.model.instruments.synthetic.SyntheticInstrument">
+                <em>
+                 SyntheticInstrument
+                </em>
+               </a>
+               ) – The synthetic instrument to add to the cache.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <strong>
+                KeyError
+               </strong>
+               – If
+               <cite>
+                synthetic
+               </cite>
+               is already in the cache.
+              </p>
+             </dd>
+            </dl>
+            <p class="rubric">
+             Notes
+            </p>
+            <p>
+             If you are updating the synthetic instrument then you should use the
+             <cite>
+              update_synthetic
+             </cite>
+             method.
+            </p>
+           </dd>
+          </dl>
           <dl class="py attribute">
            <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.cache">
             <span class="sig-name descname">
@@ -5918,6 +6065,62 @@ then the component state will not change, and an error will be logged.
             </div>
            </dd>
           </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.has_pending_requests">
+            <span class="sig-name descname">
+             <span class="pre">
+              has_pending_requests
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.has_pending_requests" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return whether the actor is pending processing for any requests.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                bool
+               </em>
+               – True if any requests are pending, else False.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
           <dl class="py attribute">
            <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.id">
             <span class="sig-name descname">
@@ -6153,6 +6356,93 @@ then the component state will not change, and an error will be logged.
              <dd class="field-even">
               <p>
                Component.is_initialized
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.is_pending_request">
+            <span class="sig-name descname">
+             <span class="pre">
+              is_pending_request
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               UUID4
+              </span>
+              <span class="pre">
+               request_id
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.is_pending_request" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return whether the request for the given identifier is pending processing.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                request_id
+               </strong>
+               (
+               <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+                <em>
+                 UUID4
+                </em>
+               </a>
+               ) – The request ID to check.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <em>
+                bool
+               </em>
+               – True if request is pending, else False.
               </p>
              </dd>
             </dl>
@@ -7999,6 +8289,61 @@ initially starting.
            </dd>
           </dl>
           <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.pending_requests">
+            <span class="sig-name descname">
+             <span class="pre">
+              pending_requests
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               set
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.pending_requests" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return the request IDs which are currently pending processing.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                set[UUID4]
+               </em>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
            <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.publish_data">
             <span class="sig-name descname">
              <span class="pre">
@@ -8475,65 +8820,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               BarType
-              </span>
-              <span class="pre">
-               bar_type
-              </span>
+             <span class="pre">
+              BarType
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              bar_type,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               UUID4
-              </span>
-              <span class="pre">
-               request_id=None
-              </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -8544,9 +8877,11 @@ If
               →
              </span>
              <span class="sig-return-typehint">
-              <span class="pre">
-               void
-              </span>
+              <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+               <span class="pre">
+                UUID4
+               </span>
+              </a>
              </span>
             </span>
             <a class="headerlink" href="#nautilus_trader.common.actor.Actor.request_bars" title="Permalink to this definition">
@@ -8670,53 +9005,110 @@ If
                <li>
                 <p>
                  <strong>
-                  request_id
+                  callback
                  </strong>
                  (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
                  <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
                   <em>
                    UUID4
                   </em>
                  </a>
                  <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
                   ,
                  </em>
                  <em>
                   optional
                  </em>
-                 ) – The specific request ID for the command.
-If
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   None
-                  </span>
-                 </code>
-                 then will be generated.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
              </dd>
              <dt class="field-even">
-              Raises
+              Returns
               <span class="colon">
                :
               </span>
              </dt>
              <dd class="field-even">
               <p>
-               <strong>
-                ValueError
-               </strong>
-               – If
+               <em>
+                UUID4
+               </em>
+               – The
                <cite>
-                start
+                request_id
                </cite>
-               is not less than
-               <cite>
-                end
-               </cite>
-               .
+               for the request.
               </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  ValueError
+                 </strong>
+                 – If
+                 <cite>
+                  start
+                 </cite>
+                 is not less than
+                 <cite>
+                  end
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  TypeError
+                 </strong>
+                 – If
+                 <cite>
+                  callback
+                 </cite>
+                 is not
+                 <cite>
+                  None
+                 </cite>
+                 and not of type
+                 <cite>
+                  Callable
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
@@ -8732,43 +9124,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id
-              </span>
+             <span class="pre">
+              DataType
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               DataType
-              </span>
-              <span class="pre">
-               data_type
-              </span>
+             <span class="pre">
+              data_type,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               UUID4
-              </span>
-              <span class="pre">
-               request_id=None
-              </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -8779,9 +9169,11 @@ If
               →
              </span>
              <span class="sig-return-typehint">
-              <span class="pre">
-               void
-              </span>
+              <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+               <span class="pre">
+                UUID4
+               </span>
+              </a>
              </span>
             </span>
             <a class="headerlink" href="#nautilus_trader.common.actor.Actor.request_data" title="Permalink to this definition">
@@ -8804,20 +9196,6 @@ If
                <li>
                 <p>
                  <strong>
-                  client_id
-                 </strong>
-                 (
-                 <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ClientId" title="nautilus_trader.model.identifiers.ClientId">
-                  <em>
-                   ClientId
-                  </em>
-                 </a>
-                 ) – The data client ID.
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
                   data_type
                  </strong>
                  (
@@ -8832,31 +9210,104 @@ If
                <li>
                 <p>
                  <strong>
-                  request_id
+                  client_id
                  </strong>
                  (
+                 <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ClientId" title="nautilus_trader.model.identifiers.ClientId">
+                  <em>
+                   ClientId
+                  </em>
+                 </a>
+                 ) – The data client ID.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  callback
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
                  <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
                   <em>
                    UUID4
                   </em>
                  </a>
                  <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
                   ,
                  </em>
                  <em>
                   optional
                  </em>
-                 ) – The specific request ID for the command.
-If
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   None
-                  </span>
-                 </code>
-                 then will be generated.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
+             </dd>
+             <dt class="field-even">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <em>
+                UUID4
+               </em>
+               – The
+               <cite>
+                request_id
+               </cite>
+               for the request.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                callback
+               </cite>
+               is not
+               <cite>
+                None
+               </cite>
+               and not of type
+               <cite>
+                Callable
+               </cite>
+               .
+              </p>
              </dd>
             </dl>
            </dd>
@@ -8872,43 +9323,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              instrument_id,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               UUID4
-              </span>
-              <span class="pre">
-               request_id=None
-              </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -8919,9 +9368,11 @@ If
               →
              </span>
              <span class="sig-return-typehint">
-              <span class="pre">
-               void
-              </span>
+              <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+               <span class="pre">
+                UUID4
+               </span>
+              </a>
              </span>
             </span>
             <a class="headerlink" href="#nautilus_trader.common.actor.Actor.request_instrument" title="Permalink to this definition">
@@ -8989,31 +9440,90 @@ If
                <li>
                 <p>
                  <strong>
-                  request_id
+                  callback
                  </strong>
                  (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
                  <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
                   <em>
                    UUID4
                   </em>
                  </a>
                  <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
                   ,
                  </em>
                  <em>
                   optional
                  </em>
-                 ) – The specific request ID for the command.
-If
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   None
-                  </span>
-                 </code>
-                 then will be generated.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
+             </dd>
+             <dt class="field-even">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <em>
+                UUID4
+               </em>
+               – The
+               <cite>
+                request_id
+               </cite>
+               for the request.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                callback
+               </cite>
+               is not
+               <cite>
+                None
+               </cite>
+               and not of type
+               <cite>
+                Callable
+               </cite>
+               .
+              </p>
              </dd>
             </dl>
            </dd>
@@ -9029,43 +9539,41 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               Venue
-              </span>
-              <span class="pre">
-               venue
-              </span>
+             <span class="pre">
+              Venue
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              venue,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               UUID4
-              </span>
-              <span class="pre">
-               request_id=None
-              </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -9076,9 +9584,11 @@ If
               →
              </span>
              <span class="sig-return-typehint">
-              <span class="pre">
-               void
-              </span>
+              <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+               <span class="pre">
+                UUID4
+               </span>
+              </a>
              </span>
             </span>
             <a class="headerlink" href="#nautilus_trader.common.actor.Actor.request_instruments" title="Permalink to this definition">
@@ -9146,31 +9656,90 @@ If
                <li>
                 <p>
                  <strong>
-                  request_id
+                  callback
                  </strong>
                  (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
                  <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
                   <em>
                    UUID4
                   </em>
                  </a>
                  <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
                   ,
                  </em>
                  <em>
                   optional
                  </em>
-                 ) – The specific request ID for the command.
-If
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   None
-                  </span>
-                 </code>
-                 then will be generated.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
+             </dd>
+             <dt class="field-even">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <em>
+                UUID4
+               </em>
+               – The
+               <cite>
+                request_id
+               </cite>
+               for the request.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                callback
+               </cite>
+               is not
+               <cite>
+                None
+               </cite>
+               and not of type
+               <cite>
+                Callable
+               </cite>
+               .
+              </p>
              </dd>
             </dl>
            </dd>
@@ -9186,65 +9755,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              instrument_id,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               UUID4
-              </span>
-              <span class="pre">
-               request_id=None
-              </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -9255,9 +9812,11 @@ If
               →
              </span>
              <span class="sig-return-typehint">
-              <span class="pre">
-               void
-              </span>
+              <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+               <span class="pre">
+                UUID4
+               </span>
+              </a>
              </span>
             </span>
             <a class="headerlink" href="#nautilus_trader.common.actor.Actor.request_quote_ticks" title="Permalink to this definition">
@@ -9381,53 +9940,110 @@ If
                <li>
                 <p>
                  <strong>
-                  request_id
+                  callback
                  </strong>
                  (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
                  <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
                   <em>
                    UUID4
                   </em>
                  </a>
                  <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
                   ,
                  </em>
                  <em>
                   optional
                  </em>
-                 ) – The specific request ID for the command.
-If
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   None
-                  </span>
-                 </code>
-                 then will be generated.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
              </dd>
              <dt class="field-even">
-              Raises
+              Returns
               <span class="colon">
                :
               </span>
              </dt>
              <dd class="field-even">
               <p>
-               <strong>
-                ValueError
-               </strong>
-               – If
+               <em>
+                UUID4
+               </em>
+               – The
                <cite>
-                start
+                request_id
                </cite>
-               is not less than
-               <cite>
-                end
-               </cite>
-               .
+               for the request.
               </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  ValueError
+                 </strong>
+                 – If
+                 <cite>
+                  start
+                 </cite>
+                 is not less than
+                 <cite>
+                  end
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  TypeError
+                 </strong>
+                 – If
+                 <cite>
+                  callback
+                 </cite>
+                 is not
+                 <cite>
+                  None
+                 </cite>
+                 and not of type
+                 <cite>
+                  Callable
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
@@ -9443,65 +10059,53 @@ If
              (
             </span>
             <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
+             <span class="pre">
+              self,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               InstrumentId
-              </span>
-              <span class="pre">
-               instrument_id
-              </span>
+             <span class="pre">
+              InstrumentId
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               start=None
-              </span>
+             <span class="pre">
+              instrument_id,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               datetime
-              </span>
-              <span class="pre">
-               end=None
-              </span>
+             <span class="pre">
+              datetime
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               ClientId
-              </span>
-              <span class="pre">
-               client_id=None
-              </span>
+             <span class="pre">
+              start=None,
              </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               UUID4
-              </span>
-              <span class="pre">
-               request_id=None
-              </span>
+             <span class="pre">
+              datetime
+             </span>
+             <span class="pre">
+              end=None,
+             </span>
+             <span class="pre">
+              ClientId
+             </span>
+             <span class="pre">
+              client_id=None,
+             </span>
+             <span class="pre">
+              callback:
+             </span>
+             <span class="pre">
+              Callable[[UUID4],
+             </span>
+             <span class="pre">
+              None]
+             </span>
+             <span class="pre">
+              |
+             </span>
+             <span class="pre">
+              None
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
              </span>
             </em>
             <span class="sig-paren">
@@ -9512,9 +10116,11 @@ If
               →
              </span>
              <span class="sig-return-typehint">
-              <span class="pre">
-               void
-              </span>
+              <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
+               <span class="pre">
+                UUID4
+               </span>
+              </a>
              </span>
             </span>
             <a class="headerlink" href="#nautilus_trader.common.actor.Actor.request_trade_ticks" title="Permalink to this definition">
@@ -9638,53 +10244,110 @@ If
                <li>
                 <p>
                  <strong>
-                  request_id
+                  callback
                  </strong>
                  (
+                 <em>
+                  Callable
+                 </em>
+                 <em>
+                  [
+                 </em>
+                 <em>
+                  [
+                 </em>
                  <a class="reference internal" href="core.html#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
                   <em>
                    UUID4
                   </em>
                  </a>
                  <em>
+                  ]
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  None
+                 </em>
+                 <em>
+                  ]
+                 </em>
+                 <em>
                   ,
                  </em>
                  <em>
                   optional
                  </em>
-                 ) – The specific request ID for the command.
-If
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   None
-                  </span>
-                 </code>
-                 then will be generated.
+                 ) – The registered callback, to be called with the request ID when the response has
+completed processing.
                 </p>
                </li>
               </ul>
              </dd>
              <dt class="field-even">
-              Raises
+              Returns
               <span class="colon">
                :
               </span>
              </dt>
              <dd class="field-even">
               <p>
-               <strong>
-                ValueError
-               </strong>
-               – If
+               <em>
+                UUID4
+               </em>
+               – The
                <cite>
-                start
+                request_id
                </cite>
-               is not less than
-               <cite>
-                end
-               </cite>
-               .
+               for the request.
               </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  ValueError
+                 </strong>
+                 – If
+                 <cite>
+                  start
+                 </cite>
+                 is not less than
+                 <cite>
+                  end
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  TypeError
+                 </strong>
+                 – If
+                 <cite>
+                  callback
+                 </cite>
+                 is not
+                 <cite>
+                  None
+                 </cite>
+                 and not of type
+                 <cite>
+                  Callable
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
@@ -13176,6 +13839,107 @@ If
               </ul>
              </dd>
             </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.update_synthetic">
+            <span class="sig-name descname">
+             <span class="pre">
+              update_synthetic
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               SyntheticInstrument
+              </span>
+              <span class="pre">
+               synthetic
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.update_synthetic" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Update the synthetic instrument in the cache.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                synthetic
+               </strong>
+               (
+               <a class="reference internal" href="model/instruments.html#nautilus_trader.model.instruments.synthetic.SyntheticInstrument" title="nautilus_trader.model.instruments.synthetic.SyntheticInstrument">
+                <em>
+                 SyntheticInstrument
+                </em>
+               </a>
+               ) – The synthetic instrument to update in the cache.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <strong>
+                KeyError
+               </strong>
+               – If
+               <cite>
+                synthetic
+               </cite>
+               does not already exist in the cache.
+              </p>
+             </dd>
+            </dl>
+            <p class="rubric">
+             Notes
+            </p>
+            <p>
+             If you are adding a new synthetic instrument then you should use the
+             <cite>
+              add_synthetic
+             </cite>
+             method.
+            </p>
            </dd>
           </dl>
          </dd>
@@ -18142,7 +18906,7 @@ then the default handler (if registered) will receive the
            <em class="sig-param">
             <span class="n">
              <span class="pre">
-              ComponentId
+              Identifier
              </span>
              <span class="pre">
               component_id=None
@@ -18286,9 +19050,9 @@ then it will be in an
                  component_id
                 </strong>
                 (
-                <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ComponentId" title="nautilus_trader.model.identifiers.ComponentId">
+                <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.Identifier" title="nautilus_trader.model.identifiers.Identifier">
                  <em>
-                  ComponentId
+                  Identifier
                  </em>
                 </a>
                 <em>
@@ -19549,6 +20313,26 @@ then the component state will not change, and an error will be logged.
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              CacheFacade
+             </span>
+             <span class="pre">
+              cache:
+             </span>
+             <span class="pre">
+              Optional[CacheFacade]
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               int
              </span>
              <span class="pre">
@@ -19646,6 +20430,26 @@ then the component state will not change, and an error will be logged.
                  </em>
                 </a>
                 ) – The clock for the factory.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 cache
+                </strong>
+                (
+                <a class="reference internal" href="cache.html#nautilus_trader.cache.base.CacheFacade" title="nautilus_trader.cache.base.CacheFacade">
+                 <em>
+                  CacheFacade
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The cache facade for the order factory.
                </p>
               </li>
               <li>
@@ -28195,6 +28999,17 @@ will be appended with ‘F’.
              </span>
             </span>
            </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+             <span class="pre">
+              dummy=False
+             </span>
+            </span>
+           </em>
            <span class="sig-paren">
             )
            </span>
@@ -28459,7 +29274,31 @@ IDs (e.g. actor/strategy IDs) and values are log levels.
                 <em>
                  bool
                 </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
                 ) – If the log output is bypassed.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dummy
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
+                ) – If logger is a ‘dummy’ logger (intended as a placeholder during initialization).
                </p>
               </li>
              </ul>
@@ -30144,23 +30983,22 @@ IDs (e.g. actor/strategy IDs) and values are log levels.
             <span class="w">
             </span>
             <span class="n">
-             <span class="pre">
-              Optional
-             </span>
-             <span class="p">
-              <span class="pre">
-               [
-              </span>
-             </span>
              <a class="reference internal" href="config.html#nautilus_trader.config.common.InstrumentProviderConfig" title="nautilus_trader.config.common.InstrumentProviderConfig">
               <span class="pre">
-               InstrumentProviderConfig
+               nautilus_trader.config.common.InstrumentProviderConfig
               </span>
              </a>
+             <span class="w">
+             </span>
              <span class="p">
               <span class="pre">
-               ]
+               |
               </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="pre">
+              None
              </span>
             </span>
             <span class="w">
@@ -30401,20 +31239,19 @@ IDs (e.g. actor/strategy IDs) and values are log levels.
               </span>
               <span class="n">
                <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
-               <span class="pre">
                 dict
                </span>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
               <span class="w">
@@ -30523,20 +31360,19 @@ applying the given filters.
               </span>
               <span class="n">
                <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
-               <span class="pre">
                 dict
                </span>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
               <span class="w">
@@ -30573,8 +31409,8 @@ applying the given filters.
             </dt>
             <dd>
              <p>
-              Load the instruments for the given IDs into the provider, optionally
-applying the given filters.
+              Load the instruments for the given IDs into the provider, optionally applying
+the given filters.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -30707,20 +31543,19 @@ applying the given filters.
               </span>
               <span class="n">
                <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
-               <span class="pre">
                 dict
                </span>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
               <span class="w">
@@ -30757,8 +31592,8 @@ applying the given filters.
             </dt>
             <dd>
              <p>
-              Load the instrument for the given ID into the provider asynchronously, optionally
-applying the given filters.
+              Load the instrument for the given ID into the provider asynchronously,
+optionally applying the given filters.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -30900,20 +31735,19 @@ applying the given filters.
               </span>
               <span class="n">
                <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
-               <span class="pre">
                 dict
                </span>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
               <span class="w">
@@ -30950,8 +31784,8 @@ applying the given filters.
             </dt>
             <dd>
              <p>
-              Load the latest instruments into the provider, optionally applying the
-given filters.
+              Load the latest instruments into the provider, optionally applying the given
+filters.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -31041,20 +31875,19 @@ given filters.
               </span>
               <span class="n">
                <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
-               <span class="pre">
                 dict
                </span>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
               <span class="w">
@@ -31091,8 +31924,8 @@ given filters.
             </dt>
             <dd>
              <p>
-              Load the instruments for the given IDs into the provider, optionally
-applying the given filters.
+              Load the instruments for the given IDs into the provider, optionally applying
+the given filters.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -31196,20 +32029,19 @@ applying the given filters.
               </span>
               <span class="n">
                <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
-               <span class="pre">
                 dict
                </span>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
               <span class="w">
@@ -31246,8 +32078,8 @@ applying the given filters.
             </dt>
             <dd>
              <p>
-              Load the instrument for the given ID into the provider, optionally
-applying the given filters.
+              Load the instrument for the given ID into the provider, optionally applying the
+given filters.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -31796,23 +32628,22 @@ applying the given filters.
                →
               </span>
               <span class="sig-return-typehint">
-               <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
                <a class="reference internal" href="model/currency.html#nautilus_trader.model.currency.Currency" title="nautilus_trader.model.currency.Currency">
                 <span class="pre">
-                 Currency
+                 nautilus_trader.model.currency.Currency
                 </span>
                </a>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
              </span>
@@ -31919,23 +32750,22 @@ applying the given filters.
                →
               </span>
               <span class="sig-return-typehint">
-               <span class="pre">
-                Optional
-               </span>
-               <span class="p">
-                <span class="pre">
-                 [
-                </span>
-               </span>
                <a class="reference internal" href="model/instruments.html#nautilus_trader.model.instruments.base.Instrument" title="nautilus_trader.model.instruments.base.Instrument">
                 <span class="pre">
-                 Instrument
+                 nautilus_trader.model.instruments.base.Instrument
                 </span>
                </a>
+               <span class="w">
+               </span>
                <span class="p">
                 <span class="pre">
-                 ]
+                 |
                 </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                None
                </span>
               </span>
              </span>

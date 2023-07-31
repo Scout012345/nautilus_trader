@@ -361,6 +361,11 @@
                 </a>
                </li>
                <li class="md-nav__item">
+                <a class="md-nav__link" href="../concepts/advanced/synthetic_instruments.html">
+                 Synthetic instruments
+                </a>
+               </li>
+               <li class="md-nav__item">
                 <a class="md-nav__link" href="../concepts/advanced/portfolio_statistics.html">
                  Portfolio Statistics
                 </a>
@@ -578,11 +583,6 @@
               </a>
              </li>
              <li class="md-nav__item">
-              <a class="md-nav__link" href="network.html">
-               Network
-              </a>
-             </li>
-             <li class="md-nav__item">
               <a class="md-nav__link" href="persistence.html">
                Persistence
               </a>
@@ -746,19 +746,10 @@
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_submit_order_command">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_synthetic">
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  RedisCacheDatabase.add_submit_order_command()
-                 </span>
-                </code>
-               </a>
-              </li>
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_submit_order_list_command">
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  RedisCacheDatabase.add_submit_order_list_command()
+                  RedisCacheDatabase.add_synthetic()
                  </span>
                 </code>
                </a>
@@ -786,6 +777,24 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   RedisCacheDatabase.flush()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.heartbeat">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  RedisCacheDatabase.heartbeat()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.index_order_position">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  RedisCacheDatabase.index_order_position()
                  </span>
                 </code>
                </a>
@@ -840,6 +849,24 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   RedisCacheDatabase.load_currency()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_client">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  RedisCacheDatabase.load_index_order_client()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_position">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  RedisCacheDatabase.load_index_order_position()
                  </span>
                 </code>
                </a>
@@ -908,37 +935,37 @@
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_command">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_synthetic">
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  RedisCacheDatabase.load_submit_order_command()
+                  RedisCacheDatabase.load_synthetic()
                  </span>
                 </code>
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_commands">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_synthetics">
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  RedisCacheDatabase.load_submit_order_commands()
+                  RedisCacheDatabase.load_synthetics()
                  </span>
                 </code>
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_list_command">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.snapshot_order_state">
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  RedisCacheDatabase.load_submit_order_list_command()
+                  RedisCacheDatabase.snapshot_order_state()
                  </span>
                 </code>
                </a>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_list_commands">
+               <a class="md-nav__link" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.snapshot_position_state">
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  RedisCacheDatabase.load_submit_order_list_commands()
+                  RedisCacheDatabase.snapshot_position_state()
                  </span>
                 </code>
                </a>
@@ -1013,7 +1040,8 @@
          <cite>
           infrastructure
          </cite>
-         subpackage provides technology specific infrastructure implementations.
+         subpackage provides technology specific infrastructure
+implementations.
         </p>
         <p>
          Out of the box a
@@ -1580,6 +1608,28 @@ per the default implementations for both
               </span>
              </span>
             </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               PositionId
+              </span>
+              <span class="pre">
+               position_id=None
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               ClientId
+              </span>
+              <span class="pre">
+               client_id=None
+              </span>
+             </span>
+            </em>
             <span class="sig-paren">
              )
             </span>
@@ -1609,18 +1659,62 @@ per the default implementations for both
               </span>
              </dt>
              <dd class="field-odd">
-              <p>
-               <strong>
-                order
-               </strong>
-               (
-               <a class="reference internal" href="model/orders.html#nautilus_trader.model.orders.base.Order" title="nautilus_trader.model.orders.base.Order">
-                <em>
-                 Order
-                </em>
-               </a>
-               ) – The order to add.
-              </p>
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  order
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/orders.html#nautilus_trader.model.orders.base.Order" title="nautilus_trader.model.orders.base.Order">
+                  <em>
+                   Order
+                  </em>
+                 </a>
+                 ) – The order to add.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  position_id
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.PositionId" title="nautilus_trader.model.identifiers.PositionId">
+                  <em>
+                   PositionId
+                  </em>
+                 </a>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The position ID to associate with this order.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  client_id
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ClientId" title="nautilus_trader.model.identifiers.ClientId">
+                  <em>
+                   ClientId
+                  </em>
+                 </a>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The execution client ID to associate with this order.
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>
@@ -1672,7 +1766,7 @@ per the default implementations for both
            </dt>
            <dd>
             <p>
-             Add the given position associated with the given strategy ID.
+             Add the given position to the database.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -1699,10 +1793,10 @@ per the default implementations for both
            </dd>
           </dl>
           <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_submit_order_command">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_synthetic">
             <span class="sig-name descname">
              <span class="pre">
-              add_submit_order_command
+              add_synthetic
              </span>
             </span>
             <span class="sig-paren">
@@ -1719,10 +1813,10 @@ per the default implementations for both
             <em class="sig-param">
              <span class="n">
               <span class="pre">
-               SubmitOrder
+               SyntheticInstrument
               </span>
               <span class="pre">
-               command
+               synthetic
               </span>
              </span>
             </em>
@@ -1739,13 +1833,13 @@ per the default implementations for both
               </span>
              </span>
             </span>
-            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_submit_order_command" title="Permalink to this definition">
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_synthetic" title="Permalink to this definition">
              ¶
             </a>
            </dt>
            <dd>
             <p>
-             Add the given submit order command to the database.
+             Add the given synthetic instrument to the database.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -1757,88 +1851,15 @@ per the default implementations for both
              <dd class="field-odd">
               <p>
                <strong>
-                command
+                synthetic
                </strong>
                (
-               <a class="reference internal" href="execution.html#nautilus_trader.execution.messages.SubmitOrder" title="nautilus_trader.execution.messages.SubmitOrder">
+               <a class="reference internal" href="model/instruments.html#nautilus_trader.model.instruments.synthetic.SyntheticInstrument" title="nautilus_trader.model.instruments.synthetic.SyntheticInstrument">
                 <em>
-                 SubmitOrder
+                 SyntheticInstrument
                 </em>
                </a>
-               ) – The command to add.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-          <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_submit_order_list_command">
-            <span class="sig-name descname">
-             <span class="pre">
-              add_submit_order_list_command
-             </span>
-            </span>
-            <span class="sig-paren">
-             (
-            </span>
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               self
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               SubmitOrderList
-              </span>
-              <span class="pre">
-               command
-              </span>
-             </span>
-            </em>
-            <span class="sig-paren">
-             )
-            </span>
-            <span class="sig-return">
-             <span class="sig-return-icon">
-              →
-             </span>
-             <span class="sig-return-typehint">
-              <span class="pre">
-               void
-              </span>
-             </span>
-            </span>
-            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.add_submit_order_list_command" title="Permalink to this definition">
-             ¶
-            </a>
-           </dt>
-           <dd>
-            <p>
-             Add the given submit order list command to the database.
-            </p>
-            <dl class="field-list simple">
-             <dt class="field-odd">
-              Parameters
-              <span class="colon">
-               :
-              </span>
-             </dt>
-             <dd class="field-odd">
-              <p>
-               <strong>
-                command
-               </strong>
-               (
-               <a class="reference internal" href="execution.html#nautilus_trader.execution.messages.SubmitOrderList" title="nautilus_trader.execution.messages.SubmitOrderList">
-                <em>
-                 SubmitOrderList
-                </em>
-               </a>
-               ) – The command to add.
+               ) – The synthetic instrument to add.
               </p>
              </dd>
             </dl>
@@ -2028,6 +2049,191 @@ per the default implementations for both
             <p>
              Flush the database which clears all data.
             </p>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.heartbeat">
+            <span class="sig-name descname">
+             <span class="pre">
+              heartbeat
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               datetime
+              </span>
+              <span class="pre">
+               timestamp
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.heartbeat" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Add a heartbeat at the given
+             <cite>
+              timestamp
+             </cite>
+             .
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                timestamp
+               </strong>
+               (
+               <em>
+                datetime
+               </em>
+               ) – The timestamp for the heartbeat.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.index_order_position">
+            <span class="sig-name descname">
+             <span class="pre">
+              index_order_position
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               ClientOrderId
+              </span>
+              <span class="pre">
+               client_order_id
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               PositionId
+              </span>
+              <span class="pre">
+               position_id
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.index_order_position" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Add an index entry for the given
+             <cite>
+              client_order_id
+             </cite>
+             to
+             <cite>
+              position_id
+             </cite>
+             .
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  client_order_id
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ClientOrderId" title="nautilus_trader.model.identifiers.ClientOrderId">
+                  <em>
+                   ClientOrderId
+                  </em>
+                 </a>
+                 ) – The client order ID to index.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  position_id
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.PositionId" title="nautilus_trader.model.identifiers.PositionId">
+                  <em>
+                   PositionId
+                  </em>
+                 </a>
+                 ) – The position ID to index.
+                </p>
+               </li>
+              </ul>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -2454,6 +2660,116 @@ per the default implementations for both
                  None
                 </span>
                </code>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_client">
+            <span class="sig-name descname">
+             <span class="pre">
+              load_index_order_client
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               dict
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_client" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Load the order to execution client index from the database.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                dict[ClientOrderId, ClientId]
+               </em>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_position">
+            <span class="sig-name descname">
+             <span class="pre">
+              load_index_order_position
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               dict
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_index_order_position" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Load the order to position index from the database.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                dict[ClientOrderId, PositionId]
+               </em>
               </p>
              </dd>
             </dl>
@@ -2985,10 +3301,10 @@ per the default implementations for both
            </dd>
           </dl>
           <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_command">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_synthetic">
             <span class="sig-name descname">
              <span class="pre">
-              load_submit_order_command
+              load_synthetic
              </span>
             </span>
             <span class="sig-paren">
@@ -3005,10 +3321,10 @@ per the default implementations for both
             <em class="sig-param">
              <span class="n">
               <span class="pre">
-               ClientOrderId
+               InstrumentId
               </span>
               <span class="pre">
-               client_order_id
+               instrument_id
               </span>
              </span>
             </em>
@@ -3020,20 +3336,21 @@ per the default implementations for both
               →
              </span>
              <span class="sig-return-typehint">
-              <a class="reference internal" href="execution.html#nautilus_trader.execution.messages.SubmitOrder" title="nautilus_trader.execution.messages.SubmitOrder">
+              <a class="reference internal" href="model/instruments.html#nautilus_trader.model.instruments.synthetic.SyntheticInstrument" title="nautilus_trader.model.instruments.synthetic.SyntheticInstrument">
                <span class="pre">
-                SubmitOrder
+                SyntheticInstrument
                </span>
               </a>
              </span>
             </span>
-            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_command" title="Permalink to this definition">
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_synthetic" title="Permalink to this definition">
              ¶
             </a>
            </dt>
            <dd>
             <p>
-             Load the command associated with the given client order ID (if found).
+             Load the synthetic instrument associated with the given synthetic instrument ID
+(if found).
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -3045,15 +3362,15 @@ per the default implementations for both
              <dd class="field-odd">
               <p>
                <strong>
-                client_order_id
+                instrument_id
                </strong>
                (
-               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.ClientOrderId" title="nautilus_trader.model.identifiers.ClientOrderId">
+               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                 <em>
-                 ClientOrderId
+                 InstrumentId
                 </em>
                </a>
-               ) – The client order ID for the command to load.
+               ) – The synthetic instrument ID to load.
               </p>
              </dd>
              <dt class="field-even">
@@ -3064,7 +3381,7 @@ per the default implementations for both
              </dt>
              <dd class="field-even">
               <p>
-               SubmitOrder or
+               SyntheticInstrument or
                <code class="docutils literal notranslate">
                 <span class="pre">
                  None
@@ -3072,14 +3389,32 @@ per the default implementations for both
                </code>
               </p>
              </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                ValueError
+               </strong>
+               – If
+               <cite>
+                instrument_id
+               </cite>
+               is not for a synthetic instrument.
+              </p>
+             </dd>
             </dl>
            </dd>
           </dl>
           <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_commands">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_synthetics">
             <span class="sig-name descname">
              <span class="pre">
-              load_submit_order_commands
+              load_synthetics
              </span>
             </span>
             <span class="sig-paren">
@@ -3105,13 +3440,13 @@ per the default implementations for both
               </span>
              </span>
             </span>
-            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_commands" title="Permalink to this definition">
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_synthetics" title="Permalink to this definition">
              ¶
             </a>
            </dt>
            <dd>
             <p>
-             Load all submit order commands from the database.
+             Load all synthetic instruments from the database.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -3123,7 +3458,7 @@ per the default implementations for both
              <dd class="field-odd">
               <p>
                <em>
-                dict[ClientOrderId, SubmitOrder]
+                dict[InstrumentId, SyntheticInstrument]
                </em>
               </p>
              </dd>
@@ -3131,10 +3466,10 @@ per the default implementations for both
            </dd>
           </dl>
           <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_list_command">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.snapshot_order_state">
             <span class="sig-name descname">
              <span class="pre">
-              load_submit_order_list_command
+              snapshot_order_state
              </span>
             </span>
             <span class="sig-paren">
@@ -3151,10 +3486,10 @@ per the default implementations for both
             <em class="sig-param">
              <span class="n">
               <span class="pre">
-               OrderListId
+               Order
               </span>
               <span class="pre">
-               order_list_id
+               order
               </span>
              </span>
             </em>
@@ -3166,20 +3501,22 @@ per the default implementations for both
               →
              </span>
              <span class="sig-return-typehint">
-              <a class="reference internal" href="execution.html#nautilus_trader.execution.messages.SubmitOrderList" title="nautilus_trader.execution.messages.SubmitOrderList">
-               <span class="pre">
-                SubmitOrderList
-               </span>
-              </a>
+              <span class="pre">
+               void
+              </span>
              </span>
             </span>
-            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_list_command" title="Permalink to this definition">
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.snapshot_order_state" title="Permalink to this definition">
              ¶
             </a>
            </dt>
            <dd>
             <p>
-             Load the command associated with the given order list ID (if found).
+             Snapshot the state of the given
+             <cite>
+              order
+             </cite>
+             .
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
@@ -3191,41 +3528,25 @@ per the default implementations for both
              <dd class="field-odd">
               <p>
                <strong>
-                order_list_id
+                order
                </strong>
                (
-               <a class="reference internal" href="model/identifiers.html#nautilus_trader.model.identifiers.OrderListId" title="nautilus_trader.model.identifiers.OrderListId">
+               <a class="reference internal" href="model/orders.html#nautilus_trader.model.orders.base.Order" title="nautilus_trader.model.orders.base.Order">
                 <em>
-                 OrderListId
+                 Order
                 </em>
                </a>
-               ) – The order list ID for the command to load.
-              </p>
-             </dd>
-             <dt class="field-even">
-              Returns
-              <span class="colon">
-               :
-              </span>
-             </dt>
-             <dd class="field-even">
-              <p>
-               SubmitOrderList or
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 None
-                </span>
-               </code>
+               ) – The order for the state snapshot.
               </p>
              </dd>
             </dl>
            </dd>
           </dl>
           <dl class="py method">
-           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_list_commands">
+           <dt class="sig sig-object py" id="nautilus_trader.infrastructure.cache.RedisCacheDatabase.snapshot_position_state">
             <span class="sig-name descname">
              <span class="pre">
-              load_submit_order_list_commands
+              snapshot_position_state
              </span>
             </span>
             <span class="sig-paren">
@@ -3238,6 +3559,28 @@ per the default implementations for both
               </span>
              </span>
             </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               Position
+              </span>
+              <span class="pre">
+               position
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               Money
+              </span>
+              <span class="pre">
+               unrealized_pnl=None
+              </span>
+             </span>
+            </em>
             <span class="sig-paren">
              )
             </span>
@@ -3247,31 +3590,66 @@ per the default implementations for both
              </span>
              <span class="sig-return-typehint">
               <span class="pre">
-               dict
+               void
               </span>
              </span>
             </span>
-            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.load_submit_order_list_commands" title="Permalink to this definition">
+            <a class="headerlink" href="#nautilus_trader.infrastructure.cache.RedisCacheDatabase.snapshot_position_state" title="Permalink to this definition">
              ¶
             </a>
            </dt>
            <dd>
             <p>
-             Load all submit order list commands from the database.
+             Snapshot the state of the given
+             <cite>
+              position
+             </cite>
+             .
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
-              Returns
+              Parameters
               <span class="colon">
                :
               </span>
              </dt>
              <dd class="field-odd">
-              <p>
-               <em>
-                dict[OrderListId, SubmitOrderList]
-               </em>
-              </p>
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  position
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/position.html#nautilus_trader.model.position.Position" title="nautilus_trader.model.position.Position">
+                  <em>
+                   Position
+                  </em>
+                 </a>
+                 ) – The position for the state snapshot.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  unrealized_pnl
+                 </strong>
+                 (
+                 <a class="reference internal" href="model/objects.html#nautilus_trader.model.objects.Money" title="nautilus_trader.model.objects.Money">
+                  <em>
+                   Money
+                  </em>
+                 </a>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – The unrealized PnL for the state snapshot.
+                </p>
+               </li>
+              </ul>
              </dd>
             </dl>
            </dd>

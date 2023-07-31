@@ -366,6 +366,11 @@
                 </a>
                </li>
                <li class="md-nav__item">
+                <a class="md-nav__link" href="../../concepts/advanced/synthetic_instruments.html">
+                 Synthetic instruments
+                </a>
+               </li>
+               <li class="md-nav__item">
                 <a class="md-nav__link" href="../../concepts/advanced/portfolio_statistics.html">
                  Portfolio Statistics
                 </a>
@@ -580,11 +585,6 @@
              <li class="md-nav__item">
               <a class="md-nav__link" href="../msgbus.html">
                Message Bus
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../network.html">
-               Network
               </a>
              </li>
              <li class="md-nav__item">
@@ -1031,6 +1031,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   BinanceNewOrderRespType
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.adapters.binance.common.enums.BinanceErrorCode">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  BinanceErrorCode
                  </span>
                 </code>
                </a>
@@ -2425,10 +2434,28 @@
                    </a>
                   </li>
                   <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.treat_expired_as_canceled">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceFuturesExecutionClient.treat_expired_as_canceled
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
                    <a class="md-nav__link" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.type">
                     <code class="docutils literal notranslate">
                      <span class="pre">
                       BinanceFuturesExecutionClient.type
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.use_position_ids">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceFuturesExecutionClient.use_position_ids
                      </span>
                     </code>
                    </a>
@@ -3829,10 +3856,28 @@
                    </a>
                   </li>
                   <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.treat_expired_as_canceled">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceSpotExecutionClient.treat_expired_as_canceled
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
                    <a class="md-nav__link" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.type">
                     <code class="docutils literal notranslate">
                      <span class="pre">
                       BinanceSpotExecutionClient.type
+                     </span>
+                    </code>
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.use_position_ids">
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BinanceSpotExecutionClient.use_position_ids
                      </span>
                     </code>
                    </a>
@@ -5521,7 +5566,7 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
            <em class="sig-param">
             <span class="n">
              <span class="pre">
-              warn_gtd_to_gtc
+              use_reduce_only
              </span>
             </span>
             <span class="p">
@@ -5548,6 +5593,168 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
             <span class="default_value">
              <span class="pre">
               True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              use_position_ids
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              treat_expired_as_canceled
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              max_retries
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              Optional
+             </span>
+             <span class="p">
+              <span class="pre">
+               [
+              </span>
+             </span>
+             <span class="pre">
+              int
+             </span>
+             <span class="p">
+              <span class="pre">
+               ]
+              </span>
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              retry_delay
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              Optional
+             </span>
+             <span class="p">
+              <span class="pre">
+               [
+              </span>
+             </span>
+             <span class="pre">
+              float
+             </span>
+             <span class="p">
+              <span class="pre">
+               ]
+              </span>
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
              </span>
             </span>
            </em>
@@ -5748,7 +5955,7 @@ If
               <li>
                <p>
                 <strong>
-                 warn_gtd_to_gtc
+                 use_reduce_only
                 </strong>
                 (
                 <em>
@@ -5760,7 +5967,108 @@ If
                 <em>
                  default True
                 </em>
-                ) – If log warning for GTD time in force transformed to GTC.
+                ) – If the
+                <cite>
+                 reduce_only
+                </cite>
+                execution instruction on orders is sent through to the exchange.
+If True then will assign the value on orders sent to the exchange, otherwise will always be False.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 use_position_ids
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default True
+                </em>
+                ) – If Binance Futures hedging position IDs should be used.
+If False then order event
+                <cite>
+                 position_id`(s) from the execution client will be `None
+                </cite>
+                , which
+allows
+                <em>
+                 virtual
+                </em>
+                positions with
+                <cite>
+                 OmsType.HEDGING
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 treat_expired_as_canceled
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
+                ) – If the
+                <cite>
+                 EXPIRED
+                </cite>
+                execution type is semantically treated as
+                <cite>
+                 CANCELED
+                </cite>
+                .
+Binance treats cancels with certain combinations of order type and time in force as expired
+events. This config option allows you to treat these uniformally as cancels.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 max_retries
+                </strong>
+                (
+                <em>
+                 PositiveInt
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The maximum number of times a submit or cancel order request will be retried.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 retry_delay
+                </strong>
+                (
+                <em>
+                 PositiveFloat
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The delay (seconds) between retries.
                </p>
               </li>
              </ul>
@@ -6691,6 +6999,26 @@ cached client will be returned.
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              is_testnet
+             </span>
+            </span>
+            <span class="p">
+             <span class="pre">
+              :
+             </span>
+            </span>
+            <span class="w">
+            </span>
+            <span class="n">
+             <span class="pre">
+              bool
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               config
              </span>
             </span>
@@ -6800,6 +7128,24 @@ cached client will be returned.
                  </em>
                 </a>
                 ) – The Binance account type for the instrument provider.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 is_testnet
+                </strong>
+                (
+                <em>
+                 bool
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default False
+                </em>
+                ) – If the provider is for the Spot testnet.
                </p>
               </li>
               <li>
@@ -7872,6 +8218,24 @@ cached client will be returned.
            ¶
           </a>
          </h2>
+         <p>
+          Defines
+          <cite>
+           Binance
+          </cite>
+          common enums.
+         </p>
+         <p class="rubric">
+          References
+         </p>
+         <p>
+          <a class="reference external" href="https://binance-docs.github.io/apidocs/spot/en/#public-api-definitions">
+           https://binance-docs.github.io/apidocs/spot/en/#public-api-definitions
+          </a>
+          <a class="reference external" href="https://binance-docs.github.io/apidocs/futures/en/#public-endpoints-info">
+           https://binance-docs.github.io/apidocs/futures/en/#public-endpoints-info
+          </a>
+         </p>
          <dl class="py class">
           <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.common.enums.BinanceRateLimitType">
            <em class="property">
@@ -10179,6 +10543,171 @@ cached client will be returned.
              Binance
             </cite>
             newOrderRespType.
+           </p>
+          </dd>
+         </dl>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.common.enums.BinanceErrorCode">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+            <span class="w">
+            </span>
+           </em>
+           <span class="sig-name descname">
+            <span class="pre">
+             BinanceErrorCode
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              value
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              names
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              module
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              qualname
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              type
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              start
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              boundary
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#nautilus_trader.adapters.binance.common.enums.BinanceErrorCode" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Bases:
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              Enum
+             </span>
+            </code>
+           </p>
+           <p>
+            Represents a
+            <cite>
+             Binance
+            </cite>
+            error code (covers futures).
            </p>
           </dd>
          </dl>
@@ -13071,6 +13600,28 @@ cached client will be returned.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+               <span class="pre">
+                BinanceDataClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -13100,40 +13651,6 @@ cached client will be returned.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.USDT_FUTURE
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               use_agg_trade_ticks
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               False
               </span>
              </span>
             </em>
@@ -13292,20 +13809,15 @@ cached client will be returned.
                <li>
                 <p>
                  <strong>
-                  use_agg_trade_ticks
+                  config
                  </strong>
                  (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default False
-                 </em>
-                 ) – Whether to use aggregated trade tick endpoints instead of raw trade ticks.
-TradeId of ticks will be the Aggregate tradeId returned by Binance.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+                  <em>
+                   BinanceDataClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -13389,20 +13901,19 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -13483,20 +13994,19 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -13533,8 +14043,8 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
              </dt>
              <dd>
               <p>
-               Run the given coroutine with error handling and optional callback
-actions when done.
+               Run the given coroutine with error handling and optional callback actions when
+done.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -18309,6 +18819,21 @@ then the component state will not change, and an error will be logged.
           </h3>
           <span class="target" id="module-nautilus_trader.adapters.binance.futures.enums">
           </span>
+          <p>
+           Defines
+           <cite>
+            Binance
+           </cite>
+           Futures specific enums.
+          </p>
+          <p class="rubric">
+           References
+          </p>
+          <p>
+           <a class="reference external" href="https://binance-docs.github.io/apidocs/futures/en/#public-endpoints-info">
+            https://binance-docs.github.io/apidocs/futures/en/#public-endpoints-info
+           </a>
+          </p>
           <dl class="py class">
            <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.futures.enums.BinanceFuturesContractType">
             <em class="property">
@@ -19698,6 +20223,28 @@ then the component state will not change, and an error will be logged.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+               <span class="pre">
+                BinanceExecClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -19727,40 +20274,6 @@ then the component state will not change, and an error will be logged.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.USDT_FUTURE
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               warn_gtd_to_gtc
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               True
               </span>
              </span>
             </em>
@@ -19919,19 +20432,15 @@ then the component state will not change, and an error will be logged.
                <li>
                 <p>
                  <strong>
-                  warn_gtd_to_gtc
+                  config
                  </strong>
                  (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default True
-                 </em>
-                 ) – If log warning for GTD time in force transformed to GTC.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+                  <em>
+                   BinanceExecClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -20269,20 +20778,19 @@ then the component state will not change, and an error will be logged.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -20363,20 +20871,19 @@ then the component state will not change, and an error will be logged.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -20413,8 +20920,8 @@ then the component state will not change, and an error will be logged.
              </dt>
              <dd>
               <p>
-               Run the given coroutine with error handling and optional callback
-actions when done.
+               Run the given coroutine with error handling and optional callback actions when
+done.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -21054,20 +21561,19 @@ then the component state will not change, and an error will be logged.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  int
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -21095,9 +21601,21 @@ then the component state will not change, and an error will be logged.
                <span class="sig-return-typehint">
                 <a class="reference internal" href="../execution.html#nautilus_trader.execution.reports.ExecutionMassStatus" title="nautilus_trader.execution.reports.ExecutionMassStatus">
                  <span class="pre">
-                  ExecutionMassStatus
+                  nautilus_trader.execution.reports.ExecutionMassStatus
                  </span>
                 </a>
+                <span class="w">
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  |
+                 </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
+                </span>
                </span>
               </span>
               <a class="headerlink" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.generate_mass_status" title="Permalink to this definition">
@@ -21145,9 +21663,12 @@ then the component state will not change, and an error will be logged.
                </dt>
                <dd class="field-even">
                 <p>
-                 <em>
-                  ExecutionMassStatus
-                 </em>
+                 ExecutionMassStatus or
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   None
+                  </span>
+                 </code>
                 </p>
                </dd>
               </dl>
@@ -22987,11 +23508,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                  <span class="pre">
                   InstrumentId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -23935,11 +24469,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                  <span class="pre">
                   InstrumentId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -24209,11 +24756,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                  <span class="pre">
                   InstrumentId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -24245,11 +24805,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.VenueOrderId" title="nautilus_trader.model.identifiers.VenueOrderId">
                  <span class="pre">
                   VenueOrderId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -25730,6 +26303,65 @@ then the component state will not change, and an error will be logged.
               </dl>
              </dd>
             </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.treat_expired_as_canceled">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                treat_expired_as_canceled
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.treat_expired_as_canceled" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether the
+               <cite>
+                EXPIRED
+               </cite>
+               execution type is treated as a
+               <cite>
+                CANCEL
+               </cite>
+               .
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
             <dl class="py attribute">
              <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.type">
               <span class="sig-name descname">
@@ -25757,6 +26389,62 @@ then the component state will not change, and an error will be logged.
                  <cite>
                   type
                  </cite>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.use_position_ids">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                use_position_ids
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.futures.execution.BinanceFuturesExecutionClient.use_position_ids" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether a
+               <cite>
+                position_id
+               </cite>
+               will be assigned to order events generated by the
+client.
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
                 </p>
                </dd>
               </dl>
@@ -26264,8 +26952,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the instruments for the given IDs into the provider, optionally
-applying the given filters.
+               Load the instruments for the given IDs into the provider, optionally applying
+the given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -26448,8 +27136,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the instrument for the given ID into the provider asynchronously, optionally
-applying the given filters.
+               Load the instrument for the given ID into the provider asynchronously,
+optionally applying the given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -26930,23 +27618,22 @@ applying the given filters.
                 →
                </span>
                <span class="sig-return-typehint">
-                <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
                 <a class="reference internal" href="../model/currency.html#nautilus_trader.model.currency.Currency" title="nautilus_trader.model.currency.Currency">
                  <span class="pre">
-                  Currency
+                  nautilus_trader.model.currency.Currency
                  </span>
                 </a>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
               </span>
@@ -27053,23 +27740,22 @@ applying the given filters.
                 →
                </span>
                <span class="sig-return-typehint">
-                <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
                 <a class="reference internal" href="../model/instruments.html#nautilus_trader.model.instruments.base.Instrument" title="nautilus_trader.model.instruments.base.Instrument">
                  <span class="pre">
-                  Instrument
+                  nautilus_trader.model.instruments.base.Instrument
                  </span>
                 </a>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
               </span>
@@ -27356,20 +28042,19 @@ applying the given filters.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  dict
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -27406,8 +28091,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the instrument for the given ID into the provider, optionally
-applying the given filters.
+               Load the instrument for the given ID into the provider, optionally applying the
+given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -27480,20 +28165,19 @@ applying the given filters.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  dict
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -27530,8 +28214,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the latest instruments into the provider, optionally applying the
-given filters.
+               Load the latest instruments into the provider, optionally applying the given
+filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -27621,20 +28305,19 @@ given filters.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  dict
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -27671,8 +28354,8 @@ given filters.
              </dt>
              <dd>
               <p>
-               Load the instruments for the given IDs into the provider, optionally
-applying the given filters.
+               Load the instruments for the given IDs into the provider, optionally applying
+the given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -28747,6 +29430,28 @@ applying the given filters.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+               <span class="pre">
+                BinanceDataClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -28776,40 +29481,6 @@ applying the given filters.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.SPOT
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               use_agg_trade_ticks
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               False
               </span>
              </span>
             </em>
@@ -28968,20 +29639,15 @@ applying the given filters.
                <li>
                 <p>
                  <strong>
-                  use_agg_trade_ticks
+                  config
                  </strong>
                  (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default False
-                 </em>
-                 ) – Whether to use aggregated trade tick endpoints instead of raw trade ticks.
-TradeId of ticks will be the Aggregate tradeId returned by Binance.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceDataClientConfig" title="nautilus_trader.adapters.binance.config.BinanceDataClientConfig">
+                  <em>
+                   BinanceDataClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -29065,20 +29731,19 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -29159,20 +29824,19 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -29209,8 +29873,8 @@ TradeId of ticks will be the Aggregate tradeId returned by Binance.
              </dt>
              <dd>
               <p>
-               Run the given coroutine with error handling and optional callback
-actions when done.
+               Run the given coroutine with error handling and optional callback actions when
+done.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -33985,6 +34649,21 @@ then the component state will not change, and an error will be logged.
           </h3>
           <span class="target" id="module-nautilus_trader.adapters.binance.spot.enums">
           </span>
+          <p>
+           Defines
+           <cite>
+            Binance
+           </cite>
+           Spot/Margin specific enums.
+          </p>
+          <p class="rubric">
+           References
+          </p>
+          <p>
+           <a class="reference external" href="https://binance-docs.github.io/apidocs/spot/en/#public-api-definitions">
+            https://binance-docs.github.io/apidocs/spot/en/#public-api-definitions
+           </a>
+          </p>
           <dl class="py class">
            <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.spot.enums.BinanceSpotPermissions">
             <em class="property">
@@ -34694,6 +35373,48 @@ then the component state will not change, and an error will be logged.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               base_url_ws
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               str
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               config
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+               <span class="pre">
+                BinanceExecClientConfig
+               </span>
+              </a>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                account_type
               </span>
              </span>
@@ -34723,87 +35444,6 @@ then the component state will not change, and an error will be logged.
              <span class="default_value">
               <span class="pre">
                BinanceAccountType.SPOT
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               base_url_ws
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               Optional
-              </span>
-              <span class="p">
-               <span class="pre">
-                [
-               </span>
-              </span>
-              <span class="pre">
-               str
-              </span>
-              <span class="p">
-               <span class="pre">
-                ]
-               </span>
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               None
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               warn_gtd_to_gtc
-              </span>
-             </span>
-             <span class="p">
-              <span class="pre">
-               :
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="n">
-              <span class="pre">
-               bool
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="w">
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               True
               </span>
              </span>
             </em>
@@ -34936,6 +35576,18 @@ then the component state will not change, and an error will be logged.
                <li>
                 <p>
                  <strong>
+                  base_url_ws
+                 </strong>
+                 (
+                 <em>
+                  str
+                 </em>
+                 ) – The base URL for the WebSocket client.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
                   account_type
                  </strong>
                  (
@@ -34950,37 +35602,15 @@ then the component state will not change, and an error will be logged.
                <li>
                 <p>
                  <strong>
-                  base_url_ws
+                  config
                  </strong>
                  (
-                 <em>
-                  str
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  optional
-                 </em>
-                 ) – The base URL for the WebSocket client.
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
-                  warn_gtd_to_gtc
-                 </strong>
-                 (
-                 <em>
-                  bool
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default True
-                 </em>
-                 ) – If log warning for GTD time in force transformed to GTC.
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.config.BinanceExecClientConfig" title="nautilus_trader.adapters.binance.config.BinanceExecClientConfig">
+                  <em>
+                   BinanceExecClientConfig
+                  </em>
+                 </a>
+                 ) – The configuration for the client.
                 </p>
                </li>
               </ul>
@@ -35318,20 +35948,19 @@ then the component state will not change, and an error will be logged.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -35412,20 +36041,19 @@ then the component state will not change, and an error will be logged.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  str
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -35462,8 +36090,8 @@ then the component state will not change, and an error will be logged.
              </dt>
              <dd>
               <p>
-               Run the given coroutine with error handling and optional callback
-actions when done.
+               Run the given coroutine with error handling and optional callback actions when
+done.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -36103,20 +36731,19 @@ then the component state will not change, and an error will be logged.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  int
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -36144,9 +36771,21 @@ then the component state will not change, and an error will be logged.
                <span class="sig-return-typehint">
                 <a class="reference internal" href="../execution.html#nautilus_trader.execution.reports.ExecutionMassStatus" title="nautilus_trader.execution.reports.ExecutionMassStatus">
                  <span class="pre">
-                  ExecutionMassStatus
+                  nautilus_trader.execution.reports.ExecutionMassStatus
                  </span>
                 </a>
+                <span class="w">
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  |
+                 </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
+                </span>
                </span>
               </span>
               <a class="headerlink" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.generate_mass_status" title="Permalink to this definition">
@@ -36194,9 +36833,12 @@ then the component state will not change, and an error will be logged.
                </dt>
                <dd class="field-even">
                 <p>
-                 <em>
-                  ExecutionMassStatus
-                 </em>
+                 ExecutionMassStatus or
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   None
+                  </span>
+                 </code>
                 </p>
                </dd>
               </dl>
@@ -38036,11 +38678,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                  <span class="pre">
                   InstrumentId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -38984,11 +39639,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                  <span class="pre">
                   InstrumentId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -39258,11 +39926,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.InstrumentId" title="nautilus_trader.model.identifiers.InstrumentId">
                  <span class="pre">
                   InstrumentId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -39294,11 +39975,24 @@ position ID resolution.
                <span class="w">
                </span>
                <span class="n">
+                <span class="pre">
+                 Optional
+                </span>
+                <span class="p">
+                 <span class="pre">
+                  [
+                 </span>
+                </span>
                 <a class="reference internal" href="../model/identifiers.html#nautilus_trader.model.identifiers.VenueOrderId" title="nautilus_trader.model.identifiers.VenueOrderId">
                  <span class="pre">
                   VenueOrderId
                  </span>
                 </a>
+                <span class="p">
+                 <span class="pre">
+                  ]
+                 </span>
+                </span>
                </span>
                <span class="w">
                </span>
@@ -40779,6 +41473,65 @@ then the component state will not change, and an error will be logged.
               </dl>
              </dd>
             </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.treat_expired_as_canceled">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                treat_expired_as_canceled
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.treat_expired_as_canceled" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether the
+               <cite>
+                EXPIRED
+               </cite>
+               execution type is treated as a
+               <cite>
+                CANCEL
+               </cite>
+               .
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
             <dl class="py attribute">
              <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.type">
               <span class="sig-name descname">
@@ -40806,6 +41559,62 @@ then the component state will not change, and an error will be logged.
                  <cite>
                   type
                  </cite>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
+            <dl class="py property">
+             <dt class="sig sig-object py" id="nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.use_position_ids">
+              <em class="property">
+               <span class="pre">
+                property
+               </span>
+               <span class="w">
+               </span>
+              </em>
+              <span class="sig-name descname">
+               <span class="pre">
+                use_position_ids
+               </span>
+              </span>
+              <em class="property">
+               <span class="p">
+                <span class="pre">
+                 :
+                </span>
+               </span>
+               <span class="w">
+               </span>
+               <span class="pre">
+                bool
+               </span>
+              </em>
+              <a class="headerlink" href="#nautilus_trader.adapters.binance.spot.execution.BinanceSpotExecutionClient.use_position_ids" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Whether a
+               <cite>
+                position_id
+               </cite>
+               will be assigned to order events generated by the
+client.
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+                <span class="colon">
+                 :
+                </span>
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <em>
+                  bool
+                 </em>
                 </p>
                </dd>
               </dl>
@@ -40981,6 +41790,40 @@ then the component state will not change, and an error will be logged.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               is_testnet
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               False
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                config
               </span>
              </span>
@@ -41084,6 +41927,58 @@ then the component state will not change, and an error will be logged.
                   </em>
                  </a>
                  ) – The logger for the provider.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  clock
+                 </strong>
+                 (
+                 <a class="reference internal" href="../common.html#nautilus_trader.common.clock.LiveClock" title="nautilus_trader.common.clock.LiveClock">
+                  <em>
+                   LiveClock
+                  </em>
+                 </a>
+                 ) – The clock for the provider.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  account_type
+                 </strong>
+                 (
+                 <a class="reference internal" href="#nautilus_trader.adapters.binance.common.enums.BinanceAccountType" title="nautilus_trader.adapters.binance.common.enums.BinanceAccountType">
+                  <em>
+                   BinanceAccountType
+                  </em>
+                 </a>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  default SPOT
+                 </em>
+                 ) – The Binance account type for the provider.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  is_testnet
+                 </strong>
+                 (
+                 <em>
+                  bool
+                 </em>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  default False
+                 </em>
+                 ) – If the provider is for the Spot testnet.
                 </p>
                </li>
                <li>
@@ -41313,8 +42208,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the instruments for the given IDs into the provider, optionally
-applying the given filters.
+               Load the instruments for the given IDs into the provider, optionally applying
+the given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -41497,8 +42392,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the instrument for the given ID into the provider asynchronously, optionally
-applying the given filters.
+               Load the instrument for the given ID into the provider asynchronously,
+optionally applying the given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -41979,23 +42874,22 @@ applying the given filters.
                 →
                </span>
                <span class="sig-return-typehint">
-                <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
                 <a class="reference internal" href="../model/currency.html#nautilus_trader.model.currency.Currency" title="nautilus_trader.model.currency.Currency">
                  <span class="pre">
-                  Currency
+                  nautilus_trader.model.currency.Currency
                  </span>
                 </a>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
               </span>
@@ -42102,23 +42996,22 @@ applying the given filters.
                 →
                </span>
                <span class="sig-return-typehint">
-                <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
                 <a class="reference internal" href="../model/instruments.html#nautilus_trader.model.instruments.base.Instrument" title="nautilus_trader.model.instruments.base.Instrument">
                  <span class="pre">
-                  Instrument
+                  nautilus_trader.model.instruments.base.Instrument
                  </span>
                 </a>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
               </span>
@@ -42405,20 +43298,19 @@ applying the given filters.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  dict
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -42455,8 +43347,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the instrument for the given ID into the provider, optionally
-applying the given filters.
+               Load the instrument for the given ID into the provider, optionally applying the
+given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -42529,20 +43421,19 @@ applying the given filters.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  dict
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -42579,8 +43470,8 @@ applying the given filters.
              </dt>
              <dd>
               <p>
-               Load the latest instruments into the provider, optionally applying the
-given filters.
+               Load the latest instruments into the provider, optionally applying the given
+filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -42670,20 +43561,19 @@ given filters.
                </span>
                <span class="n">
                 <span class="pre">
-                 Optional
-                </span>
-                <span class="p">
-                 <span class="pre">
-                  [
-                 </span>
-                </span>
-                <span class="pre">
                  dict
                 </span>
+                <span class="w">
+                </span>
                 <span class="p">
                  <span class="pre">
-                  ]
+                  |
                  </span>
+                </span>
+                <span class="w">
+                </span>
+                <span class="pre">
+                 None
                 </span>
                </span>
                <span class="w">
@@ -42720,8 +43610,8 @@ given filters.
              </dt>
              <dd>
               <p>
-               Load the instruments for the given IDs into the provider, optionally
-applying the given filters.
+               Load the instruments for the given IDs into the provider, optionally applying
+the given filters.
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">

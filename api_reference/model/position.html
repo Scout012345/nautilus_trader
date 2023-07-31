@@ -366,6 +366,11 @@
                 </a>
                </li>
                <li class="md-nav__item">
+                <a class="md-nav__link" href="../../concepts/advanced/synthetic_instruments.html">
+                 Synthetic instruments
+                </a>
+               </li>
+               <li class="md-nav__item">
                 <a class="md-nav__link" href="../../concepts/advanced/portfolio_statistics.html">
                  Portfolio Statistics
                 </a>
@@ -583,11 +588,6 @@
               </a>
              </li>
              <li class="md-nav__item">
-              <a class="md-nav__link" href="../network.html">
-               Network
-              </a>
-             </li>
-             <li class="md-nav__item">
               <a class="md-nav__link" href="../persistence.html">
                Persistence
               </a>
@@ -773,15 +773,6 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Position.commissions()
-                 </span>
-                </code>
-               </a>
-              </li>
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#nautilus_trader.model.position.Position.cost_currency">
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  Position.cost_currency
                  </span>
                 </code>
                </a>
@@ -998,6 +989,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Position.realized_return
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.model.position.Position.settlement_currency">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Position.settlement_currency
                  </span>
                 </code>
                </a>
@@ -1691,6 +1691,7 @@ currency for inverse instruments.
                <em>
                 Money
                </em>
+               – In settlement currency.
               </p>
              </dd>
             </dl>
@@ -1822,38 +1823,6 @@ currency for inverse instruments.
                <em>
                 list[Money]
                </em>
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-          <dl class="py attribute">
-           <dt class="sig sig-object py" id="nautilus_trader.model.position.Position.cost_currency">
-            <span class="sig-name descname">
-             <span class="pre">
-              cost_currency
-             </span>
-            </span>
-            <a class="headerlink" href="#nautilus_trader.model.position.Position.cost_currency" title="Permalink to this definition">
-             ¶
-            </a>
-           </dt>
-           <dd>
-            <p>
-             The position cost currency (for PnL).
-            </p>
-            <dl class="field-list simple">
-             <dt class="field-odd">
-              Returns
-              <span class="colon">
-               :
-              </span>
-             </dt>
-             <dd class="field-odd">
-              <p>
-               <cite>
-                Currency
-               </cite>
               </p>
              </dd>
             </dl>
@@ -2803,6 +2772,38 @@ the current position side.
            </dd>
           </dl>
           <dl class="py attribute">
+           <dt class="sig sig-object py" id="nautilus_trader.model.position.Position.settlement_currency">
+            <span class="sig-name descname">
+             <span class="pre">
+              settlement_currency
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.model.position.Position.settlement_currency" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             The position settlement currency (for PnL).
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <cite>
+                Currency
+               </cite>
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py attribute">
            <dt class="sig sig-object py" id="nautilus_trader.model.position.Position.side">
             <span class="sig-name descname">
              <span class="pre">
@@ -3415,7 +3416,7 @@ currency for inverse instruments.
            </dt>
            <dd>
             <p>
-             The UNIX timestamp (nanoseconds) when the last fill occurred.
+             The UNIX timestamp (nanoseconds) when the last event occurred.
             </p>
             <dl class="field-list simple">
              <dt class="field-odd">
