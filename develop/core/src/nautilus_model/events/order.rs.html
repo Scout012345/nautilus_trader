@@ -378,7 +378,7 @@
 </span><span class="kw">use </span>std::collections::HashMap;
 
 <span class="kw">use </span>derive_builder::{<span class="self">self</span>, Builder};
-<span class="kw">use </span>nautilus_core::{time::UnixNanos, uuid::UUID4};
+<span class="kw">use </span>nautilus_core::{string::SerializableUstr, time::UnixNanos, uuid::UUID4};
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
 <span class="kw">use crate</span>::{
@@ -493,7 +493,7 @@
 }
 
 <span class="attr">#[repr(C)]
-#[derive(Clone, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default, Serialize, Deserialize, Builder)]
 #[builder(default)]
 #[serde(tag = <span class="string">&quot;type&quot;</span>)]
 </span><span class="kw">pub struct </span>OrderDenied {
@@ -501,7 +501,7 @@
     <span class="kw">pub </span>strategy_id: StrategyId,
     <span class="kw">pub </span>instrument_id: InstrumentId,
     <span class="kw">pub </span>client_order_id: ClientOrderId,
-    <span class="kw">pub </span>reason: Box&lt;String&gt;,
+    <span class="kw">pub </span>reason: SerializableUstr,
     <span class="kw">pub </span>event_id: UUID4,
     <span class="kw">pub </span>ts_event: UnixNanos,
     <span class="kw">pub </span>ts_init: UnixNanos,

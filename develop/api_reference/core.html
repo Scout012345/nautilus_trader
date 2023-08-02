@@ -3631,44 +3631,6 @@ set self.__traceback__ to tb and return self.
              Event
             </span>
            </span>
-           <span class="sig-paren">
-            (
-           </span>
-           <em class="sig-param">
-            <span class="n">
-             <span class="pre">
-              UUID4
-             </span>
-             <span class="pre">
-              event_id
-             </span>
-            </span>
-           </em>
-           ,
-           <em class="sig-param">
-            <span class="n">
-             <span class="pre">
-              uint64_t
-             </span>
-             <span class="pre">
-              ts_event
-             </span>
-            </span>
-           </em>
-           ,
-           <em class="sig-param">
-            <span class="n">
-             <span class="pre">
-              uint64_t
-             </span>
-             <span class="pre">
-              ts_init
-             </span>
-            </span>
-           </em>
-           <span class="sig-paren">
-            )
-           </span>
            <a class="headerlink" href="#nautilus_trader.core.message.Event" title="Permalink to this definition">
             ¶
            </a>
@@ -3683,58 +3645,8 @@ set self.__traceback__ to tb and return self.
             </code>
            </p>
            <p>
-            The base class for all event messages.
+            The abstract base class for all event messages.
            </p>
-           <dl class="field-list simple">
-            <dt class="field-odd">
-             Parameters
-             <span class="colon">
-              :
-             </span>
-            </dt>
-            <dd class="field-odd">
-             <ul class="simple">
-              <li>
-               <p>
-                <strong>
-                 event_id
-                </strong>
-                (
-                <a class="reference internal" href="#nautilus_trader.core.uuid.UUID4" title="nautilus_trader.core.uuid.UUID4">
-                 <em>
-                  UUID4
-                 </em>
-                </a>
-                ) – The event ID.
-               </p>
-              </li>
-              <li>
-               <p>
-                <strong>
-                 ts_event
-                </strong>
-                (
-                <em>
-                 uint64_t
-                </em>
-                ) – The UNIX timestamp (nanoseconds) when the event occurred.
-               </p>
-              </li>
-              <li>
-               <p>
-                <strong>
-                 ts_init
-                </strong>
-                (
-                <em>
-                 uint64_t
-                </em>
-                ) – The UNIX timestamp (nanoseconds) when the object was initialized.
-               </p>
-              </li>
-             </ul>
-            </dd>
-           </dl>
            <div class="admonition warning">
             <p class="admonition-title">
              Warning
@@ -3756,7 +3668,10 @@ set self.__traceback__ to tb and return self.
             </dt>
             <dd>
              <p>
-              The event message ID.
+              UUID4
+             </p>
+             <p>
+              The event message identifier.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -3767,9 +3682,20 @@ set self.__traceback__ to tb and return self.
               </dt>
               <dd class="field-odd">
                <p>
-                <cite>
+                <em>
                  UUID4
-                </cite>
+                </em>
+               </p>
+              </dd>
+              <dt class="field-even">
+               Type
+               <span class="colon">
+                :
+               </span>
+              </dt>
+              <dd class="field-even">
+               <p>
+                Event.id
                </p>
               </dd>
              </dl>
@@ -3788,6 +3714,9 @@ set self.__traceback__ to tb and return self.
             </dt>
             <dd>
              <p>
+              int
+             </p>
+             <p>
               The UNIX timestamp (nanoseconds) when the event occurred.
              </p>
              <dl class="field-list simple">
@@ -3799,9 +3728,20 @@ set self.__traceback__ to tb and return self.
               </dt>
               <dd class="field-odd">
                <p>
-                <cite>
-                 uint64_t
-                </cite>
+                <em>
+                 int
+                </em>
+               </p>
+              </dd>
+              <dt class="field-even">
+               Type
+               <span class="colon">
+                :
+               </span>
+              </dt>
+              <dd class="field-even">
+               <p>
+                Event.ts_event
                </p>
               </dd>
              </dl>
@@ -3820,6 +3760,9 @@ set self.__traceback__ to tb and return self.
             </dt>
             <dd>
              <p>
+              int
+             </p>
+             <p>
               The UNIX timestamp (nanoseconds) when the object was initialized.
              </p>
              <dl class="field-list simple">
@@ -3831,9 +3774,20 @@ set self.__traceback__ to tb and return self.
               </dt>
               <dd class="field-odd">
                <p>
-                <cite>
-                 uint64_t
-                </cite>
+                <em>
+                 int
+                </em>
+               </p>
+              </dd>
+              <dt class="field-even">
+               Type
+               <span class="colon">
+                :
+               </span>
+              </dt>
+              <dd class="field-even">
+               <p>
+                Event.ts_init
                </p>
               </dd>
              </dl>

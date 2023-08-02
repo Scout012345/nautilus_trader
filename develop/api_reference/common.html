@@ -36738,7 +36738,10 @@ upstream.
             </dt>
             <dd>
              <p>
-              The event message ID.
+              UUID4
+             </p>
+             <p>
+              The event message identifier.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -36749,9 +36752,20 @@ upstream.
               </dt>
               <dd class="field-odd">
                <p>
-                <cite>
+                <em>
                  UUID4
-                </cite>
+                </em>
+               </p>
+              </dd>
+              <dt class="field-even">
+               Type
+               <span class="colon">
+                :
+               </span>
+              </dt>
+              <dd class="field-even">
+               <p>
+                TimeEvent.id
                </p>
               </dd>
              </dl>
@@ -36816,6 +36830,9 @@ upstream.
             </dt>
             <dd>
              <p>
+              int
+             </p>
+             <p>
               The UNIX timestamp (nanoseconds) when the event occurred.
              </p>
              <dl class="field-list simple">
@@ -36827,9 +36844,20 @@ upstream.
               </dt>
               <dd class="field-odd">
                <p>
-                <cite>
-                 uint64_t
-                </cite>
+                <em>
+                 int
+                </em>
+               </p>
+              </dd>
+              <dt class="field-even">
+               Type
+               <span class="colon">
+                :
+               </span>
+              </dt>
+              <dd class="field-even">
+               <p>
+                TimeEvent.ts_event
                </p>
               </dd>
              </dl>
@@ -36848,6 +36876,9 @@ upstream.
             </dt>
             <dd>
              <p>
+              int
+             </p>
+             <p>
               The UNIX timestamp (nanoseconds) when the object was initialized.
              </p>
              <dl class="field-list simple">
@@ -36859,9 +36890,20 @@ upstream.
               </dt>
               <dd class="field-odd">
                <p>
-                <cite>
-                 uint64_t
-                </cite>
+                <em>
+                 int
+                </em>
+               </p>
+              </dd>
+              <dt class="field-even">
+               Type
+               <span class="colon">
+                :
+               </span>
+              </dt>
+              <dd class="field-even">
+               <p>
+                TimeEvent.ts_init
                </p>
               </dd>
              </dl>
