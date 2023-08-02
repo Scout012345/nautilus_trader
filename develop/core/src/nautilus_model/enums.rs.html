@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (db7ff98a7 2023-07-31)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../nautilus_model/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/enums.rs`."><title>enums.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (d12c6e947 2023-08-01)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../nautilus_model/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -1300,6 +1300,12 @@
 <a href="#1300" id="1300">1300</a>
 <a href="#1301" id="1301">1301</a>
 <a href="#1302" id="1302">1302</a>
+<a href="#1303" id="1303">1303</a>
+<a href="#1304" id="1304">1304</a>
+<a href="#1305" id="1305">1305</a>
+<a href="#1306" id="1306">1306</a>
+<a href="#1307" id="1307">1307</a>
+<a href="#1308" id="1308">1308</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -1324,7 +1330,7 @@
 <span class="kw">use </span>serde::{Deserialize, Deserializer, Serialize, Serializer};
 <span class="kw">use </span>strum::{AsRefStr, Display, EnumString, FromRepr};
 
-<span class="kw">use </span><span class="kw">crate</span>::strum_serde;
+<span class="kw">use crate</span>::{enum_strum_serde, enum_value_getter};
 
 <span class="kw">pub trait </span>FromU8 {
     <span class="kw">fn </span>from_u8(value: u8) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt;
@@ -1573,15 +1579,6 @@
     </span>Delete = <span class="number">3</span>,
     <span class="doccomment">/// The state of the order book is cleared.
     </span>Clear = <span class="number">4</span>,
-}
-
-<span class="comment">// TODO: Make this a macro
-</span><span class="attr">#[pymethods]
-</span><span class="kw">impl </span>BookAction {
-    <span class="attr">#[getter]
-    </span><span class="kw">pub fn </span>value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u8 {
-        <span class="kw-2">*</span><span class="self">self </span><span class="kw">as </span>u8
-    }
 }
 
 <span class="kw">impl </span>FromU8 <span class="kw">for </span>BookAction {
@@ -1864,15 +1861,6 @@
     </span>Buy = <span class="number">1</span>,
     <span class="doccomment">/// The order is a SELL.
     </span>Sell = <span class="number">2</span>,
-}
-
-<span class="comment">// TODO: Make this a macro
-</span><span class="attr">#[pymethods]
-</span><span class="kw">impl </span>OrderSide {
-    <span class="attr">#[getter]
-    </span><span class="kw">pub fn </span>value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u8 {
-        <span class="kw-2">*</span><span class="self">self </span><span class="kw">as </span>u8
-    }
 }
 
 <span class="doccomment">/// Convert the given `value` to an [`OrderSide`].
@@ -2191,30 +2179,54 @@
     </span>IndexPrice = <span class="number">9</span>,
 }
 
-<span class="macro">strum_serde!</span>(AccountType);
-<span class="macro">strum_serde!</span>(AggregationSource);
-<span class="macro">strum_serde!</span>(AggressorSide);
-<span class="macro">strum_serde!</span>(AssetClass);
-<span class="macro">strum_serde!</span>(AssetType);
-<span class="macro">strum_serde!</span>(BarAggregation);
-<span class="macro">strum_serde!</span>(BookAction);
-<span class="macro">strum_serde!</span>(BookType);
-<span class="macro">strum_serde!</span>(ContingencyType);
-<span class="macro">strum_serde!</span>(CurrencyType);
-<span class="macro">strum_serde!</span>(InstrumentCloseType);
-<span class="macro">strum_serde!</span>(LiquiditySide);
-<span class="macro">strum_serde!</span>(MarketStatus);
-<span class="macro">strum_serde!</span>(OmsType);
-<span class="macro">strum_serde!</span>(OptionKind);
-<span class="macro">strum_serde!</span>(OrderSide);
-<span class="macro">strum_serde!</span>(OrderStatus);
-<span class="macro">strum_serde!</span>(OrderType);
-<span class="macro">strum_serde!</span>(PositionSide);
-<span class="macro">strum_serde!</span>(PriceType);
-<span class="macro">strum_serde!</span>(TimeInForce);
-<span class="macro">strum_serde!</span>(TradingState);
-<span class="macro">strum_serde!</span>(TrailingOffsetType);
-<span class="macro">strum_serde!</span>(TriggerType);
+<span class="macro">enum_strum_serde!</span>(AccountType);
+<span class="macro">enum_strum_serde!</span>(AggregationSource);
+<span class="macro">enum_strum_serde!</span>(AggressorSide);
+<span class="macro">enum_strum_serde!</span>(AssetClass);
+<span class="macro">enum_strum_serde!</span>(AssetType);
+<span class="macro">enum_strum_serde!</span>(BarAggregation);
+<span class="macro">enum_strum_serde!</span>(BookAction);
+<span class="macro">enum_strum_serde!</span>(BookType);
+<span class="macro">enum_strum_serde!</span>(ContingencyType);
+<span class="macro">enum_strum_serde!</span>(CurrencyType);
+<span class="macro">enum_strum_serde!</span>(InstrumentCloseType);
+<span class="macro">enum_strum_serde!</span>(LiquiditySide);
+<span class="macro">enum_strum_serde!</span>(MarketStatus);
+<span class="macro">enum_strum_serde!</span>(OmsType);
+<span class="macro">enum_strum_serde!</span>(OptionKind);
+<span class="macro">enum_strum_serde!</span>(OrderSide);
+<span class="macro">enum_strum_serde!</span>(OrderStatus);
+<span class="macro">enum_strum_serde!</span>(OrderType);
+<span class="macro">enum_strum_serde!</span>(PositionSide);
+<span class="macro">enum_strum_serde!</span>(PriceType);
+<span class="macro">enum_strum_serde!</span>(TimeInForce);
+<span class="macro">enum_strum_serde!</span>(TradingState);
+<span class="macro">enum_strum_serde!</span>(TrailingOffsetType);
+<span class="macro">enum_strum_serde!</span>(TriggerType);
+
+<span class="macro">enum_value_getter!</span>(AccountType);
+<span class="macro">enum_value_getter!</span>(AggregationSource);
+<span class="macro">enum_value_getter!</span>(AggressorSide);
+<span class="macro">enum_value_getter!</span>(AssetClass);
+<span class="macro">enum_value_getter!</span>(BarAggregation);
+<span class="macro">enum_value_getter!</span>(BookAction);
+<span class="macro">enum_value_getter!</span>(BookType);
+<span class="macro">enum_value_getter!</span>(ContingencyType);
+<span class="macro">enum_value_getter!</span>(CurrencyType);
+<span class="macro">enum_value_getter!</span>(InstrumentCloseType);
+<span class="macro">enum_value_getter!</span>(LiquiditySide);
+<span class="macro">enum_value_getter!</span>(MarketStatus);
+<span class="macro">enum_value_getter!</span>(OmsType);
+<span class="macro">enum_value_getter!</span>(OptionKind);
+<span class="macro">enum_value_getter!</span>(OrderSide);
+<span class="macro">enum_value_getter!</span>(OrderStatus);
+<span class="macro">enum_value_getter!</span>(OrderType);
+<span class="macro">enum_value_getter!</span>(PositionSide);
+<span class="macro">enum_value_getter!</span>(PriceType);
+<span class="macro">enum_value_getter!</span>(TimeInForce);
+<span class="macro">enum_value_getter!</span>(TradingState);
+<span class="macro">enum_value_getter!</span>(TrailingOffsetType);
+<span class="macro">enum_value_getter!</span>(TriggerType);
 
 <span class="attr">#[no_mangle]
 </span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>account_type_to_cstr(value: AccountType) -&gt; <span class="kw-2">*const </span>c_char {
