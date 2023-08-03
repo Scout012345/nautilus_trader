@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/orders/base.rs`."><title>base.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (d12c6e947 2023-08-01)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../nautilus_model/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `model/src/orders/base.rs`."><title>base.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="nautilus_model" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (8131b9774 2023-08-02)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../nautilus_model/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -645,6 +645,49 @@
 <a href="#645" id="645">645</a>
 <a href="#646" id="646">646</a>
 <a href="#647" id="647">647</a>
+<a href="#648" id="648">648</a>
+<a href="#649" id="649">649</a>
+<a href="#650" id="650">650</a>
+<a href="#651" id="651">651</a>
+<a href="#652" id="652">652</a>
+<a href="#653" id="653">653</a>
+<a href="#654" id="654">654</a>
+<a href="#655" id="655">655</a>
+<a href="#656" id="656">656</a>
+<a href="#657" id="657">657</a>
+<a href="#658" id="658">658</a>
+<a href="#659" id="659">659</a>
+<a href="#660" id="660">660</a>
+<a href="#661" id="661">661</a>
+<a href="#662" id="662">662</a>
+<a href="#663" id="663">663</a>
+<a href="#664" id="664">664</a>
+<a href="#665" id="665">665</a>
+<a href="#666" id="666">666</a>
+<a href="#667" id="667">667</a>
+<a href="#668" id="668">668</a>
+<a href="#669" id="669">669</a>
+<a href="#670" id="670">670</a>
+<a href="#671" id="671">671</a>
+<a href="#672" id="672">672</a>
+<a href="#673" id="673">673</a>
+<a href="#674" id="674">674</a>
+<a href="#675" id="675">675</a>
+<a href="#676" id="676">676</a>
+<a href="#677" id="677">677</a>
+<a href="#678" id="678">678</a>
+<a href="#679" id="679">679</a>
+<a href="#680" id="680">680</a>
+<a href="#681" id="681">681</a>
+<a href="#682" id="682">682</a>
+<a href="#683" id="683">683</a>
+<a href="#684" id="684">684</a>
+<a href="#685" id="685">685</a>
+<a href="#686" id="686">686</a>
+<a href="#687" id="687">687</a>
+<a href="#688" id="688">688</a>
+<a href="#689" id="689">689</a>
+<a href="#690" id="690">690</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -668,12 +711,12 @@
 <span class="kw">use crate</span>::{
     enums::{
         ContingencyType, LiquiditySide, OrderSide, OrderStatus, OrderType, PositionSide,
-        TimeInForce, TriggerType,
+        TimeInForce, TrailingOffsetType, TriggerType,
     },
     events::order::{
         OrderAccepted, OrderCancelRejected, OrderCanceled, OrderDenied, OrderEvent, OrderExpired,
-        OrderFilled, OrderModifyRejected, OrderPendingCancel, OrderPendingUpdate, OrderRejected,
-        OrderSubmitted, OrderTriggered, OrderUpdated,
+        OrderFilled, OrderInitialized, OrderModifyRejected, OrderPendingCancel, OrderPendingUpdate,
+        OrderRejected, OrderSubmitted, OrderTriggered, OrderUpdated,
     },
     identifiers::{
         account_id::AccountId, client_order_id::ClientOrderId, exec_algorithm_id::ExecAlgorithmId,
@@ -770,6 +813,7 @@
     <span class="kw">fn </span>order_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; OrderType;
     <span class="kw">fn </span>quantity(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Quantity;
     <span class="kw">fn </span>time_in_force(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; TimeInForce;
+    <span class="kw">fn </span>expire_time(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;UnixNanos&gt;;
     <span class="kw">fn </span>price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt;;
     <span class="kw">fn </span>trigger_price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt;;
     <span class="kw">fn </span>trigger_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TriggerType&gt;;
@@ -777,7 +821,12 @@
     <span class="kw">fn </span>is_post_only(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
     <span class="kw">fn </span>is_reduce_only(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
     <span class="kw">fn </span>is_quote_quantity(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool;
+    <span class="kw">fn </span>display_qty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Quantity&gt;;
+    <span class="kw">fn </span>limit_offset(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt;;
+    <span class="kw">fn </span>trailing_offset(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Price&gt;;
+    <span class="kw">fn </span>trailing_offset_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TrailingOffsetType&gt;;
     <span class="kw">fn </span>emulation_trigger(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;TriggerType&gt;;
+    <span class="kw">fn </span>trigger_instrument_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;InstrumentId&gt;;
     <span class="kw">fn </span>contingency_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;ContingencyType&gt;;
     <span class="kw">fn </span>order_list_id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;OrderListId&gt;;
     <span class="kw">fn </span>linked_order_ids(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;;
@@ -884,6 +933,49 @@
     }
 }
 
+<span class="kw">impl</span>&lt;T&gt; From&lt;<span class="kw-2">&amp;</span>T&gt; <span class="kw">for </span>OrderInitialized
+<span class="kw">where
+    </span>T: Order,
+{
+    <span class="kw">fn </span>from(order: <span class="kw-2">&amp;</span>T) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            trader_id: order.trader_id(),
+            strategy_id: order.strategy_id(),
+            instrument_id: order.instrument_id(),
+            client_order_id: order.client_order_id(),
+            order_side: order.side(),
+            order_type: order.order_type(),
+            quantity: order.quantity(),
+            price: order.price(),
+            trigger_price: order.trigger_price(),
+            trigger_type: order.trigger_type(),
+            time_in_force: order.time_in_force(),
+            expire_time: order.expire_time(),
+            post_only: order.is_post_only(),
+            reduce_only: order.is_reduce_only(),
+            quote_quantity: order.is_quote_quantity(),
+            display_qty: order.display_qty(),
+            limit_offset: order.limit_offset(),
+            trailing_offset: order.trailing_offset(),
+            trailing_offset_type: order.trailing_offset_type(),
+            emulation_trigger: order.emulation_trigger(),
+            trigger_instrument_id: order.trigger_instrument_id(),
+            contingency_type: order.contingency_type(),
+            order_list_id: order.order_list_id(),
+            linked_order_ids: order.linked_order_ids(),
+            parent_order_id: order.parent_order_id(),
+            exec_algorithm_id: order.exec_algorithm_id(),
+            exec_algorithm_params: order.exec_algorithm_params(),
+            exec_spawn_id: order.exec_spawn_id(),
+            tags: order.tags(),
+            event_id: order.init_id(),
+            ts_event: order.ts_init(),
+            ts_init: order.ts_init(),
+            reconciliation: <span class="bool-val">false</span>,
+        }
+    }
+}
+
 <span class="kw">pub struct </span>OrderCore {
     <span class="kw">pub </span>events: Vec&lt;OrderEvent&gt;,
     <span class="kw">pub </span>venue_order_ids: Vec&lt;VenueOrderId&gt;,
@@ -905,10 +997,8 @@
     <span class="kw">pub </span>quantity: Quantity,
     <span class="kw">pub </span>time_in_force: TimeInForce,
     <span class="kw">pub </span>liquidity_side: <span class="prelude-ty">Option</span>&lt;LiquiditySide&gt;,
-    <span class="kw">pub </span>is_post_only: bool,
     <span class="kw">pub </span>is_reduce_only: bool,
     <span class="kw">pub </span>is_quote_quantity: bool,
-    <span class="kw">pub </span>emulation_trigger: <span class="prelude-ty">Option</span>&lt;TriggerType&gt;,
     <span class="kw">pub </span>contingency_type: <span class="prelude-ty">Option</span>&lt;ContingencyType&gt;,
     <span class="kw">pub </span>order_list_id: <span class="prelude-ty">Option</span>&lt;OrderListId&gt;,
     <span class="kw">pub </span>linked_order_ids: <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;,
@@ -938,10 +1028,8 @@
         order_type: OrderType,
         quantity: Quantity,
         time_in_force: TimeInForce,
-        post_only: bool,
         reduce_only: bool,
         quote_quantity: bool,
-        emulation_trigger: <span class="prelude-ty">Option</span>&lt;TriggerType&gt;,
         contingency_type: <span class="prelude-ty">Option</span>&lt;ContingencyType&gt;,
         order_list_id: <span class="prelude-ty">Option</span>&lt;OrderListId&gt;,
         linked_order_ids: <span class="prelude-ty">Option</span>&lt;Vec&lt;ClientOrderId&gt;&gt;,
@@ -974,10 +1062,8 @@
             quantity,
             time_in_force,
             liquidity_side: <span class="prelude-val">None</span>,
-            is_post_only: post_only,
             is_reduce_only: reduce_only,
             is_quote_quantity: quote_quantity,
-            emulation_trigger,
             contingency_type,
             order_list_id,
             linked_order_ids,

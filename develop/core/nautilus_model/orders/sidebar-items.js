@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["base","limit","limit_if_touched","market","market_if_touched","market_to_limit","stop_limit","trailing_stop_limit","trailing_stop_market"]};
+window.SIDEBAR_ITEMS = {"mod":["base","limit","limit_if_touched","market","market_if_touched","market_to_limit","stop_limit","stop_market","trailing_stop_limit","trailing_stop_market"]};
