@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["order_denied_new"]};
+window.SIDEBAR_ITEMS = {"fn":["order_accepted_new","order_denied_new","order_rejected_new","order_submitted_new"]};

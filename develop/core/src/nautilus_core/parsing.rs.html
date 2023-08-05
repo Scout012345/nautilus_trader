@@ -241,6 +241,11 @@
 <a href="#241" id="241">241</a>
 <a href="#242" id="242">242</a>
 <a href="#243" id="243">243</a>
+<a href="#244" id="244">244</a>
+<a href="#245" id="245">245</a>
+<a href="#246" id="246">246</a>
+<a href="#247" id="247">247</a>
+<a href="#248" id="248">248</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -350,6 +355,11 @@
     <span class="macro">assert!</span>(!ptr.is_null(), <span class="string">&quot;`ptr` was NULL&quot;</span>);
     precision_from_str(<span class="kw-2">&amp;</span>cstr_to_string(ptr))
 }
+
+<span class="doccomment">/// Return a `bool` value from the given `u8`.
+</span><span class="kw">pub fn </span>u8_to_bool(value: u8) -&gt; bool {
+    value != <span class="number">0
+</span>}
 
 <span class="comment">////////////////////////////////////////////////////////////////////////////////
 // Tests
