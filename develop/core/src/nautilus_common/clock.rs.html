@@ -801,7 +801,7 @@
             .map(|event| {
                 <span class="kw">let </span>callback_py = <span class="self">self
                     </span>.callbacks_py
-                    .get(event.name.<span class="number">0</span>.as_str())
+                    .get(event.name.as_str())
                     .cloned()
                     .unwrap_or_else(|| {
                         <span class="comment">// If callback_py is None, use the default_callback_py

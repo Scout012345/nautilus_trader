@@ -265,7 +265,6 @@
 <a href="#265" id="265">265</a>
 <a href="#266" id="266">266</a>
 <a href="#267" id="267">267</a>
-<a href="#268" id="268">268</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -288,7 +287,6 @@
 
 <span class="kw">use </span>nautilus_core::{
     correctness,
-    string::SerializableUstr,
     time::{TimedeltaNanos, UnixNanos},
     uuid::UUID4,
 };
@@ -301,7 +299,7 @@
 </span><span class="doccomment">/// Represents a time event occurring at the event timestamp.
 </span><span class="kw">pub struct </span>TimeEvent {
     <span class="doccomment">/// The event name.
-    </span><span class="kw">pub </span>name: SerializableUstr,
+    </span><span class="kw">pub </span>name: Ustr,
     <span class="doccomment">/// The event ID.
     </span><span class="kw">pub </span>event_id: UUID4,
     <span class="doccomment">/// The message category
@@ -316,7 +314,7 @@
         correctness::valid_string(<span class="kw-2">&amp;</span>name, <span class="string">&quot;`TimeEvent` name&quot;</span>);
 
         TimeEvent {
-            name: SerializableUstr(Ustr::from(<span class="kw-2">&amp;</span>name)),
+            name: Ustr::from(<span class="kw-2">&amp;</span>name),
             event_id,
             ts_event,
             ts_init,
@@ -419,7 +417,7 @@
 
     <span class="kw">pub fn </span>pop_event(<span class="kw-2">&amp;</span><span class="self">self</span>, event_id: UUID4, ts_init: UnixNanos) -&gt; TimeEvent {
         TimeEvent {
-            name: SerializableUstr(Ustr::from(<span class="kw-2">&amp;</span><span class="self">self</span>.name)),
+            name: Ustr::from(<span class="kw-2">&amp;</span><span class="self">self</span>.name),
             event_id,
             ts_event: <span class="self">self</span>.next_time_ns,
             ts_init,
@@ -450,7 +448,7 @@
         </span>} <span class="kw">else </span>{
             <span class="kw">let </span>item = (
                 TimeEvent {
-                    name: SerializableUstr(Ustr::from(<span class="kw-2">&amp;</span><span class="self">self</span>.name)),
+                    name: Ustr::from(<span class="kw-2">&amp;</span><span class="self">self</span>.name),
                     event_id: UUID4::new(),
                     ts_event: <span class="self">self</span>.next_time_ns,
                     ts_init: <span class="self">self</span>.next_time_ns,

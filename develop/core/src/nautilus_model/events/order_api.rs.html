@@ -218,10 +218,6 @@
 <a href="#218" id="218">218</a>
 <a href="#219" id="219">219</a>
 <a href="#220" id="220">220</a>
-<a href="#221" id="221">221</a>
-<a href="#222" id="222">222</a>
-<a href="#223" id="223">223</a>
-<a href="#224" id="224">224</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -239,11 +235,7 @@
 
 </span><span class="kw">use </span>std::ffi::c_char;
 
-<span class="kw">use </span>nautilus_core::{
-    string::{cstr_to_ustr, SerializableUstr},
-    time::UnixNanos,
-    uuid::UUID4,
-};
+<span class="kw">use </span>nautilus_core::{string::cstr_to_ustr, time::UnixNanos, uuid::UUID4};
 
 <span class="comment">// use crate::types::price::Price;
 // use crate::types::quantity::Quantity;
@@ -333,7 +325,7 @@
         strategy_id,
         instrument_id,
         client_order_id,
-        reason: SerializableUstr(cstr_to_ustr(reason_ptr)),
+        reason: cstr_to_ustr(reason_ptr),
         event_id,
         ts_event,
         ts_init,
@@ -412,7 +404,7 @@
         instrument_id,
         client_order_id,
         account_id,
-        reason: SerializableUstr(cstr_to_ustr(reason_ptr)),
+        reason: cstr_to_ustr(reason_ptr),
         event_id,
         ts_event,
         ts_init,
