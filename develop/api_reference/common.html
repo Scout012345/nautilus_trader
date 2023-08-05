@@ -692,6 +692,15 @@
              </span>
              <ul class="submenu">
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.active_task_ids">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.active_task_ids()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.add_synthetic">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -705,6 +714,24 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Actor.cache
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.cancel_all_tasks">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.cancel_all_tasks()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.cancel_task">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.cancel_task()
                  </span>
                 </code>
                </a>
@@ -921,6 +948,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Actor.handle_venue_status_update()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.has_active_tasks">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.has_active_tasks()
                  </span>
                 </code>
                </a>
@@ -1259,10 +1295,28 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.queue_for_executor">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.queue_for_executor()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.register_base">
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Actor.register_base()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.register_executor">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.register_executor()
                  </span>
                 </code>
                </a>
@@ -1344,6 +1398,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   Actor.resume()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.common.actor.Actor.run_in_executor">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Actor.run_in_executor()
                  </span>
                 </code>
                </a>
@@ -3961,6 +4024,43 @@ fully “wired” into the platform. Exceptions will be raised if an
            </p>
           </div>
           <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.active_task_ids">
+            <span class="sig-name descname">
+             <span class="pre">
+              active_task_ids
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               list
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.active_task_ids" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+           </dd>
+          </dl>
+          <dl class="py method">
            <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.add_synthetic">
             <span class="sig-name descname">
              <span class="pre">
@@ -4091,6 +4191,100 @@ fully “wired” into the platform. Exceptions will be raised if an
               </p>
              </dd>
             </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.cancel_all_tasks">
+            <span class="sig-name descname">
+             <span class="pre">
+              cancel_all_tasks
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.cancel_all_tasks" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.cancel_task">
+            <span class="sig-name descname">
+             <span class="pre">
+              cancel_task
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               task_id
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               TaskId
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.cancel_task" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
            </dd>
           </dl>
           <dl class="py attribute">
@@ -6063,6 +6257,43 @@ then the component state will not change, and an error will be logged.
               System method (not intended to be called by user code).
              </p>
             </div>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.has_active_tasks">
+            <span class="sig-name descname">
+             <span class="pre">
+              has_active_tasks
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.has_active_tasks" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
            </dd>
           </dl>
           <dl class="py method">
@@ -8579,6 +8810,160 @@ If
            </dd>
           </dl>
           <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.queue_for_executor">
+            <span class="sig-name descname">
+             <span class="pre">
+              queue_for_executor
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="pre">
+              self,
+             </span>
+             <span class="pre">
+              func:
+             </span>
+             <span class="pre">
+              Callable[...,
+             </span>
+             <span class="pre">
+              Any],
+             </span>
+             <span class="pre">
+              tuple
+             </span>
+             <span class="pre">
+              args=None,
+             </span>
+             <span class="pre">
+              dict
+             </span>
+             <span class="pre">
+              kwargs=None
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.queue_for_executor" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Queues the callable
+             <cite>
+              func
+             </cite>
+             to be executed as
+             <cite>
+              fn(*args, **kwargs)
+             </cite>
+             sequentially.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  func
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 ) – The function to be executed.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  args
+                 </strong>
+                 (
+                 <em>
+                  variable length argument list
+                 </em>
+                 ) – The positional arguments for the call to
+                 <cite>
+                  func
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  kwargs
+                 </strong>
+                 (
+                 <em>
+                  arbitrary keyword arguments
+                 </em>
+                 ) – The keyword arguments for the call to
+                 <cite>
+                  func
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
+             </dd>
+             <dt class="field-even">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                func
+               </cite>
+               is not of type
+               <cite>
+                Callable
+               </cite>
+               .
+              </p>
+             </dd>
+            </dl>
+            <p class="rubric">
+             Notes
+            </p>
+            <p>
+             For backtesting the
+             <cite>
+              func
+             </cite>
+             is immediately executed, as there’s no need for a
+             <cite>
+              Future
+             </cite>
+             object that can be awaited. In a backtesting scenario, the execution is not in real time,
+and so the results of
+             <cite>
+              func
+             </cite>
+             are ‘immediately’ available after it’s called.
+            </p>
+           </dd>
+          </dl>
+          <dl class="py method">
            <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.register_base">
             <span class="sig-name descname">
              <span class="pre">
@@ -8736,6 +9121,147 @@ If
               System method (not intended to be called by user code).
              </p>
             </div>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.register_executor">
+            <span class="sig-name descname">
+             <span class="pre">
+              register_executor
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               loop
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               asyncio.AbstractEventLoop
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               executor
+              </span>
+             </span>
+             <span class="p">
+              <span class="pre">
+               :
+              </span>
+             </span>
+             <span class="w">
+             </span>
+             <span class="n">
+              <span class="pre">
+               Executor
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               void
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.register_executor" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Register the given
+             <cite>
+              Executor
+             </cite>
+             for the actor.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  loop
+                 </strong>
+                 (
+                 <em>
+                  asyncio.AsbtractEventLoop
+                 </em>
+                 ) – The event loop of the application.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  executor
+                 </strong>
+                 (
+                 <em>
+                  concurrent.futures.Executor
+                 </em>
+                 ) – The executor to register.
+                </p>
+               </li>
+              </ul>
+             </dd>
+             <dt class="field-even">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                executor
+               </cite>
+               is not of type
+               <cite>
+                concurrent.futures.Executor
+               </cite>
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -10485,6 +11011,175 @@ will remain in a
 then the component state will not change, and an error will be logged.
              </p>
             </div>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.common.actor.Actor.run_in_executor">
+            <span class="sig-name descname">
+             <span class="pre">
+              run_in_executor
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="pre">
+              self,
+             </span>
+             <span class="pre">
+              func:
+             </span>
+             <span class="pre">
+              Callable[...,
+             </span>
+             <span class="pre">
+              Any],
+             </span>
+             <span class="pre">
+              tuple
+             </span>
+             <span class="pre">
+              args=None,
+             </span>
+             <span class="pre">
+              dict
+             </span>
+             <span class="pre">
+              kwargs=None
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="headerlink" href="#nautilus_trader.common.actor.Actor.run_in_executor" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Schedules the callable
+             <cite>
+              func
+             </cite>
+             to be executed as
+             <cite>
+              fn(*args, **kwargs)
+             </cite>
+             .
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  func
+                 </strong>
+                 (
+                 <em>
+                  Callable
+                 </em>
+                 ) – The function to be executed.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  args
+                 </strong>
+                 (
+                 <em>
+                  variable length argument list
+                 </em>
+                 ) – The positional arguments for the call to
+                 <cite>
+                  func
+                 </cite>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  kwargs
+                 </strong>
+                 (
+                 <em>
+                  arbitrary keyword arguments
+                 </em>
+                 ) – The keyword arguments for the call to
+                 <cite>
+                  func
+                 </cite>
+                 .
+                </p>
+               </li>
+              </ul>
+             </dd>
+             <dt class="field-even">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-even">
+              <p>
+               <em>
+                TaskId
+               </em>
+               – The unique task identifier for the execution.
+This also corresponds to any future objects memory address.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Raises
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – If
+               <cite>
+                func
+               </cite>
+               is not of type
+               <cite>
+                Callable
+               </cite>
+               .
+              </p>
+             </dd>
+            </dl>
+            <p class="rubric">
+             Notes
+            </p>
+            <p>
+             For backtesting the
+             <cite>
+              func
+             </cite>
+             is immediately executed, as there’s no need for a
+             <cite>
+              Future
+             </cite>
+             object that can be awaited. In a backtesting scenario, the execution is not in real time,
+and so the results of
+             <cite>
+              func
+             </cite>
+             are ‘immediately’ available after it’s called.
+            </p>
            </dd>
           </dl>
           <dl class="py method">
