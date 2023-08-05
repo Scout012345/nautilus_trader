@@ -3125,6 +3125,15 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.backtest.modules.FXRolloverInterestModule.has_queued_tasks">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  FXRolloverInterestModule.has_queued_tasks()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.backtest.modules.FXRolloverInterestModule.id">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -3471,6 +3480,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   FXRolloverInterestModule.queue_for_executor()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.backtest.modules.FXRolloverInterestModule.queued_task_ids">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  FXRolloverInterestModule.queued_task_ids()
                  </span>
                 </code>
                </a>
@@ -4166,6 +4184,15 @@
                </a>
               </li>
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.backtest.modules.SimulationModule.has_queued_tasks">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  SimulationModule.has_queued_tasks()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#nautilus_trader.backtest.modules.SimulationModule.id">
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -4512,6 +4539,15 @@
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   SimulationModule.queue_for_executor()
+                 </span>
+                </code>
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#nautilus_trader.backtest.modules.SimulationModule.queued_task_ids">
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  SimulationModule.queued_task_ids()
                  </span>
                 </code>
                </a>
@@ -22396,6 +22432,24 @@ of fills and slippage by order type.
             </a>
            </dt>
            <dd>
+            <p>
+             Return the active task identifiers.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                list[TaskId]
+               </em>
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -22566,6 +22620,9 @@ of fills and slippage by order type.
             </a>
            </dt>
            <dd>
+            <p>
+             Cancel all queued and active tasks.
+            </p>
            </dd>
           </dl>
           <dl class="py method">
@@ -22623,6 +22680,36 @@ of fills and slippage by order type.
             </a>
            </dt>
            <dd>
+            <p>
+             Cancel the task with the given
+             <cite>
+              task_id
+             </cite>
+             (if queued or active).
+            </p>
+            <p>
+             If the task is not found then a warning is logged.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                task_id
+               </strong>
+               (
+               <em>
+                TaskId
+               </em>
+               ) – The task identifier.
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py attribute">
@@ -24632,6 +24719,24 @@ then the component state will not change, and an error will be logged.
             </a>
            </dt>
            <dd>
+            <p>
+             Return a value indicating whether there are any active tasks.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                bool
+               </em>
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -24685,6 +24790,61 @@ then the component state will not change, and an error will be logged.
                 bool
                </em>
                – True if any requests are pending, else False.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.backtest.modules.FXRolloverInterestModule.has_queued_tasks">
+            <span class="sig-name descname">
+             <span class="pre">
+              has_queued_tasks
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.backtest.modules.FXRolloverInterestModule.has_queued_tasks" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return a value indicating whether there are any queued tasks.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                bool
+               </em>
               </p>
              </dd>
             </dl>
@@ -27378,7 +27538,7 @@ If
                  </strong>
                  (
                  <em>
-                  variable length argument list
+                  positional arguments
                  </em>
                  ) – The positional arguments for the call to
                  <cite>
@@ -27447,6 +27607,61 @@ and so the results of
              </cite>
              are ‘immediately’ available after it’s called.
             </p>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.backtest.modules.FXRolloverInterestModule.queued_task_ids">
+            <span class="sig-name descname">
+             <span class="pre">
+              queued_task_ids
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               list
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.backtest.modules.FXRolloverInterestModule.queued_task_ids" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return the queued task identifiers.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                list[TaskId]
+               </em>
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -29623,7 +29838,7 @@ then the component state will not change, and an error will be logged.
                  </strong>
                  (
                  <em>
-                  variable length argument list
+                  positional arguments
                  </em>
                  ) – The positional arguments for the call to
                  <cite>
@@ -33268,6 +33483,24 @@ If
             </a>
            </dt>
            <dd>
+            <p>
+             Return the active task identifiers.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                list[TaskId]
+               </em>
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -33438,6 +33671,9 @@ If
             </a>
            </dt>
            <dd>
+            <p>
+             Cancel all queued and active tasks.
+            </p>
            </dd>
           </dl>
           <dl class="py method">
@@ -33495,6 +33731,36 @@ If
             </a>
            </dt>
            <dd>
+            <p>
+             Cancel the task with the given
+             <cite>
+              task_id
+             </cite>
+             (if queued or active).
+            </p>
+            <p>
+             If the task is not found then a warning is logged.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                task_id
+               </strong>
+               (
+               <em>
+                TaskId
+               </em>
+               ) – The task identifier.
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py attribute">
@@ -35504,6 +35770,24 @@ then the component state will not change, and an error will be logged.
             </a>
            </dt>
            <dd>
+            <p>
+             Return a value indicating whether there are any active tasks.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                bool
+               </em>
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -35557,6 +35841,61 @@ then the component state will not change, and an error will be logged.
                 bool
                </em>
                – True if any requests are pending, else False.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.backtest.modules.SimulationModule.has_queued_tasks">
+            <span class="sig-name descname">
+             <span class="pre">
+              has_queued_tasks
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               bool
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.backtest.modules.SimulationModule.has_queued_tasks" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return a value indicating whether there are any queued tasks.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                bool
+               </em>
               </p>
              </dd>
             </dl>
@@ -38204,7 +38543,7 @@ If
                  </strong>
                  (
                  <em>
-                  variable length argument list
+                  positional arguments
                  </em>
                  ) – The positional arguments for the call to
                  <cite>
@@ -38273,6 +38612,61 @@ and so the results of
              </cite>
              are ‘immediately’ available after it’s called.
             </p>
+           </dd>
+          </dl>
+          <dl class="py method">
+           <dt class="sig sig-object py" id="nautilus_trader.backtest.modules.SimulationModule.queued_task_ids">
+            <span class="sig-name descname">
+             <span class="pre">
+              queued_task_ids
+             </span>
+            </span>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               self
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <span class="sig-return">
+             <span class="sig-return-icon">
+              →
+             </span>
+             <span class="sig-return-typehint">
+              <span class="pre">
+               list
+              </span>
+             </span>
+            </span>
+            <a class="headerlink" href="#nautilus_trader.backtest.modules.SimulationModule.queued_task_ids" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return the queued task identifiers.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+              <span class="colon">
+               :
+              </span>
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <em>
+                list[TaskId]
+               </em>
+              </p>
+             </dd>
+            </dl>
            </dd>
           </dl>
           <dl class="py method">
@@ -40452,7 +40846,7 @@ then the component state will not change, and an error will be logged.
                  </strong>
                  (
                  <em>
-                  variable length argument list
+                  positional arguments
                  </em>
                  ) – The positional arguments for the call to
                  <cite>
