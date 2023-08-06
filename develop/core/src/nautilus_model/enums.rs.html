@@ -1360,6 +1360,10 @@
 <a href="#1360" id="1360">1360</a>
 <a href="#1361" id="1361">1361</a>
 <a href="#1362" id="1362">1362</a>
+<a href="#1363" id="1363">1363</a>
+<a href="#1364" id="1364">1364</a>
+<a href="#1365" id="1365">1365</a>
+<a href="#1366" id="1366">1366</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -2000,26 +2004,30 @@
     </span>Initialized = <span class="number">1</span>,
     <span class="doccomment">/// The order was denied by the Nautilus system, either for being invalid, unprocessable or exceeding a risk limit.
     </span>Denied = <span class="number">2</span>,
-    <span class="doccomment">/// The order was submitted by the Nautilus system to the external service or trading venue (closed/done).
-    </span>Submitted = <span class="number">3</span>,
+    <span class="doccomment">/// The order became emulated by the Nautilus system in the `OrderEmulator` component.
+    </span>Emulated = <span class="number">3</span>,
+    <span class="doccomment">/// The order was released by the Nautilus system from the `OrderEmulator` component.
+    </span>Released = <span class="number">4</span>,
+    <span class="doccomment">/// The order was submitted by the Nautilus system to the external service or trading venue (awaiting acknowledgement).
+    </span>Submitted = <span class="number">5</span>,
     <span class="doccomment">/// The order was acknowledged by the trading venue as being received and valid (may now be working).
-    </span>Accepted = <span class="number">4</span>,
+    </span>Accepted = <span class="number">6</span>,
     <span class="doccomment">/// The order was rejected by the trading venue.
-    </span>Rejected = <span class="number">5</span>,
+    </span>Rejected = <span class="number">7</span>,
     <span class="doccomment">/// The order was canceled (closed/done).
-    </span>Canceled = <span class="number">6</span>,
+    </span>Canceled = <span class="number">8</span>,
     <span class="doccomment">/// The order reached a GTD expiration (closed/done).
-    </span>Expired = <span class="number">7</span>,
-    <span class="doccomment">/// The order STOP price was triggered (closed/done).
-    </span>Triggered = <span class="number">8</span>,
-    <span class="doccomment">/// The order is currently pending a request to modify at the trading venue.
-    </span>PendingUpdate = <span class="number">9</span>,
-    <span class="doccomment">/// The order is currently pending a request to cancel at the trading venue.
-    </span>PendingCancel = <span class="number">10</span>,
-    <span class="doccomment">/// The order has been partially filled at the trading venue.
-    </span>PartiallyFilled = <span class="number">11</span>,
-    <span class="doccomment">/// The order has been completely filled at the trading venue (closed/done).
-    </span>Filled = <span class="number">12</span>,
+    </span>Expired = <span class="number">9</span>,
+    <span class="doccomment">/// The order STOP price was triggered on a trading venue.
+    </span>Triggered = <span class="number">10</span>,
+    <span class="doccomment">/// The order is currently pending a request to modify on a trading venue.
+    </span>PendingUpdate = <span class="number">11</span>,
+    <span class="doccomment">/// The order is currently pending a request to cancel on a trading venue.
+    </span>PendingCancel = <span class="number">12</span>,
+    <span class="doccomment">/// The order has been partially filled on a trading venue.
+    </span>PartiallyFilled = <span class="number">13</span>,
+    <span class="doccomment">/// The order has been completely filled on a trading venue (closed/done).
+    </span>Filled = <span class="number">14</span>,
 }
 
 <span class="doccomment">/// The type of order.
