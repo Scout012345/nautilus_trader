@@ -1349,6 +1349,17 @@
 <a href="#1349" id="1349">1349</a>
 <a href="#1350" id="1350">1350</a>
 <a href="#1351" id="1351">1351</a>
+<a href="#1352" id="1352">1352</a>
+<a href="#1353" id="1353">1353</a>
+<a href="#1354" id="1354">1354</a>
+<a href="#1355" id="1355">1355</a>
+<a href="#1356" id="1356">1356</a>
+<a href="#1357" id="1357">1357</a>
+<a href="#1358" id="1358">1358</a>
+<a href="#1359" id="1359">1359</a>
+<a href="#1360" id="1360">1360</a>
+<a href="#1361" id="1361">1361</a>
+<a href="#1362" id="1362">1362</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -1464,6 +1475,17 @@
     </span>Buyer = <span class="number">1</span>,
     <span class="doccomment">/// The SELL order was the aggressor for the trade.
     </span>Seller = <span class="number">2</span>,
+}
+
+<span class="kw">impl </span>FromU8 <span class="kw">for </span>AggressorSide {
+    <span class="kw">fn </span>from_u8(value: u8) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">match </span>value {
+            <span class="number">0 </span>=&gt; <span class="prelude-val">Some</span>(AggressorSide::NoAggressor),
+            <span class="number">1 </span>=&gt; <span class="prelude-val">Some</span>(AggressorSide::Buyer),
+            <span class="number">2 </span>=&gt; <span class="prelude-val">Some</span>(AggressorSide::Seller),
+            <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
+        }
+    }
 }
 
 <span class="doccomment">/// A broad financial market asset class.

@@ -254,33 +254,6 @@
 <a href="#254" id="254">254</a>
 <a href="#255" id="255">255</a>
 <a href="#256" id="256">256</a>
-<a href="#257" id="257">257</a>
-<a href="#258" id="258">258</a>
-<a href="#259" id="259">259</a>
-<a href="#260" id="260">260</a>
-<a href="#261" id="261">261</a>
-<a href="#262" id="262">262</a>
-<a href="#263" id="263">263</a>
-<a href="#264" id="264">264</a>
-<a href="#265" id="265">265</a>
-<a href="#266" id="266">266</a>
-<a href="#267" id="267">267</a>
-<a href="#268" id="268">268</a>
-<a href="#269" id="269">269</a>
-<a href="#270" id="270">270</a>
-<a href="#271" id="271">271</a>
-<a href="#272" id="272">272</a>
-<a href="#273" id="273">273</a>
-<a href="#274" id="274">274</a>
-<a href="#275" id="275">275</a>
-<a href="#276" id="276">276</a>
-<a href="#277" id="277">277</a>
-<a href="#278" id="278">278</a>
-<a href="#279" id="279">279</a>
-<a href="#280" id="280">280</a>
-<a href="#281" id="281">281</a>
-<a href="#282" id="282">282</a>
-<a href="#283" id="283">283</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -305,7 +278,7 @@
 <span class="kw">use </span>pyo3::{
     exceptions::{PyRuntimeError, PyValueError},
     prelude::<span class="kw-2">*</span>,
-    types::{PyBytes, PyDict},
+    types::PyBytes,
 };
 
 <span class="kw">use </span><span class="kw">crate</span>::arrow::{ArrowSchemaProvider, EncodeToRecordBatch};
@@ -316,7 +289,7 @@
 </span><span class="kw">pub struct </span>DataTransformer {}
 
 <span class="kw">impl </span>DataTransformer {
-    <span class="doccomment">/// Transforms the given `data` into a vector of [`OrderBookDelta`] objects.
+    <span class="doccomment">/// Transforms the given Python objects `data` into a vector of [`OrderBookDelta`] objects.
     </span><span class="kw">fn </span>pyobjects_to_order_book_deltas(
         py: Python&lt;<span class="lifetime">&#39;_</span>&gt;,
         data: Vec&lt;PyObject&gt;,
@@ -329,43 +302,37 @@
         <span class="prelude-val">Ok</span>(deltas)
     }
 
-    <span class="doccomment">/// Transforms the given `data_dicts` into a vector of [`QuoteTick`] objects.
-    </span><span class="kw">fn </span>pydicts_to_quote_ticks(
-        py: Python&lt;<span class="lifetime">&#39;_</span>&gt;,
-        data_dicts: Vec&lt;Py&lt;PyDict&gt;&gt;,
-    ) -&gt; PyResult&lt;Vec&lt;QuoteTick&gt;&gt; {
-        <span class="kw">let </span>ticks: Vec&lt;QuoteTick&gt; = data_dicts
+    <span class="doccomment">/// Transforms the given Python objects `data` into a vector of [`QuoteTick`] objects.
+    </span><span class="kw">fn </span>pyobjects_to_quote_ticks(py: Python&lt;<span class="lifetime">&#39;_</span>&gt;, data: Vec&lt;PyObject&gt;) -&gt; PyResult&lt;Vec&lt;QuoteTick&gt;&gt; {
+        <span class="kw">let </span>ticks: Vec&lt;QuoteTick&gt; = data
             .into_iter()
-            .map(|dict| QuoteTick::from_dict(py, dict))
+            .map(|obj| QuoteTick::from_pyobject(obj.as_ref(py)))
             .collect::&lt;PyResult&lt;Vec&lt;QuoteTick&gt;&gt;&gt;()<span class="question-mark">?</span>;
 
         <span class="prelude-val">Ok</span>(ticks)
     }
 
-    <span class="doccomment">/// Transforms the given `data_dicts` into a vector of [`TradeTick`] objects.
-    </span><span class="kw">fn </span>pydicts_to_trade_ticks(
-        py: Python&lt;<span class="lifetime">&#39;_</span>&gt;,
-        data_dicts: Vec&lt;Py&lt;PyDict&gt;&gt;,
-    ) -&gt; PyResult&lt;Vec&lt;TradeTick&gt;&gt; {
-        <span class="kw">let </span>ticks: Vec&lt;TradeTick&gt; = data_dicts
+    <span class="doccomment">/// Transforms the given Python objects `data` into a vector of [`TradeTick`] objects.
+    </span><span class="kw">fn </span>pyobjects_to_trade_ticks(py: Python&lt;<span class="lifetime">&#39;_</span>&gt;, data: Vec&lt;PyObject&gt;) -&gt; PyResult&lt;Vec&lt;TradeTick&gt;&gt; {
+        <span class="kw">let </span>ticks: Vec&lt;TradeTick&gt; = data
             .into_iter()
-            .map(|dict| TradeTick::from_dict(py, dict))
+            .map(|obj| TradeTick::from_pyobject(obj.as_ref(py)))
             .collect::&lt;PyResult&lt;Vec&lt;TradeTick&gt;&gt;&gt;()<span class="question-mark">?</span>;
 
         <span class="prelude-val">Ok</span>(ticks)
     }
 
-    <span class="doccomment">/// Transforms the given `data_dicts` into a vector of [`Bar`] objects.
-    </span><span class="kw">fn </span>pydicts_to_bars(py: Python&lt;<span class="lifetime">&#39;_</span>&gt;, data_dicts: Vec&lt;Py&lt;PyDict&gt;&gt;) -&gt; PyResult&lt;Vec&lt;Bar&gt;&gt; {
-        <span class="kw">let </span>bars: Vec&lt;Bar&gt; = data_dicts
+    <span class="doccomment">/// Transforms the given Python objects `data` into a vector of [`Bar`] objects.
+    </span><span class="kw">fn </span>pyobjects_to_bars(py: Python&lt;<span class="lifetime">&#39;_</span>&gt;, data: Vec&lt;PyObject&gt;) -&gt; PyResult&lt;Vec&lt;Bar&gt;&gt; {
+        <span class="kw">let </span>bars: Vec&lt;Bar&gt; = data
             .into_iter()
-            .map(|dict| Bar::from_dict(py, dict))
+            .map(|obj| Bar::from_pyobject(obj.as_ref(py)))
             .collect::&lt;PyResult&lt;Vec&lt;Bar&gt;&gt;&gt;()<span class="question-mark">?</span>;
 
         <span class="prelude-val">Ok</span>(bars)
     }
 
-    <span class="doccomment">/// Transforms the given `batches` into Python `bytes`.
+    <span class="doccomment">/// Transforms the given record `batches` into Python `bytes`.
     </span><span class="kw">fn </span>record_batches_to_pybytes(
         py: Python&lt;<span class="lifetime">&#39;_</span>&gt;,
         batches: Vec&lt;RecordBatch&gt;,
@@ -421,36 +388,15 @@
                 <span class="self">Self</span>::pyo3_order_book_deltas_to_batches_bytes(py, deltas)
             }
             <span class="macro">stringify!</span>(QuoteTick) =&gt; {
-                <span class="kw">let </span><span class="kw-2">mut </span>data_dicts: Vec&lt;Py&lt;PyDict&gt;&gt; = <span class="macro">vec!</span>[];
-                <span class="kw">for </span>obj <span class="kw">in </span><span class="kw-2">&amp;</span>data {
-                    <span class="kw">let </span>dict: Py&lt;PyDict&gt; = obj
-                        .call_method1(py, <span class="string">&quot;to_dict&quot;</span>, (obj.clone(),))<span class="question-mark">?
-                        </span>.extract(py)<span class="question-mark">?</span>;
-                    data_dicts.push(dict);
-                }
-                <span class="kw">let </span>ticks = <span class="self">Self</span>::pydicts_to_quote_ticks(py, data_dicts)<span class="question-mark">?</span>;
+                <span class="kw">let </span>ticks = <span class="self">Self</span>::pyobjects_to_quote_ticks(py, data)<span class="question-mark">?</span>;
                 <span class="self">Self</span>::pyo3_quote_ticks_to_batches_bytes(py, ticks)
             }
             <span class="macro">stringify!</span>(TradeTick) =&gt; {
-                <span class="kw">let </span><span class="kw-2">mut </span>data_dicts: Vec&lt;Py&lt;PyDict&gt;&gt; = <span class="macro">vec!</span>[];
-                <span class="kw">for </span>obj <span class="kw">in </span><span class="kw-2">&amp;</span>data {
-                    <span class="kw">let </span>dict: Py&lt;PyDict&gt; = obj
-                        .call_method1(py, <span class="string">&quot;to_dict&quot;</span>, (obj.clone(),))<span class="question-mark">?
-                        </span>.extract(py)<span class="question-mark">?</span>;
-                    data_dicts.push(dict);
-                }
-                <span class="kw">let </span>ticks = <span class="self">Self</span>::pydicts_to_trade_ticks(py, data_dicts)<span class="question-mark">?</span>;
+                <span class="kw">let </span>ticks = <span class="self">Self</span>::pyobjects_to_trade_ticks(py, data)<span class="question-mark">?</span>;
                 <span class="self">Self</span>::pyo3_trade_ticks_to_batches_bytes(py, ticks)
             }
             <span class="macro">stringify!</span>(Bar) =&gt; {
-                <span class="kw">let </span><span class="kw-2">mut </span>data_dicts: Vec&lt;Py&lt;PyDict&gt;&gt; = <span class="macro">vec!</span>[];
-                <span class="kw">for </span>obj <span class="kw">in </span><span class="kw-2">&amp;</span>data {
-                    <span class="kw">let </span>dict: Py&lt;PyDict&gt; = obj
-                        .call_method1(py, <span class="string">&quot;to_dict&quot;</span>, (obj.clone(),))<span class="question-mark">?
-                        </span>.extract(py)<span class="question-mark">?</span>;
-                    data_dicts.push(dict);
-                }
-                <span class="kw">let </span>bars = <span class="self">Self</span>::pydicts_to_bars(py, data_dicts)<span class="question-mark">?</span>;
+                <span class="kw">let </span>bars = <span class="self">Self</span>::pyobjects_to_bars(py, data)<span class="question-mark">?</span>;
                 <span class="self">Self</span>::pyo3_bars_to_batches_bytes(py, bars)
             }
             <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(PyValueError::new_err(<span class="macro">format!</span>(

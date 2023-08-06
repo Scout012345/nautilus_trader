@@ -351,6 +351,59 @@
 <a href="#351" id="351">351</a>
 <a href="#352" id="352">352</a>
 <a href="#353" id="353">353</a>
+<a href="#354" id="354">354</a>
+<a href="#355" id="355">355</a>
+<a href="#356" id="356">356</a>
+<a href="#357" id="357">357</a>
+<a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
+<a href="#360" id="360">360</a>
+<a href="#361" id="361">361</a>
+<a href="#362" id="362">362</a>
+<a href="#363" id="363">363</a>
+<a href="#364" id="364">364</a>
+<a href="#365" id="365">365</a>
+<a href="#366" id="366">366</a>
+<a href="#367" id="367">367</a>
+<a href="#368" id="368">368</a>
+<a href="#369" id="369">369</a>
+<a href="#370" id="370">370</a>
+<a href="#371" id="371">371</a>
+<a href="#372" id="372">372</a>
+<a href="#373" id="373">373</a>
+<a href="#374" id="374">374</a>
+<a href="#375" id="375">375</a>
+<a href="#376" id="376">376</a>
+<a href="#377" id="377">377</a>
+<a href="#378" id="378">378</a>
+<a href="#379" id="379">379</a>
+<a href="#380" id="380">380</a>
+<a href="#381" id="381">381</a>
+<a href="#382" id="382">382</a>
+<a href="#383" id="383">383</a>
+<a href="#384" id="384">384</a>
+<a href="#385" id="385">385</a>
+<a href="#386" id="386">386</a>
+<a href="#387" id="387">387</a>
+<a href="#388" id="388">388</a>
+<a href="#389" id="389">389</a>
+<a href="#390" id="390">390</a>
+<a href="#391" id="391">391</a>
+<a href="#392" id="392">392</a>
+<a href="#393" id="393">393</a>
+<a href="#394" id="394">394</a>
+<a href="#395" id="395">395</a>
+<a href="#396" id="396">396</a>
+<a href="#397" id="397">397</a>
+<a href="#398" id="398">398</a>
+<a href="#399" id="399">399</a>
+<a href="#400" id="400">400</a>
+<a href="#401" id="401">401</a>
+<a href="#402" id="402">402</a>
+<a href="#403" id="403">403</a>
+<a href="#404" id="404">404</a>
+<a href="#405" id="405">405</a>
+<a href="#406" id="406">406</a>
 </pre></div><pre class="rust"><code><span class="comment">// -------------------------------------------------------------------------------------------------
 //  Copyright (C) 2015-2023 Nautech Systems Pty Ltd. All rights reserved.
 //  https://nautechsystems.io
@@ -371,6 +424,7 @@
     collections::{hash_map::DefaultHasher, HashMap},
     fmt::{Display, Formatter},
     hash::{Hash, Hasher},
+    str::FromStr,
 };
 
 <span class="kw">use </span>nautilus_core::{correctness, serialization::Serializable, time::UnixNanos};
@@ -462,6 +516,47 @@
             <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;Cannot extract with price type {price_type}&quot;</span>),
         }
     }
+
+    <span class="kw">pub fn </span>from_pyobject(obj: <span class="kw-2">&amp;</span>PyAny) -&gt; PyResult&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span>instrument_id_obj: <span class="kw-2">&amp;</span>PyAny = obj.getattr(<span class="string">&quot;instrument_id&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>instrument_id_str = instrument_id_obj.getattr(<span class="string">&quot;value&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>instrument_id = InstrumentId::from_str(instrument_id_str)
+            .map_err(|e| PyValueError::new_err(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, e)))
+            .unwrap();
+
+        <span class="kw">let </span>bid_py: <span class="kw-2">&amp;</span>PyAny = obj.getattr(<span class="string">&quot;bid&quot;</span>)<span class="question-mark">?</span>;
+        <span class="kw">let </span>bid_raw: i64 = bid_py.getattr(<span class="string">&quot;raw&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>bid_prec: u8 = bid_py.getattr(<span class="string">&quot;precision&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>bid = Price::from_raw(bid_raw, bid_prec);
+
+        <span class="kw">let </span>ask_py: <span class="kw-2">&amp;</span>PyAny = obj.getattr(<span class="string">&quot;ask&quot;</span>)<span class="question-mark">?</span>;
+        <span class="kw">let </span>ask_raw: i64 = ask_py.getattr(<span class="string">&quot;raw&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>ask_prec: u8 = ask_py.getattr(<span class="string">&quot;precision&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>ask = Price::from_raw(ask_raw, ask_prec);
+
+        <span class="kw">let </span>bid_size_py: <span class="kw-2">&amp;</span>PyAny = obj.getattr(<span class="string">&quot;bid_size&quot;</span>)<span class="question-mark">?</span>;
+        <span class="kw">let </span>bid_size_raw: u64 = bid_size_py.getattr(<span class="string">&quot;raw&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>bid_size_prec: u8 = bid_size_py.getattr(<span class="string">&quot;precision&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>bid_size = Quantity::from_raw(bid_size_raw, bid_size_prec);
+
+        <span class="kw">let </span>ask_size_py: <span class="kw-2">&amp;</span>PyAny = obj.getattr(<span class="string">&quot;ask_size&quot;</span>)<span class="question-mark">?</span>;
+        <span class="kw">let </span>ask_size_raw: u64 = ask_size_py.getattr(<span class="string">&quot;raw&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>ask_size_prec: u8 = ask_size_py.getattr(<span class="string">&quot;precision&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>ask_size = Quantity::from_raw(ask_size_raw, ask_size_prec);
+
+        <span class="kw">let </span>ts_event: UnixNanos = obj.getattr(<span class="string">&quot;ts_event&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+        <span class="kw">let </span>ts_init: UnixNanos = obj.getattr(<span class="string">&quot;ts_init&quot;</span>)<span class="question-mark">?</span>.extract()<span class="question-mark">?</span>;
+
+        <span class="prelude-val">Ok</span>(<span class="self">Self</span>::new(
+            instrument_id,
+            bid,
+            ask,
+            bid_size,
+            ask_size,
+            ts_event,
+            ts_init,
+        ))
+    }
 }
 
 <span class="kw">impl </span>Serializable <span class="kw">for </span>QuoteTick {}
@@ -527,12 +622,12 @@
     }
 
     <span class="attr">#[getter]
-    </span><span class="kw">fn </span>bid_price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Price {
+    </span><span class="kw">fn </span>bid(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Price {
         <span class="self">self</span>.bid
     }
 
     <span class="attr">#[getter]
-    </span><span class="kw">fn </span>ask_price(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Price {
+    </span><span class="kw">fn </span>ask(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Price {
         <span class="self">self</span>.ask
     }
 
@@ -618,7 +713,7 @@
     <span class="kw">use </span>std::str::FromStr;
 
     <span class="kw">use </span>nautilus_core::serialization::Serializable;
-    <span class="kw">use </span>pyo3::Python;
+    <span class="kw">use </span>pyo3::{IntoPy, Python};
     <span class="kw">use </span>rstest::rstest;
 
     <span class="kw">use crate</span>::{
@@ -685,6 +780,17 @@
             <span class="kw">let </span>dict = tick.as_dict(py).unwrap();
             <span class="kw">let </span>parsed = QuoteTick::from_dict(py, dict).unwrap();
             <span class="macro">assert_eq!</span>(parsed, tick);
+        });
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_from_pyobject() {
+        <span class="kw">let </span>tick = create_stub_quote_tick();
+
+        Python::with_gil(|py| {
+            <span class="kw">let </span>tick_pyobject = tick.into_py(py);
+            <span class="kw">let </span>parsed_tick = QuoteTick::from_pyobject(tick_pyobject.as_ref(py)).unwrap();
+            <span class="macro">assert_eq!</span>(parsed_tick, tick);
         });
     }
 
